@@ -95,12 +95,14 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
   valor do XML for ausente — mesmo fallback que já era usado no caminho
   de criação manual da nota. Testes de regressão em
   `djangosige/tests/fiscal/test_processador_nf.py`.
+  {% raw %}
 - Templates de listagem usavam `{% ifequal %}` / `{% endifequal %}`,
   tags removidas no Django 4.0. As 5 ocorrências
   (`cliente_list_table.html`, `fornecedor_list_table.html`,
   `transportadora_list_table.html`, `empresa_list_table.html` e
   `estoque/consulta/consulta_estoque.html` — 2 vezes) foram substituídas
   por `{% if A == B %}…{% endif %}`.
+  {% endraw %}
 - Login retornava `403 Forbidden (Origin checking failed)` sob proxy
   reverso (`nginx` em `8000:80` → `gunicorn`). Adicionado
   `CSRF_TRUSTED_ORIGINS` no `settings.py` (lido via `decouple`) e a env
