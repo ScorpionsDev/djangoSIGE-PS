@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>djangoSIGE – Sistema de Gestión Integrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-50:  #E6F1FB;
+      --blue-100: #B5D4F4;
+      --blue-600: #185FA5;
+      --blue-800: #0C447C;
+      --blue-900: #042C53;
+      --teal-50:  #E1F5EE;
+      --teal-600: #0F6E56;
+      --teal-800: #085041;
+      --gray-50:  #F7F8FA;
+      --gray-100: #EEF0F4;
+      --gray-200: #DEE1E8;
+      --gray-400: #9EA4B0;
+      --gray-600: #5A6070;
+      --gray-900: #1A1D23;
+      --amber-50: #FAEEDA;
+      --amber-800: #633806;
+      --green-50: #EAF3DE;
+      --green-800: #27500A;
+      --red-50:   #FCEBEB;
+      --red-800:  #791F1F;
+      --purple-50:#EEEDFE;
+      --purple-800:#3C3489;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--blue-900);
+      color: #fff;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    }
+    .header-inner { position: relative; }
+    
+    /* Contenedor para imagen en la cabecera */
+    .header-image {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .header-image img {
+        max-width: 400px;      /* Ancho máximo */
+        max-height: 160px;      /* Alto máximo */
+        width: auto;           /* Mantiene proporción */
+        height: auto;          /* Mantiene proporción */
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .header-chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #B5D4F4;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin-top: 0.5rem;
+      color: #B5D4F4;
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+    .header-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.5rem;
+    }
+    .header-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #d0e8f8;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--blue-800);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+      padding: 6px 8px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #B5D4F4;
+      text-decoration: none;
+      padding: 6px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 980px;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    section {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      border: 1px solid var(--gray-200);
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--blue-800);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--blue-600);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin: 1.25rem 0 0.35rem;
+    }
+
+    p { color: var(--gray-600); }
+
+    ul { padding-left: 1.25rem; }
+    ul li { margin-bottom: 0.35rem; color: var(--gray-600); }
+    ul li strong { color: var(--gray-900); }
+
+    /* ── DESCRIPTION GRID ── */
+    .desc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .desc-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+    }
+    .desc-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--blue-600);
+      margin-bottom: 0.35rem;
+    }
+    .desc-card p { font-size: 13.5px; color: var(--gray-600); }
+
+    /* ── TECH BADGES ── */
+    .tech-section {
+      margin-top: 0.5rem;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0.75rem 0 1rem;
+    }
+    .badge {
+      background: var(--blue-50);
+      color: var(--blue-800);
+      border: 1px solid var(--blue-100);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .badge.mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+    .tech-description {
+      background: var(--gray-50);
+      border-left: 3px solid var(--blue-600);
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius-sm);
+      margin-top: 0.75rem;
+    }
+    .tech-description p {
+      font-size: 13.5px;
+      margin-bottom: 0.3rem;
+    }
+    .tech-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── SCOPE LIST ── */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 8px;
+      margin-top: 0.75rem;
+    }
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      font-size: 13.5px;
+      color: var(--gray-600);
+    }
+    .scope-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--blue-600);
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ── MODULES ── */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 10px;
+      margin-top: 0.75rem;
+    }
+    .module-card {
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      cursor: pointer;
+      background: #fff;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      user-select: none;
+    }
+    .module-card:hover {
+      border-color: var(--blue-600);
+      background: var(--blue-50);
+      transform: translateY(-1px);
+    }
+    .module-card.active {
+      border-color: var(--blue-600);
+      background: var(--blue-50);
+    }
+    .module-card h4 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--blue-800);
+      margin-bottom: 3px;
+    }
+    .module-card p {
+      font-size: 12px;
+      color: var(--gray-400);
+      line-height: 1.4;
+    }
+    .module-count {
+      display: inline-block;
+      background: var(--blue-600);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+    .module-card.active .module-count { background: var(--blue-800); }
+
+    /* ── TEST TABLE ── */
+    #test-detail { margin-top: 1.25rem; display: none; }
+    #test-detail h3 {
+      margin: 0 0 0.75rem;
+      font-size: 0.9rem;
+      color: var(--blue-800);
+    }
+
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--gray-200); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead tr { background: var(--blue-900); }
+    th {
+      color: #B5D4F4;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-600);
+      vertical-align: top;
+    }
+    td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--gray-400);
+      white-space: nowrap;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: var(--gray-50); }
+
+    /* ── STRATEGY TAGS ── */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tag-eq    { background: var(--blue-50);   color: var(--blue-800); }
+    .tag-http  { background: var(--green-50);  color: var(--green-800); }
+    .tag-form  { background: var(--amber-50);  color: var(--amber-800); }
+    .tag-limit { background: var(--red-50);    color: var(--red-800); }
+    .tag-perm  { background: var(--purple-50); color: var(--purple-800); }
+    .tag-other { background: var(--gray-100);  color: var(--gray-600); }
+
+    /* ── STRATEGY SECTION ── */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 10px;
+      margin-top: 0.75rem;
+    }
+    .strategy-item {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+    }
+    .strategy-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .strategy-item p {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    code {
+      background: var(--gray-100);
+      color: var(--blue-800);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-400);
+      font-size: 13px;
+      border-top: 1px solid var(--gray-200);
+    }
+    footer span { color: var(--blue-600); font-weight: 500; }
+
+    @media (max-width: 600px) {
+      header { padding: 2.5rem 1rem 2rem; }
+      section { padding: 1.25rem 1rem; }
+      .desc-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <!-- Contenedor para imagen (puedes agregar tu imagen aquí) -->
+    <div class="header-image">
+      <img src="logo.jpeg" alt="djangoSIGE" id="header-logo" />
+    </div>
+    <div class="header-chip">Software de gestión empresarial</div>
+    <h1>djangoSIGE</h1>
+    <p>Sistema de Gestión Integrado</p>
+    <div class="header-tags">
+      <span class="header-tag">Python</span>
+      <span class="header-tag">Django</span>
+      <span class="header-tag">ORM</span>
+      <span class="header-tag">SQLite</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#descripcion">Descripción</a>
+  <a href="#tecnologias">Tecnologías</a>
+  <a href="#alcance">Alcance</a>
+  <a href="#modulos">Módulos</a>
+  <a href="#estrategia">Estrategia</a>
+</nav>
+
+<main>
+
+  <section id="descripcion">
+    <h2>¿Qué es djangoSIGE?</h2>
+    <p>
+      <strong style="color:var(--gray-900)">djangoSIGE</strong> es un sistema de gestión empresarial integrado desarrollado en
+      Python y Django. Cubre de forma unificada los procesos centrales del negocio con integridad
+      transaccional garantizada a nivel de base de datos.
+    </p>
+    <div class="desc-grid">
+      <div class="desc-card">
+        <div class="desc-card-label">Cobertura funcional</div>
+        <p>Compras, ventas, inventario, finanzas, facturación fiscal y administración de usuarios en un solo sistema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <h2>Tecnologías</h2>
+    <div class="tech-section">
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">Django Web Framework</span>
+        <span class="badge">Django ORM</span>
+        <span class="badge mono">unittest / TestCase</span>
+        <span class="badge">SQLite</span>
+      </div>
+      <div class="tech-description">
+        <p><strong>Python</strong> — Lenguaje de programación principal del sistema, elegido por su claridad sintáctica, robustez y amplio ecosistema de librerías para desarrollo empresarial.</p>
+        <p><strong>Django Web Framework</strong> — Framework de alto nivel que provee estructura MVT (Modelo-Vista-Template), sistema de rutas, capa de abstracción de base de datos y componentes de seguridad integrados.</p>
+        <p><strong>Django ORM (Object-Relational Mapper)</strong> — Capa de persistencia que traduce operaciones Python a SQL, garantizando integridad referencial y permitiendo manipular datos sin escribir consultas SQL explícitas.</p>
+        <p><strong>unittest / TestCase</strong> — Framework nativo de pruebas unitarias, extendido por Django para validar modelos, vistas, formularios y lógica de negocio mediante aserciones y transacciones aisladas.</p>
+        <p><strong>SQLite</strong> — Motor de base de datos relacional utilizado en entornos de desarrollo y pruebas, liviano, sin configuración adicional y con soporte ACID para garantizar consistencia transaccional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="alcance">
+    <h2>Alcance del sistema</h2>
+    <div class="scope-grid">
+      <div class="scope-item"><span class="scope-dot"></span>Operaciones CRUD mediante el ORM de Django</div>
+      <div class="scope-item"><span class="scope-dot"></span>Métodos personalizados sobreescritos en modelos</div>
+      <div class="scope-item"><span class="scope-dot"></span>Integridad de datos en operaciones transaccionales</div>
+      <div class="scope-item"><span class="scope-dot"></span>Movimientos de inventario y actualización de existencias</div>
+      <div class="scope-item"><span class="scope-dot"></span>Persistencia y sincronización de datos</div>
+      <div class="scope-item"><span class="scope-dot"></span>Comportamiento ante entradas válidas e inválidas</div>
+    </div>
+  </section>
+
+  <section id="modulos">
+    <h2>Módulos del sistema</h2>
+    <p>Selecciona un módulo para ver sus casos verificados.</p>
+    <div class="modules-grid" id="module-grid"></div>
+    <div id="test-detail">
+      <h3 id="detail-title"></h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Estrategia</th>
+              <th>Caso</th>
+              <th>Resultado esperado</th>
+            </tr>
+          </thead>
+          <tbody id="detail-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="estrategia">
+    <h2>Estrategia de verificación</h2>
+    <div class="strategy-grid" id="strategy-grid">
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-eq">Partición de equivalencia</span></div>
+        <p>Cada método se valida con datos representativos válidos e inválidos para cubrir distintas clases de comportamiento.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-limit">Valores límite</span></div>
+        <p>Se verifican condiciones de borde: presupuestos vencidos, stock en cero, fechas del día, cantidades máximas.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-http">Validación HTTP</span></div>
+        <p>Todas las vistas responden con los códigos correctos (200, 404, 500) y renderizan los templates correspondientes.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-form">Validación de formularios</span></div>
+        <p>Los campos obligatorios generan <code>FormError</code> al omitirse; ningún dato inválido se persiste en la base de datos.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-perm">Verificación de permisos</span></div>
+        <p>Usuarios sin los permisos requeridos son redirigidos o bloqueados automáticamente por el sistema.</p>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-label"><span class="tag tag-other">Pruebas automatizadas</span></div>
+        <p>Todos los casos se ejecutan garantizando resultados consistentes entre iteraciones.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>djangoSIGE</span> · Sistema de Gestión Integrado · Python + Django
+</footer>
+
+<script>
+  const modules = [
+    {
+      name: "Principal / Dashboard",
+      desc: "Inicio, contexto y errores",
+      cases: [
+        ["CP-01","Partición de equivalencia","Verificar resolución de URL principal /","La URL resuelve correctamente hacia IndexView"],
+        ["CP-02","Validación HTTP","Acceder a la página principal","Respuesta HTTP 200"],
+        ["CP-03","Verificación de templates","Acceder a /404/","Renderiza 404.html"],
+        ["CP-05","Manejo de excepciones","Acceder a /500/ con DEBUG=True","Renderiza 500.html y responde HTTP 500"],
+        ["CP-07","Verificación de contexto","Verificar variables de contexto del dashboard","El contexto contiene cantidad_cadastro, agenda_hoje y alertas"],
+        ["CP-08","Verificación de contexto","Verificar fecha actual en el contexto","Existe la variable data_atual"],
+        ["CP-09","Manejo de excepciones","Acceder sin registros de MovimentoCaixa","El contexto contiene saldo sin generar errores"],
+      ]
+    },
+    {
+      name: "Registros",
+      desc: "Personas, productos, marcas",
+      cases: [
+        ["CP-01","Partición de equivalencia","Acceder a vistas de agregar registros","Respuesta HTTP 200"],
+        ["CP-02","Verificación de permisos","Verificar permisos de acceso","Usuario sin permiso no accede"],
+        ["CP-03","Partición de equivalencia","Registrar persona con datos válidos","Registro exitoso"],
+        ["CP-05","Validación de formularios","Enviar nombre vacío al registrar persona","Error de campo obligatorio"],
+        ["CP-06","Partición de equivalencia","Registrar producto válido","Registro exitoso"],
+        ["CP-08","Validación de formularios","Enviar código vacío al registrar producto","Error de campo obligatorio"],
+        ["CP-15","Partición de equivalencia","Eliminar objeto desde vista de listado","Objeto eliminado correctamente"],
+        ["CP-26","Validación JSON","Solicitar información AJAX de cliente","Respuesta JSON válida"],
+      ]
+    },
+    {
+      name: "Compras",
+      desc: "Presupuestos y pedidos",
+      cases: [
+        ["CP-01","Validación HTTP","Acceder a vista de agregar presupuesto de compra","Respuesta HTTP 200"],
+        ["CP-03","Partición de equivalencia","Registrar presupuesto de compra válido","Registro exitoso"],
+        ["CP-05","Validación de formularios","Enviar proveedor vacío","Error de campo obligatorio"],
+        ["CP-10","Valores límite","Eliminar presupuesto vencido","Eliminación exitosa"],
+        ["CP-22","Partición de equivalencia","Generar pedido desde presupuesto","Pedido creado correctamente"],
+        ["CP-28","Partición de equivalencia","Cancelar pedido de compra","Estado cambia a Cancelado"],
+        ["CP-30","Manejo de persistencia","Recibir pedido de compra","Estado cambia a Recebido"],
+        ["CP-31","Validación de stock","Recibir pedido y verificar inventario","Stock actualizado correctamente"],
+      ]
+    },
+    {
+      name: "Stock / Inventario",
+      desc: "Entradas, salidas y transferencias",
+      cases: [
+        ["CP-01","Validación HTTP","Acceder a consulta de stock","Respuesta HTTP 200"],
+        ["CP-10","Partición de equivalencia","Registrar entrada de stock válida","Registro exitoso"],
+        ["CP-13","Partición de equivalencia","Registrar salida de stock válida","Registro exitoso"],
+        ["CP-16","Manejo de excepciones","Retirar productos de local sin stock","Sistema maneja correctamente la operación"],
+        ["CP-17","Valores límite","Retirar cantidad mayor al stock actual","Error de validación en formset"],
+        ["CP-18","Partición de equivalencia","Registrar transferencia válida","Transferencia exitosa"],
+        ["CP-20","Valores límite","Transferir con stock insuficiente","Sistema controla correctamente la operación"],
+      ]
+    },
+    {
+      name: "Modelos de Stock",
+      desc: "Integridad al eliminar movimientos",
+      cases: [
+        ["CP-01","Partición de equivalencia","Eliminar una salida de stock registrada","Stock global y local reajustados correctamente"],
+        ["CP-02","Validación de persistencia","Verificar estoque_atual tras eliminar salida","Stock del producto incrementado correctamente"],
+        ["CP-03","Validación de persistencia","Verificar ProdutoEstocado tras salida","Cantidad local incrementada correctamente"],
+        ["CP-04","Partición de equivalencia","Eliminar una entrada de stock registrada","Stock global y local reajustados correctamente"],
+        ["CP-05","Validación de persistencia","Verificar estoque_atual tras eliminar entrada","Stock del producto decrementado correctamente"],
+        ["CP-06","Validación de persistencia","Verificar ProdutoEstocado tras entrada","Cantidad local decrementada correctamente"],
+      ]
+    },
+    {
+      name: "Finanzas",
+      desc: "Flujo de caja y cuentas",
+      cases: [
+        ["CP-01","Partición de equivalencia","Acceder a flujo de caja sin filtros","HTTP 200 y contexto movimentos presente"],
+        ["CP-02","Validación de permisos","Usuario sin permiso accede a flujo de caja","Redirección o denegación de acceso"],
+        ["CP-06","Validación de errores","Enviar fecha en formato incorrecto","Mensaje de error Formato de data incorreto"],
+        ["CP-07","Validación de persistencia","Crear cuenta a pagar con movimentar_caixa=True","Movimiento de caja creado con salidas >= 100"],
+        ["CP-09","Validación de persistencia","Crear cuenta a recibir con movimentar_caixa=True","Movimiento de caja creado con entradas >= 100"],
+        ["CP-35","Validación de integración","Facturar pedido de venta con stock suficiente","Salida de stock creada correctamente"],
+        ["CP-36","Validación de errores","Facturar pedido con producto sin stock","Advertencia y facturación no realizada"],
+      ]
+    },
+    {
+      name: "Fiscal",
+      desc: "Notas y grupos fiscales",
+      cases: [
+        ["CP-01","Validación HTTP","Acceder al formulario de naturaleza de operación","Respuesta HTTP 200"],
+        ["CP-04","Partición de equivalencia","Registrar naturaleza de operación con CFOP válido","Registro exitoso"],
+        ["CP-05","Validación de formularios","Enviar formulario omitiendo CFOP","FormError en campo cfop"],
+        ["CP-06","Partición de equivalencia","Registrar grupo fiscal con parámetros válidos","Registro exitoso"],
+        ["CP-08","Partición de equivalencia","Registrar Nota Fiscal de salida con datos base","Registro exitoso"],
+        ["CP-10","Partición de equivalencia","Generar Nota Fiscal desde pedido de venta","Crea instancia de NotaFiscalSaida correctamente"],
+        ["CP-22","Verificación de permisos","Validar restricción a configuración NF-e","Sistema verifica código de permiso configurar_nfe"],
+      ]
+    },
+    {
+      name: "Login / Usuarios",
+      desc: "Autenticación y gestión",
+      cases: [
+        ["CP-01","Redirección de flujo","Acceder a login con sesión activa","Redirecciona hacia / automáticamente"],
+        ["CP-03","Partición de equivalencia","Login con credenciales válidas","Autenticación exitosa, renderiza dashboard"],
+        ["CP-05","Partición de equivalencia","Registrar nuevo usuario con datos válidos","Registro exitoso, objeto User persistido"],
+        ["CP-06","Validación de formularios","Registro con contraseñas que no coinciden","FormError en campo password"],
+        ["CP-07","Verificación de permisos","Usuario sin is_superuser intenta registrar","Sistema bloquea y redirige a /"],
+        ["CP-08","Redirección de flujo","Invocar cierre de sesión","Sesión destruida, redirige a /login/"],
+        ["CP-13","Validación de persistencia","Guardar cambios de perfil asociando empresa","Actualización exitosa, empresa asociada al Usuario"],
+        ["CP-18","Partición de equivalencia","Eliminar usuario enviando ID en POST","Objeto removido de la base de datos"],
+      ]
+    },
+    {
+      name: "Ventas",
+      desc: "Presupuestos, pedidos y pagos",
+      cases: [
+        ["CP-01","Validación HTTP","Acceder al formulario de presupuesto de venta","Respuesta HTTP 200"],
+        ["CP-04","Partición de equivalencia","Registrar presupuesto de venta con datos válidos","Registro exitoso"],
+        ["CP-05","Validación de formularios","Enviar presupuesto con cliente vacío","FormError en campo cliente"],
+        ["CP-08","Partición de equivalencia","Registrar condición de pago con plazos válidos","Registro exitoso"],
+        ["CP-22","Validación de contenido","Generar PDF de presupuesto de venta","HTTP 200 y Content-Type application/pdf"],
+        ["CP-24","Partición de equivalencia","Convertir presupuesto en Pedido de Venta","Crea PedidoVenda y lo asocia al presupuesto origen"],
+        ["CP-27","Partición de equivalencia","Cancelar pedido de venta","Estado cambia a Cancelado"],
+      ]
+    },
+  ];
+
+  const tagClass = s => {
+    if (s.includes("equivalencia")) return "tag-eq";
+    if (s.includes("HTTP")) return "tag-http";
+    if (s.includes("formularios")) return "tag-form";
+    if (s.includes("límite") || s.includes("limite")) return "tag-limit";
+    if (s.includes("permisos")) return "tag-perm";
+    return "tag-other";
+  };
+
+  const grid = document.getElementById("module-grid");
+  const detail = document.getElementById("test-detail");
+  const detailTitle = document.getElementById("detail-title");
+  const detailBody = document.getElementById("detail-body");
+  let activeIdx = null;
+
+  modules.forEach((mod, i) => {
+    const card = document.createElement("div");
+    card.className = "module-card";
+    card.innerHTML = `<h4>${mod.name}</h4><p>${mod.desc}</p><span class="module-count">${mod.cases.length} casos</span>`;
+    card.addEventListener("click", () => {
+      if (activeIdx === i) {
+        card.classList.remove("active");
+        detail.style.display = "none";
+        activeIdx = null;
+        return;
+      }
+      document.querySelectorAll(".module-card").forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      activeIdx = i;
+      detailTitle.textContent = mod.name + " — casos verificados";
+      detailBody.innerHTML = mod.cases.map(([id, strat, caso, result]) => `
+        <tr>
+          <td>${id}</td>
+          <td><span class="tag ${tagClass(strat)}">${strat}</span></td>
+          <td>${caso}</td>
+          <td>${result}</td>
+        </tr>`).join("");
+      detail.style.display = "block";
+      detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
