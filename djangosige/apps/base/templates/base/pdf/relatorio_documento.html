@@ -1,0 +1,293 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 1.2cm 0.8cm 2.2cm 0.8cm;
+
+      @bottom-left {
+        content: "Gerado por djangoSIGE";
+        font-family: serif;
+        font-size: 8pt;
+        font-weight: bold;
+      }
+      @bottom-center {
+        content: element(empresa_rodape);
+        font-family: serif;
+        font-size: 9pt;
+        text-align: center;
+      }
+      @bottom-right {
+        content: "Página " counter(page) " de " counter(pages);
+        font-family: serif;
+        font-size: 8pt;
+      }
+    }
+
+    body {
+      font-family: serif;
+      font-size: 10pt;
+      color: #000;
+      margin: 0;
+    }
+
+    .empresa-rodape {
+      position: running(empresa_rodape);
+    }
+
+    h1.titulo {
+      font-size: 15pt;
+      text-align: center;
+      margin: 0 0 0.4cm 0;
+    }
+
+    .topo {
+      position: relative;
+      min-height: 2.5cm;
+      border-bottom: 0.3pt solid #000;
+      padding-bottom: 0.2cm;
+      margin-bottom: 0.2cm;
+    }
+    .topo .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 5cm;
+      max-height: 2.5cm;
+    }
+    .topo .datas {
+      text-align: center;
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    .pessoa {
+      margin: 0.3cm 0 0.4cm 0;
+    }
+    .pessoa .razao {
+      font-size: 12pt;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 50%;
+    }
+    .pessoa .identificacao {
+      font-size: 10pt;
+      font-weight: bold;
+    }
+    .pessoa .linha {
+      margin-top: 0.15cm;
+    }
+    .pessoa .col-meio,
+    .pessoa .col-fim {
+      margin-left: 1cm;
+    }
+
+    .secao-titulo {
+      font-weight: bold;
+      font-size: 11pt;
+      text-align: center;
+      border-top: 0.3pt solid #000;
+      padding-top: 0.15cm;
+      margin: 0.4cm 0 0.15cm 0;
+    }
+
+    table.itens, table.parcelas, table.totais {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+    }
+    table.itens th, table.itens td,
+    table.parcelas th, table.parcelas td {
+      padding: 0.1cm 0.15cm;
+      text-align: center;
+    }
+    table.itens th, table.parcelas th {
+      font-weight: bold;
+    }
+    table.itens td.descricao {
+      text-align: left;
+    }
+
+    table.totais {
+      margin-top: 0.2cm;
+    }
+    table.totais td {
+      padding: 0.1cm 0.15cm;
+      text-align: center;
+      font-size: 10pt;
+    }
+    table.totais .label {
+      font-weight: bold;
+    }
+    table.totais .total-final {
+      font-weight: bold;
+      font-size: 11pt;
+      text-align: right;
+      border-top: 0.3pt solid #000;
+      padding-top: 0.2cm;
+    }
+    table.totais .total-final .valor {
+      text-align: right;
+    }
+
+    .pagamento .cond {
+      margin: 0.15cm 0;
+      font-size: 9pt;
+    }
+    .pagamento .cond span {
+      margin-right: 1.5cm;
+    }
+
+    .observacoes {
+      margin-top: 0.3cm;
+      font-size: 9pt;
+    }
+    .observacoes .vendedor {
+      margin-top: 0.4cm;
+      padding-top: 0.15cm;
+      border-top: 0.3pt solid #000;
+    }
+  </style>
+</head>
+<body>
+
+{% if empresa_info %}
+  <div class="empresa-rodape">
+    {% if empresa_info.nome %}{{ empresa_info.nome }}<br>{% endif %}
+    {% if empresa_info.endereco %}{{ empresa_info.endereco }}<br>{% endif %}
+    {% if empresa_info.telefone %}{{ empresa_info.telefone }}{% endif %}
+  </div>
+{% endif %}
+
+<div class="topo">
+  {% if logo_path %}<img class="logo" src="{{ logo_path }}">{% endif %}
+  <h1 class="titulo">{{ title }}</h1>
+  <div class="datas">
+    {% if data_emissao %}Data: {{ data_emissao|date:"d/m/Y" }}{% else %}Data: {{ hoje|date:"d/m/Y" }}{% endif %}
+    {% if data_validade %}<br>Válido até: {{ data_validade|date:"d/m/Y" }}{% endif %}
+    {% if data_entrega %}<br>Data de entrega: {{ data_entrega|date:"d/m/Y" }}{% endif %}
+  </div>
+</div>
+
+<div class="pessoa">
+  <span class="razao">{{ pessoa.nome_razao_social }}</span>
+  {% if pessoa.tipo_pessoa == 'PJ' and pessoa.pessoa_jur_info %}
+    <span class="identificacao col-meio">{{ pessoa.pessoa_jur_info.format_cnpj }}</span>
+    <span class="identificacao col-fim">{{ pessoa.pessoa_jur_info.format_ie }}</span>
+  {% elif pessoa.tipo_pessoa == 'PF' and pessoa.pessoa_fis_info %}
+    <span class="identificacao col-meio">{{ pessoa.pessoa_fis_info.format_cpf }}</span>
+    <span class="identificacao col-fim">{{ pessoa.pessoa_fis_info.format_rg }}</span>
+  {% endif %}
+  {% if pessoa.endereco_padrao %}
+    <div class="linha">Endereço: {{ pessoa.endereco_padrao.format_endereco }}</div>
+    <div class="linha">
+      Cidade: {{ pessoa.endereco_padrao.municipio }}
+      <span class="col-meio">UF: {{ pessoa.endereco_padrao.uf }}</span>
+      <span class="col-fim">CEP: {{ pessoa.endereco_padrao.cep }}</span>
+    </div>
+  {% endif %}
+  <div class="linha">
+    {% if pessoa.telefone_padrao %}Tel: {{ pessoa.telefone_padrao.telefone }}{% endif %}
+    {% if pessoa.email_padrao %}<span class="col-meio">Email: {{ pessoa.email_padrao.email }}</span>{% endif %}
+  </div>
+</div>
+
+<div class="secao-titulo">Produtos</div>
+<table class="itens">
+  <thead>
+    <tr>
+      <th style="width: 11%;">Cód.</th>
+      <th style="width: 25%;">Descrição</th>
+      <th style="width: 8%;">Un.</th>
+      <th style="width: 10%;">Qtde.</th>
+      <th style="width: 14%;">Vl. Unit. (R$)</th>
+      <th style="width: 14%;">Desconto (R$)</th>
+      <th style="width: 18%;">Total (R$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in itens %}
+    <tr>
+      <td>{{ item.produto.codigo }}</td>
+      <td class="descricao">{{ item.produto.descricao }}</td>
+      <td>{{ item.produto.format_unidade }}</td>
+      <td>{{ item.format_quantidade }}</td>
+      <td>{{ item.format_valor_unit }}</td>
+      <td>{{ item.format_desconto }}</td>
+      <td>{{ item.format_total }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="secao-titulo">Totais</div>
+<table class="totais">
+  <tr>
+    <td class="label">Frete</td>
+    <td class="label">Seguro</td>
+    <td class="label">Despesas</td>
+    <td class="label">Desconto</td>
+    <td class="label">Impostos</td>
+  </tr>
+  <tr>
+    <td>R$ {{ documento.format_frete }}</td>
+    <td>R$ {{ documento.format_seguro }}</td>
+    <td>R$ {{ documento.format_despesas }}</td>
+    <td>R$ {{ documento.format_desconto }}</td>
+    <td>R$ {{ documento.format_impostos }}</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="total-final">Total sem impostos:</td>
+    <td class="total-final valor">R$ {{ documento.format_total_sem_imposto }}</td>
+  </tr>
+  <tr>
+    <td colspan="4" class="total-final" style="font-size: 12pt;">Total:</td>
+    <td class="total-final valor" style="font-size: 12pt;">R$ {{ documento.format_valor_total }}</td>
+  </tr>
+</table>
+
+{% if documento.cond_pagamento %}
+  <div class="secao-titulo">Pagamento</div>
+  <div class="pagamento">
+    <div class="cond">
+      <span>Forma: {{ documento.cond_pagamento.get_forma_display }}</span>
+      <span>Nº de parcelas: {{ documento.cond_pagamento.n_parcelas }}</span>
+    </div>
+    {% if parcelas %}
+    <table class="parcelas">
+      <thead>
+        <tr>
+          <th style="width: 30%;">Parcela</th>
+          <th style="width: 35%;">Vencimento</th>
+          <th style="width: 35%;">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for parcela in parcelas %}
+        <tr>
+          <td>{{ parcela.indice_parcela }}</td>
+          <td>{{ parcela.format_vencimento }}</td>
+          <td>{{ parcela.format_valor_parcela }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if documento.observacoes or documento.vendedor %}
+<div class="secao-titulo">Observações</div>
+<div class="observacoes">
+  {{ documento.observacoes|linebreaksbr }}
+  {% if documento.vendedor %}
+    <div class="vendedor">Vendedor: {{ documento.vendedor }}</div>
+  {% endif %}
+</div>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+[project]
+name = "djangosige"
+version = "1.0.0"
+description = "Sistema Integrado de Gestao Empresarial baseado em Django"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { file = "LICENSE.md" }
+dependencies = [
+    # NFe stack (pinado em versões antigas — ver CHANGELOG): emissão de
+    # NF-e depende de PySIGNFe + cryptography 2.x + pyOpenSSL 17.x.
+    # Não bumpar sem rever PySIGNFe.
+    "cryptography==2.9.2",
+    "pyOpenSSL==17.5.0",
+    "PySIGNFe @ https://github.com/thiagopena/PySIGNFe/archive/master.zip",
+    "signxml==2.5.2",
+    # reportlab é usado transitivamente pelo PySIGNFe (DANFE), mas não
+    # declarado nas deps do PySIGNFe — precisa ficar explícito aqui.
+    "reportlab>=4.5",
+    # Geração de PDF dos orçamentos/pedidos (vendas e compras), via
+    # templates HTML/CSS. Substitui o geraldo a partir do #142.
+    "weasyprint>=68.1",
+    # Dados de exemplo (management command `create_data`).
+    "faker>=40.19.1",
+    # Demais runtime deps.
+    "asgiref>=3.11",
+    "django>=5.2,<5.3",
+    "dj-database-url>=2",
+    "lxml>=4.9,<5",
+    "pillow>=12",
+    "python-decouple>=3.8",
+    "sqlparse>=0.5",
+]
+
+[dependency-groups]
+dev = [
+    "flake8>=7",
+]
+
+[tool.uv]
+package = false

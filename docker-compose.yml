@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: sige
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: sige
+    volumes:
+      - ./database:/var/lib/postgresql
+    networks:
+      - sige_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sige -d sige"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  gunicorn:
+    build: .
+    image: djangosige
+    command: gunicorn -b 0.0.0.0:8000 djangosige.wsgi:application
+    environment:
+      - SECRET_KEY=0#pny4oox9s#+#5dkde25dj79b-o^sdbz4kiumg#e1qx3ky
+      - ALLOWED_HOSTS=gunicorn,nginx,localhost,127.0.0.1
+      - CSRF_TRUSTED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+      - DATABASE_URL=postgres://sige:pass@postgres/sige
+    volumes:
+      - ./:/opt/djangoSIGE/
+    working_dir: /opt/djangoSIGE/
+    networks:
+      - sige_net
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./djangosige/static/:/opt/djangoSIGE/static/
+      - ./djangosige/media/:/opt/djangoSIGE/media/
+    ports:
+      - "8000:80"
+    networks:
+      - sige_net
+    depends_on:
+      - gunicorn
+
+networks:
+  sige_net:
+    driver: bridge
