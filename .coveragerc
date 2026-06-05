@@ -1,0 +1,47 @@
+# .coveragerc - Configuración principal de coverage.py
+# ====================================================
+# Por defecto, ejecuta TODAS las pruebas (unitarias + integración)
+# ====================================================
+
+[run]
+source = 
+    djangosige/apps/compras
+    djangosige/apps/vendas
+    djangosige/apps/estoque
+
+omit = 
+    */migrations/*
+    */tests/*
+    */__pycache__/*
+    */admin.py
+    */apps.py
+    */wsgi.py
+    manage.py
+
+[report]
+fail_under = 85
+show_missing = True
+skip_covered = False
+precision = 2
+
+[html]
+directory = coverage_html_report
+
+
+# ====================================================
+# Para ejecutar SOLO pruebas unitarias (models + forms):
+# coverage run --rcfile=.coveragerc --source='djangosige/apps/compras/models,djangosige/apps/compras/forms,djangosige/apps/vendas/models,djangosige/apps/vendas/forms,djangosige/apps/estoque/models,djangosige/apps/estoque/forms' manage.py test djangosige.tests.compras.test_models djangosige.tests.compras.test_forms djangosige.tests.vendas.test_models djangosige.tests.vendas.test_forms djangosige.tests.estoque.test_models djangosige.tests.estoque.test_forms
+# coverage report
+# ====================================================
+
+# ====================================================
+# Para ejecutar SOLO pruebas de integración (views):
+# coverage run --source='djangosige/apps/compras/views,djangosige/apps/vendas/views,djangosige/apps/estoque/views' manage.py test djangosige.tests.compras.test_views djangosige.tests.vendas.test_views djangosige.tests.estoque.test_views
+# coverage report
+# ====================================================
+
+# ====================================================
+# Para ejecutar todas las pruebas unitarias y de integración (models + forms + views):
+# coverage run manage.py test djangosige.tests.compras djangosige.tests.vendas djangosige.tests.estoque
+# coverage report
+# ====================================================

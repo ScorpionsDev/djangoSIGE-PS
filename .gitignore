@@ -65,3 +65,10 @@ docs/superpowers/
 
 # uv (uv.lock e .python-version sao versionados intencionalmente)
 
+# Coverage.py
+.coverage
+.coverage.*
+coverage_html_report/
+htmlcov/
+.coverage.*
+*.cover
