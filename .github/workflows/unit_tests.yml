@@ -1,39 +1,38 @@
 name: Django Unit Tests
 
 on:
-push:
-branches:
-- main
-- develop
-pull_request:
-branches:
-- main
-- develop
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
-unit-tests:
-runs-on: ubuntu-latest
+  unit-tests:
+    runs-on: ubuntu-latest
 
-```
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  - name: Build Docker image
-    run: |
-      docker build -t djangosige .
+      - name: Build Docker image
+        run: |
+          docker build -t djangosige .
 
-  - name: Run unit tests (Models and Forms)
-    run: |
-      docker run --rm \
-        -e SECRET_KEY=test-secret-key \
-        -e ALLOWED_HOSTS=localhost \
-        djangosige \
-        python manage.py test \
-        tests.compras.test_models \
-        tests.compras.test_forms \
-        tests.estoque.test_models \
-        tests.estoque.test_forms \
-        tests.vendas.test_models \
-        tests.vendas.test_forms
-```
+      - name: Run unit tests (Models and Forms)
+        run: |
+          docker run --rm \
+            -e SECRET_KEY=test-secret-key \
+            -e ALLOWED_HOSTS=localhost \
+            djangosige \
+            python manage.py test \
+            tests.compras.test_models \
+            tests.compras.test_forms \
+            tests.estoque.test_models \
+            tests.estoque.test_forms \
+            tests.vendas.test_models \
+            tests.vendas.test_forms
