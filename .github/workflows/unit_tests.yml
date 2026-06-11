@@ -30,9 +30,9 @@ jobs:
             -e ALLOWED_HOSTS=localhost \
             djangosige \
             python manage.py test \
-            tests.compras.test_models \
-            tests.compras.test_forms \
-            tests.estoque.test_models \
-            tests.estoque.test_forms \
-            tests.vendas.test_models \
-            tests.vendas.test_forms
+            djangosige.tests.compras.test_models \
+            djangosige.tests.compras.test_forms \
+            djangosige.tests.estoque.test_models \
+            djangosige.tests.estoque.test_forms \
+            djangosige.tests.vendas.test_models \
+            djangosige.tests.vendas.test_forms
