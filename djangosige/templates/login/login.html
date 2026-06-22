@@ -16,7 +16,7 @@
         	{% if not request.user.is_authenticated %}
             <form id="login" method="POST">
             	{% csrf_token %}
-                <div class="msg">Digite seu nome de usuário e a senha para entrar
+                <div class="msg">Ingrese su nombre de usuario y la contraseña para entrar
 
                 {% include 'base/form_error_msg.html' %}
 
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <input type="checkbox" name="remember_me" id="remember_me" class="filled-in chk-col-light-blue">
-                        <label for="remember_me">Lembrar</label>
+                        <label for="remember_me">Recordar</label>
                     </div>
                     <div class="col-xs-4">
                         <button class="btn btn-block btn-red" type="submit">ENTRAR</button>
@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="msg" style="margin-top:20px;">
-                    <a href="{% url 'login:esqueceuview' %}">Esqueceu a senha?</a><br/>
-                    <small>*caso seja seu primeiro login, leia a <a href="https://github.com/thiagopena/djangoSIGE" style="font-size:inherit;">documentação</a></small>
+                    <a href="{% url 'login:esqueceuview' %}">¿Olvidó su contraseña?</a><br/>
+                    <small>*si es su primer inicio de sesión, lea la <a href="https://github.com/thiagopena/djangoSIGE" style="font-size:inherit;">documentación</a></small>
                 </div>
 
             </form>
