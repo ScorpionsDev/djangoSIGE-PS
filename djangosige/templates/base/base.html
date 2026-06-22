@@ -23,7 +23,7 @@
     <script src="{% static 'js/jquery/jquery-3.0.0.min.js' %}"></script>
 
 
-    <title>DjangoSIGE | {%block title%}Bem-vindo{%endblock%}</title>
+    <title>DjangoSIGE | {%block title%}Bienvenido{%endblock%}</title>
 </head>
 
 <body class="{%block body_class%}theme{%endblock%}">
@@ -35,7 +35,7 @@
                     <circle cx="37.5" cy="37.5" r="33.5" class="pl-red" stroke-width="4" />
                 </svg>
             </div>
-            <p class="loader-message">Carregando...</p>
+            <p class="loader-message">Cargando...</p>
         </div>
     </div>
     <!-- #Page Loader -->
@@ -104,9 +104,9 @@
                             <li role="seperator" class="divider"></li>
                             <li><a {% if user_empresa %} href="{% url 'cadastro:editarempresaview' user_empresa.id %}"{%else%} class="popup" title="Selecionar Empresa" href="{% url 'login:selecionarempresaview' %}" {%endif%}><i class="material-icons">&#xE0AF;</i>Minha Empresa</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="{% url 'login:usuariosview' %}"><i class="material-icons">&#xE7FB;</i>Usuários</a></li>
+                            <li><a href="{% url 'login:usuariosview' %}"><i class="material-icons">&#xE7FB;</i>Usuarios</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a id="logout-btn" href="{% url 'login:logoutview' %}" title="Sair" ><i class="material-icons">&#xE879;</i>Sair</a></li>
+                            <li><a id="logout-btn" href="{% url 'login:logoutview' %}" title="Sair" ><i class="material-icons">&#xE879;</i>Salir</a></li>
                         </ul>
                     </div>
                 </div>
@@ -119,14 +119,14 @@
                     <li>
                         <a href="{% url 'base:index' %}">
                             <i class="material-icons">&#xE88A;</i>
-                            <span>Página Inicial</span>
+                            <span>Página Principal</span>
                         </a>
                     </li>
 
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE85D;</i>
-                            <span>Cadastro</span>
+                            <span>Registro</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
@@ -136,12 +136,12 @@
                             </li>
                             <li>
                                 <a href="{% url 'cadastro:listafornecedoresview' %}">
-                                    Fornecedores
+                                    Proveedores
                                 </a>
                             </li>
                             <li>
                                 <a href="{% url 'cadastro:listaprodutosview' %}">
-                                    Produtos
+                                    Productos
                                 </a>
                             </li>
                             <!--
@@ -158,12 +158,12 @@
                             </li>
                             <li>
                                 <a href="{% url 'cadastro:listatransportadorasview' %}">
-                                    Transportadoras
+                                    Transportistas
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
-                                    Outros
+                                    Otros
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
@@ -190,24 +190,24 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE54E;</i>
-                            <span>Vendas</span>
+                            <span>Ventas</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
                                 <a href="{% url 'vendas:listaorcamentovendaview' %}">
-                                    Orçamentos de venda
+                                    Presupuestos de venta
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{% url 'vendas:listapedidovendaview' %}">
-                                    Pedidos de venda
+                                    Pedidos de venta
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
-                                    Condições de pagamento
+                                    Condiciones de pago
                                 </a>
                             </li>
 
@@ -222,7 +222,7 @@
                         <ul class="ml-menu">
                             <li>
                                 <a href="{% url 'compras:listaorcamentocompraview' %}">
-                                    Orçamentos de Compra
+                                    Presupuestos de compra
                                 </a>
                             </li>
                             <li>
@@ -232,7 +232,7 @@
                             </li>
                             <li>
                                 <a href="{% url 'vendas:listacondicaopagamentoview' %}">
-                                    Condições de pagamento
+                                    Condiciones de pago
                                 </a>
                             </li>
 
@@ -253,24 +253,24 @@
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalsaidaview' %}">
-                                            Notas Fiscais
+                                            Notas Fiscales
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'fiscal:listanotafiscalentradaview' %}">
-                                            Notas de Fornecedores
+                                            Notas de Proveedores
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'fiscal:configuracaonotafiscal' %}">
-                                            Configuração NF-e
+                                            Configuración NF-e
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="{% url 'fiscal:listanaturezaoperacaoview' %}">
-                                    Natureza da operação
+                                    Naturaleza de la operación
                                 </a>
                             </li>
                             <li>
@@ -280,17 +280,17 @@
                             </li>
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
-                                    Comunicação SEFAZ
+                                    Comunicación SEFAZ
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'fiscal:consultarcadastro' %}">
-                                            Consultar cadastro
+                                            Consultar registro
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'fiscal:inutilizarnotas' %}">
-                                            Inutilizar notas
+                                            Anular notas
                                         </a>
                                     </li>
                                     <li>
@@ -300,12 +300,12 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'fiscal:baixarnota' %}">
-                                            Baixar nota
+                                            Descargar nota
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'fiscal:manifestacaodestinatario' %}">
-                                            Manifestação do destinatário
+                                            Manifestación del destinatario
                                         </a>
                                     </li>
                                 </ul>
@@ -317,23 +317,23 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE227;</i>
-                            <span>Financeiro</span>
+                            <span>Finanzas</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
                                 <a href="{% url 'financeiro:planocontasview' %}">
-                                    Plano de contas
+                                    Plan de cuentas
                                 </a>
                             </li>
                             <li>
                                 <a href="{% url 'financeiro:fluxodecaixaview' %}">
-                                    Fluxo de caixa
+                                    Flujo de caja
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{% url 'financeiro:listalancamentoview' %}">
-                                    Lançamentos
+                                    Movimientos
                                 </a>
                             </li>
 
@@ -344,12 +344,12 @@
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'financeiro:listarecebimentosview' %}">
-                                            Recebimentos
+                                            Cobros
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'financeiro:listacontareceberview' %}">
-                                            Contas a receber
+                                            Cuentas por cobrar
                                         </a>
                                     </li>
                                 </ul>
@@ -357,17 +357,17 @@
 
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
-                                    Saidas
+                                    Salidas
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'financeiro:listapagamentosview' %}">
-                                            Pagamentos
+                                            Pagos
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'financeiro:listacontapagarview' %}">
-                                            Contas a pagar
+                                            Cuentas por pagar
                                         </a>
                                     </li>
                                 </ul>
@@ -379,27 +379,27 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">&#xE1BD;</i>
-                            <span>Estoque</span>
+                            <span>Inventario</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
                                 <a href="{% url 'estoque:consultaestoqueview' %}">
-                                    Consultar estoque
+                                    Consultar inventario
                                 </a>
                             </li>
                             <li>
                                 <a href="{% url 'estoque:listalocalview' %}">
-                                    Locais de estoque
+                                    Locales de inventario
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
-                                    Movimentações de estoque
+                                    Movimientos de inventario
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
                                         <a href="{% url 'estoque:listamovimentoestoqueview' %}">
-                                            Todas movimentações
+                                            Todos los movimientos
                                         </a>
                                     </li>
                                     <li>
@@ -409,12 +409,12 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'estoque:listasaidasestoqueview' %}">
-                                            Saídas
+                                            Salidas
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'estoque:listatransferenciasestoqueview' %}">
-                                            Transferências
+                                            Transferencias
                                         </a>
                                     </li>
                                 </ul>
@@ -431,7 +431,7 @@
                     &copy; 2026 <a href=""> DjangoSIGE</a>.
                 </div>
                 <div class="version">
-                    <b>Versão: </b> {{versao}}
+                    <b>Versión: </b> {{versao}}
                 </div>
             </div>
             <!-- #Footer -->
