@@ -4,14 +4,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">CÁLCULO DOS IMPOSTOS</h4>
+        <h4 class="modal-title">CÁLCULO DE IMPUESTOS</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
 
           <!-- Calculo automatico -->
           <div class="row">
-            <h4 style="border-bottom: 1px solid #afabab;">Opções</h4>
+            <h4 style="border-bottom: 1px solid #afabab;">Opciones</h4>
           </div>
 
           <div class="row">
@@ -20,7 +20,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_auto_calcular_modal"/>
-                  <label style="font-weight: bold;" for="id_auto_calcular_modal">Calcular impostos automaticamente?</label>
+                  <label style="font-weight: bold;" for="id_auto_calcular_modal">Calcular impuestos automáticamente?</label>
                   <i class="material-icons" style="font-size: 18px;margin-left: 10px;" title="Desmarcar esta opção caso o cálculo automático dos impostos esteja incorreto.">&#xE887;</i>
                 </div>
               </div>
@@ -31,14 +31,14 @@
 
           <!-- Rateio -->
           <div class="row">
-            <h4 style="border-bottom: 1px solid #afabab;">Rateio</h4>
+            <h4 style="border-bottom: 1px solid #afabab;">Prorrateo</h4>
           </div>
 
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Desconto (R$)</label>
+                  <label>Descuento (R$)</label>
                   <input type="text" class="form-control decimal-mask" id="id_rateio_desconto_modal"/>
                 </div>
               </div>
@@ -47,7 +47,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Frete (R$)</label>
+                  <label>Flete (R$)</label>
                   <input type="text" class="form-control decimal-mask" id="id_rateio_frete_modal"/>
                 </div>
               </div>
@@ -56,7 +56,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Outras despesas (R$)</label>
+                  <label>Otros gastos (R$)</label>
                   <input type="text" class="form-control decimal-mask" id="id_rateio_despesas_modal"/>
                 </div>
               </div>
@@ -84,7 +84,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_ipi_incluso_modal"/>
-                  <label style="font-weight: bold;" for="id_ipi_incluso_modal">IPI incluso no preço?</label>
+                  <label style="font-weight: bold;" for="id_ipi_incluso_modal">IPI incluido en el precio?</label>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_icms_incluso_modal"/>
-                  <label style="font-weight: bold;" for="id_icms_incluso_modal">ICMS incluso no preço?</label>
+                  <label style="font-weight: bold;" for="id_icms_incluso_modal">ICMS incluido en el precio?</label>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_icmsst_incluso_modal"/>
-                  <label style="font-weight: bold;" for="id_icmsst_incluso_modal">ICMS-ST incluso no preço?</label>
+                  <label style="font-weight: bold;" for="id_icmsst_incluso_modal">ICMS-ST incluido en el precio?</label>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_ipi_bc_icms_modal"/>
-                  <label style="font-weight: bold;" for="id_ipi_bc_icms_modal">IPI incluso na BC do ICMS?</label>
+                  <label style="font-weight: bold;" for="id_ipi_bc_icms_modal">IPI incluido en la BC del ICMS</label>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
               <div class="form-group">
                 <div class="form-line">
                   <input type="checkbox" class="form-control" id="id_ipi_bc_icmsst_modal"/>
-                  <label style="font-weight: bold;" for="id_ipi_bc_icmsst_modal">IPI incluso na BC do ICMS-ST?</label>
+                  <label style="font-weight: bold;" for="id_ipi_bc_icmsst_modal">IPI incluido en la BC del ICMS-ST?</label>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>% Redução da BC</label>
+                  <label>% Reducción de la BC</label>
                   <input type="text" class="form-control input_no_edit percentual-mask" id="id_p_red_bc" readonly="true"/>
                 </div>
               </div>
@@ -236,7 +236,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <div class="form-line">
-                  <label>% Redução da BC</label>
+                  <label>% Reducción de la BC</label>
                   <input type="text" class="form-control input_no_edit percentual-mask" id="id_p_red_bcst_modal" readonly="true"/>
                 </div>
               </div>
@@ -265,7 +265,7 @@
 
           <!-- ICMS Partilha -->
           <div class="row">
-            <h4 style="border-bottom: 1px solid #afabab;">ICMS Partilha</h4>
+            <h4 style="border-bottom: 1px solid #afabab;">ICMS Reparto</h4>
           </div>
 
           <div class="row">
@@ -290,7 +290,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>% ICMS Interestadual</label>
+                  <label>% ICMS Interestatal</label>
                   <input type="text" class="form-control percentual-mask input_no_edit" id="id_picms_inter_modal" readonly="true"/>
                 </div>
               </div>
@@ -299,7 +299,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <div class="form-line">
-                  <label>% ICMS Partilha</label>
+                  <label>% ICMS Reparto</label>
                   <input type="text" class="form-control percentual-mask input_no_edit" id="id_picms_part_modal" readonly="true"/>
                 </div>
               </div>
@@ -317,7 +317,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Vl. ICMS UF do Remetente (R$)</label>
+                  <label>Vol. ICMS UF del Remitente (R$)</label>
                   <input type="text" class="form-control input_no_edit decimal-mask-no-dot campo_imposto_editavel" id="id_vicms_remet_modal"/>
                 </div>
               </div>
@@ -326,7 +326,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Vl. ICMS UF do Destino (R$)</label>
+                  <label>Vol. ICMS UF del Destino (R$)</label>
                   <input type="text" class="form-control input_no_edit decimal-mask-no-dot campo_imposto_editavel" id="id_vicms_dest_modal"/>
                 </div>
               </div>
@@ -354,7 +354,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <div class="form-line">
-                  <label>Total impostos (R$)</label>
+                  <label>Total impuestos (R$)</label>
                   <input type="text" class="form-control decimal-mask-no-dot input_no_edit" id="id_total_impostos_modal" readonly="true"/>
                 </div>
               </div>
@@ -376,8 +376,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">FECHAR</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" id="salvar_impostos_modal">SALVAR</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="salvar_impostos_modal">GUARDAR</button>
       </div>
     </div>
   </div>
