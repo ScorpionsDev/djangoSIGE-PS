@@ -28,8 +28,8 @@
             <div class="body">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#tab_dados_gerais" data-toggle="tab">DADOS GERAIS</a></li>
-                  <li role="presentation"><a href="#tab_itens" data-toggle="tab">ITENS</a></li>
+                  <li role="presentation" class="active"><a href="#tab_dados_gerais" data-toggle="tab">DATOS GENERALES</a></li>
+                  <li role="presentation"><a href="#tab_itens" data-toggle="tab">ARTÍCULOS</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -74,7 +74,7 @@
                     {% if object.pedido_venda %}
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Pedido de venda</label>
+                        <label>Pedido de venta</label>
                         <div class="input-group" style="margin-bottom: 0px;">
                           <div class="form-line">
                             <span class="form-control">{{object.pedido_venda}}</span>
@@ -88,7 +88,7 @@
                     {% if object.local_orig %}
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Local de origem</label>
+                        <label>Local de origen</label>
                         <div class="input-group" style="margin-bottom: 0px;">
                           <div class="form-line">
                             <span class="form-control">{{object.local_orig}}</span>
@@ -116,7 +116,7 @@
                     {% if object.fornecedor %}
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Fornecedor</label>
+                        <label>Proveedor</label>
                         <div class="input-group" style="margin-bottom: 0px;">
                           <div class="form-line">
                             <span class="form-control">{{object.fornecedor}}</span>
@@ -130,7 +130,7 @@
                     {% if object.local_estoque_orig %}
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Local de origem</label>
+                        <label>Local de origen</label>
                         <div class="input-group" style="margin-bottom: 0px;">
                           <div class="form-line">
                             <span class="form-control">{{object.local_estoque_orig}}</span>
@@ -159,7 +159,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-line">
-                          <label>Observações</label>
+                          <label>Observaciones</label>
                           <textarea class="form-control" style="background-color:#e1e4e8;" readonly="True">{% if object.observacoes %}{{object.observacoes}}{% endif %}</textarea>
                         </div>
                       </div>
@@ -175,7 +175,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-line">
-                          <label>Nº de itens</label>
+                          <label>Nº de items</label>
                           <span class="form-control">{{object.quantidade_itens}}</span>
                         </div>
                       </div>
@@ -184,7 +184,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-line">
-                          <label>Valor total dos produtos (R$)</label>
+                          <label>Valor total de los productos (R$)</label>
                           <span class="form-control">{{object.valor_total}}</span>
                         </div>
                       </div>
@@ -193,13 +193,13 @@
 
                     <div class="col-sm-12 lista" style="padding:0px;">
 
-                      <h4 style="border-bottom: 1px solid #afabab;">Itens movimentados</h4>
+                      <h4 style="border-bottom: 1px solid #afabab;">Artículos movilizados</h4>
                       <table class="table table-bordered lista-table">
                         <thead>
                           <tr>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Vl.unitário</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Val. unitario</th>
                             <th>Subtotal</th>
                           </tr>
                         </thead>
