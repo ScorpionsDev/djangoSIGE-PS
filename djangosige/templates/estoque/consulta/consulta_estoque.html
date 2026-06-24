@@ -6,7 +6,7 @@
   <div class="container-fluid lista">
   
     <div class="title-header">
-      <h2>ESTOQUE</h2>
+      <h2>INVENTARIO</h2>
     </div>
     
     {% include 'base/msg_sucesso.html' %}
@@ -32,7 +32,7 @@
                 <div class="col-sm-5">
                   <div class="form-group">
                     <div class="form-line">
-                      <label>Produto</label>
+                      <label>Producto</label>
                       <select class="form-control" id="produto_id" name="produto">
                         <option value="">Todos</option>
                       {% for produto in todos_produtos %}
@@ -46,7 +46,7 @@
                 <div class="col-sm-5">
                   <div class="form-group">
                     <div class="form-line">
-                      <label>Local de estoque</label>
+                      <label>Ubicacion de inventario</label>
                       <select class="form-control" id="local_id" name="local">
                         <option value="">Todos</option>
                       {% for local in todos_locais %}
@@ -70,11 +70,11 @@
                 <thead>
                   <tr>
                     <th>Código</th>
-                    <th>Produto</th>
+                    <th>Producto</th>
                     <th>Categoria</th>
-                    <th>Qtd. Atual</th>
-                    <th>Qtd. Mínima</th>
-                    <th>Vl. Unitário</th>
+                    <th>Cant. Actual</th>
+                    <th>Cant. Mínima</th>
+                    <th>Val. Unitario</th>
                   </tr>
                 </thead>
 
@@ -89,8 +89,8 @@
                     <td>{{produto.venda}}</td>
                   </tr>
                     <tr colspan="6" class="plano-subgrupo-row accordion-{{produto.id}} in">
-                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Local</th>
-                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Quantidade</th>
+                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Ubicacion</th>
+                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Cantidad</th>
                     </tr>
                     {% for pe in produto.produto_estocado.all %}
                     <tr class="plano-subgrupo-row accordion-{{produto.id}} in">
