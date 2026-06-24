@@ -5,14 +5,14 @@
 <section class="content">
   <div class="container-fluid block">
     <div class="block-header">
-      <h2>USUÁRIO</h2>
+      <h2>USUARIO</h2>
     </div>
     <div>
       <div class="card">
         <div class="header">
           <h2>
             <a href="{%url 'login:usuariodetailview' user.id %}"><i class="material-icons">&#xE5C4;</i></a>
-            <span><b>Usuário: </b>{{user.username}}{% if user.is_superuser %} (Admin){% endif %}</span>
+            <span><b>Usuario: </b>{{user.username}}{% if user.is_superuser %} (Admin){% endif %}</span>
           </h2>
         </div>
         <div class="body">
@@ -24,9 +24,9 @@
                   <optgroup label='{{default_perm.content_type.app_label|title}}'>
                     <option value='{{default_perm.codename}}' {% if default_perm in user.user_permissions.all or user.is_superuser %}selected{% endif %} {% if user.is_superuser %}disabled='disabled'{% endif %}>
                     {% if 'add' in default_perm.name %}
-                    Adicionar {{default_perm.content_type.name}}
+                    Agregar {{default_perm.content_type.name}}
                     {% elif 'delete' in default_perm.name %}
-                    Deletar {{default_perm.content_type.name}}
+                    Borrar {{default_perm.content_type.name}}
                     {% elif 'change' in default_perm.name %}
                     Editar {{default_perm.content_type.name}}
                     {% elif 'view' in default_perm.name %}
@@ -44,7 +44,7 @@
                   {% endfor %}
                 </select>
                 {% if not user.is_superuser %}
-                <button class="btn btn-success" style="margin:15px;float:right;" type="submit"><i class="material-icons">&#xE148;</i><span> SALVAR</span></button>
+                <button class="btn btn-success" style="margin:15px;float:right;" type="submit"><i class="material-icons">&#xE148;</i><span> AHORRAR</span></button>
                 {% endif %}
               </form>
             </div>
