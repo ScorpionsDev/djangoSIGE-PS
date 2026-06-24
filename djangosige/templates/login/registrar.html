@@ -15,7 +15,7 @@
         <div class="body">
             <form id="sign_up" method="POST">
             	{% csrf_token %}
-                <div class="msg">Criar um novo usuário
+                <div class="msg">Crear un nuevo usuario
                     
                 {% include 'base/form_error_msg.html' %}
 
@@ -35,7 +35,7 @@
                 <button class="btn btn-block btn-red" type="submit">REGISTRAR</button>
 
                 <div class="msg" style="margin-top:20px;margin-bottom:15px;">
-                    <a href="{% url 'login:usuariosview' %}">Voltar</a>
+                    <a href="{% url 'login:usuariosview' %}">Volver</a>
                 </div>
             </form>
             
