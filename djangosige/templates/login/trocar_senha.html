@@ -15,7 +15,7 @@
         <div class="body">
             <form method="POST">
                 {% csrf_token %}
-                <div class="msg">Escolha uma nova senha de acesso
+                <div class="msg">Elija una nueva contraseña de acceso.
                 
                 {% include 'base/form_error_msg.html' %}
 
@@ -30,11 +30,11 @@
                 {% endfor %}
 
                 <div style="text-align: center;">
-                    <button class="btn btn-red" type="submit">TROCAR SENHA</button>
+                    <button class="btn btn-red" type="submit">CAMBIAR CONTRASEÑA</button>
                 </div>
                 
                 <div class="msg" style="margin-top:20px;margin-bottom:15px;">
-                    <a href="{% url 'login:usuariosview' %}">Voltar</a>
+                    <a href="{% url 'login:usuariosview' %}">Volver</a>
                 </div>
 
             </form>
