@@ -15,7 +15,7 @@
         <div class="header">
           <h2>
             <i class="material-icons">&#xE55A;</i>
-            MEU PERFIL
+            MI PERFIL
           </h2>
           <div class="header-btn">
             <a href="{% url 'login:editarperfilview' %}" class="btn btn-primary"><i class="material-icons">&#xE254;</i><span> EDITAR</span></a>
@@ -34,19 +34,19 @@
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>Status:</td>
+                    <td>Estado:</td>
                     <td>{% if request.user.is_superuser %}Administrador{%else%}Usuário{%endif%}</td>
                   </tr>
                   <tr>
-                    <td>Nome:</td>
+                    <td>Nombre:</td>
                     <td>{{request.user.first_name}}</td>
                   </tr>
                   <tr>
-                    <td>Sobrenome:</td>
+                    <td>Apellido:</td>
                     <td>{{request.user.last_name}}</td>
                   </tr>
                   <tr>
-                    <td>Nome de usuário:</td>
+                    <td>Nombre de usuario:</td>
                     <td>{{request.user.username}}</td>
                   </tr>
                   <tr>
@@ -54,7 +54,7 @@
                     <td>{{request.user.email}}</td>
                   </tr>
                   <tr>
-                    <td>Minha Empresa:</td>
+                    <td>Mi empresa:</td>
                     <td>{{user_empresa}}</td>
                   </tr>
                 </tbody>
