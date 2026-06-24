@@ -19,15 +19,15 @@
             </h2>
               <div class="header-btn">
                 {% if add_url %}
-                <a href="{{add_url}}" class="btn btn-success"><i class="material-icons">&#xE148;</i><span> ADICIONAR</span></a>
+                <a href="{{add_url}}" class="btn btn-success"><i class="material-icons">&#xE148;</i><span> AÑADIR</span></a>
                 {% else %}
                 <div class="dropdown" style="display: inline-block;float:right;">
                   <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Adicionar
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu pull-right">
-                    <li><a href="{% url 'estoque:addentradaestoqueview' %}">Entrada em estoque</a></li>
-                    <li><a href="{% url 'estoque:addsaidaestoqueview' %}">Saída de estoque</a></li>
-                    <li><a href="{% url 'estoque:addtransferenciaestoqueview' %}">Transferência de estoque</a></li>
+                    <li><a href="{% url 'estoque:addentradaestoqueview' %}">Entrada de inventario</a></li>
+                    <li><a href="{% url 'estoque:addsaidaestoqueview' %}">Salida de inventario</a></li>
+                    <li><a href="{% url 'estoque:addtransferenciaestoqueview' %}">Transferencia de inventario</a></li>
                   </ul>
                 </div>
                 {% endif %}
