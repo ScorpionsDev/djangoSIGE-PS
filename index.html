@@ -3,700 +3,1848 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>djangoSIGE – Sistema de Gestión Integrado</title>
+  <title>djangoSIGE – Documentación de Pruebas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue-50:  #E6F1FB;
-      --blue-100: #B5D4F4;
-      --blue-600: #185FA5;
-      --blue-800: #0C447C;
-      --blue-900: #042C53;
-      --teal-50:  #E1F5EE;
-      --teal-600: #0F6E56;
-      --teal-800: #085041;
-      --gray-50:  #F7F8FA;
-      --gray-100: #EEF0F4;
-      --gray-200: #DEE1E8;
-      --gray-400: #9EA4B0;
-      --gray-600: #5A6070;
-      --gray-900: #1A1D23;
-      --amber-50: #FAEEDA;
-      --amber-800: #633806;
-      --green-50: #EAF3DE;
-      --green-800: #27500A;
-      --red-50:   #FCEBEB;
-      --red-800:  #791F1F;
-      --purple-50:#EEEDFE;
-      --purple-800:#3C3489;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
+      --paper:      #FAFAF9;
+      --paper-2:    #F2F1EF;
+      --paper-3:    #E8E6E3;
+      --ink:        #1C1917;
+      --ink-2:      #44403C;
+      --ink-3:      #78716C;
+      --ink-4:      #A8A29E;
+      --line:       #E7E5E4;
+
+      --sage:       #4A7C59;
+      --sage-dark:  #3A6347;
+      --sage-pale:  #F0F5F1;
+      --sage-line:  #C4D9CA;
+
+      --amber:      #92400E;
+      --amber-pale: #FFFBEB;
+      --amber-line: #FDE68A;
+
+      --red:        #9F1239;
+      --red-pale:   #FFF1F2;
+      --red-line:   #FECDD3;
+
+      --blue:       #1E40AF;
+      --blue-pale:  #EFF6FF;
+      --blue-line:  #BFDBFE;
+
+      --violet:     #5B21B6;
+      --violet-pale:#F5F3FF;
+      --violet-line:#DDD6FE;
+
+      --gray-pale:  #F5F5F4;
+      --gray-line:  #D6D3D1;
+
+      --sidebar-w: 220px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--gray-50);
-      color: var(--gray-900);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
       line-height: 1.65;
       font-size: 15px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HEADER ── */
-    header {
-      background: var(--blue-900);
+    /* ── LAYOUT SHELL ── */
+    .shell {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--ink);
       color: #fff;
-      padding: 3.5rem 1.5rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(255,255,255,0.02) 0px,
-        rgba(255,255,255,0.02) 1px,
-        transparent 1px,
-        transparent 12px
-      );
-    }
-    .header-inner { position: relative; }
-    
-    /* Contenedor para imagen en la cabecera */
-    .header-image {
-      max-width: 100%;
-      margin-bottom: 1.5rem;
-      display: flex;
-      justify-content: center;
-    }
-    .header-image img {
-        max-width: 400px;      /* Ancho máximo */
-        max-height: 160px;      /* Alto máximo */
-        width: auto;           /* Mantiene proporción */
-        height: auto;          /* Mantiene proporción */
-        border-radius: var(--radius-md);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    .header-chip {
-      display: inline-block;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #B5D4F4;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 1rem;
-    }
-    header h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    header p {
-      margin-top: 0.5rem;
-      color: #B5D4F4;
-      font-size: 1.05rem;
-      font-weight: 400;
-    }
-    .header-tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 1.5rem;
-    }
-    .header-tag {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #d0e8f8;
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--blue-800);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2px;
-      padding: 6px 8px;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: #B5D4F4;
-      text-decoration: none;
-      padding: 6px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 500;
-      transition: background 0.15s, color 0.15s;
-    }
-    nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
-    /* ── LAYOUT ── */
-    main {
-      max-width: 980px;
-      margin: 2.5rem auto;
-      padding: 0 1.25rem;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      z-index: 10;
     }
 
-    section {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 1.75rem 2rem;
-      border: 1px solid var(--gray-200);
+    .sidebar-brand {
+      padding: 2rem 1.5rem 1.75rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    h2 {
-      font-size: 1.05rem;
+    .brand-logo {
+      width: 155px;
+      height: 155px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 0px;
+    }
+
+    .brand-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.45rem;
       font-weight: 600;
-      color: var(--blue-800);
-      margin-bottom: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
-    h2::before {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 1em;
-      background: var(--blue-600);
-      border-radius: 2px;
+
+    .brand-sub {
+      font-size: 11.5px;
+      color: rgba(255,255,255,.35);
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .sidebar-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .stack-chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    .sidebar-nav {
+      padding: 1.25rem 0;
+      flex: 1;
+    }
+
+    .nav-section-label {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.2);
+      padding: 0 1.5rem;
+      margin-bottom: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .nav-section-label:first-child { margin-top: 0; }
+
+    .sidebar-nav a {
+      display: block;
+      color: rgba(255,255,255,.45);
+      text-decoration: none;
+      padding: 6px 1.5rem;
+      font-size: 13px;
+      font-weight: 400;
+      transition: color .15s, background .15s;
+      border-left: 2px solid transparent;
+    }
+
+    .sidebar-nav a:hover {
+      color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.04);
+      border-left-color: rgba(255,255,255,.2);
+    }
+
+    .sidebar-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+      font-size: 11px;
+      color: rgba(255,255,255,.2);
+      line-height: 1.6;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 3rem 3rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1.05;
+    }
+
+    .page-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink-3);
+    }
+
+    .page-desc {
+      margin-top: 0.85rem;
+      font-size: 15px;
+      color: var(--ink-3);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    .page-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+
+    .meta-value {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+
+    /* ── SECTIONS ── */
+    .sections {
+      padding: 0 3rem 4rem;
+    }
+
+    .doc-section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .doc-section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-4);
       flex-shrink: 0;
     }
 
-    h3 {
-      font-size: 0.9rem;
+    h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.3rem;
       font-weight: 600;
-      color: var(--gray-900);
-      margin: 1.25rem 0 0.35rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.2;
     }
 
-    p { color: var(--gray-600); }
+    h3 {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 1.25rem 0 0.4rem;
+      letter-spacing: 0.01em;
+    }
 
-    ul { padding-left: 1.25rem; }
-    ul li { margin-bottom: 0.35rem; color: var(--gray-600); }
-    ul li strong { color: var(--gray-900); }
+    p { color: var(--ink-2); font-size: 14.5px; }
 
-    /* ── DESCRIPTION GRID ── */
-    .desc-grid {
+    /* ── DESC CARDS ── */
+    .desc-intro {
+      color: var(--ink-2);
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      max-width: 620px;
+    }
+
+    .card-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .desc-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.1rem;
-    }
-    .desc-card-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--blue-600);
-      margin-bottom: 0.35rem;
-    }
-    .desc-card p { font-size: 13.5px; color: var(--gray-600); }
 
-    /* ── TECH BADGES ── */
-    .tech-section {
-      margin-top: 0.5rem;
+    .info-card {
+      background: var(--paper);
+      padding: 1.1rem 1.3rem;
     }
+
+    .info-card-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 0.4rem;
+    }
+
+    .info-card p { font-size: 13.5px; color: var(--ink-2); }
+
+    /* ── TECH TABLE ── */
     .badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 0.75rem 0 1rem;
-    }
-    .badge {
-      background: var(--blue-50);
-      color: var(--blue-800);
-      border: 1px solid var(--blue-100);
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-    .badge.mono {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-    }
-    .tech-description {
-      background: var(--gray-50);
-      border-left: 3px solid var(--blue-600);
-      padding: 0.8rem 1.2rem;
-      border-radius: var(--radius-sm);
-      margin-top: 0.75rem;
-    }
-    .tech-description p {
-      font-size: 13.5px;
-      margin-bottom: 0.3rem;
-    }
-    .tech-description p:last-child {
-      margin-bottom: 0;
+      gap: 6px;
+      margin-bottom: 1.25rem;
     }
 
-    /* ── SCOPE LIST ── */
-    .scope-grid {
+    .badge {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 11px;
+      border-radius: 4px;
+      border: 1px solid var(--sage-line);
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+    }
+
+    .badge.mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      background: var(--paper-2);
+      color: var(--ink-2);
+      border-color: var(--line);
+    }
+
+    .def-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 8px;
-      margin-top: 0.75rem;
+      grid-template-columns: 9rem 1fr;
+      row-gap: 0;
     }
+
+    .def-list dt,
+    .def-list dd {
+      padding: 11px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .def-list dt:first-of-type,
+    .def-list dd:first-of-type { border-top: none; }
+
+    .def-list dt {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      padding-right: 1.5rem;
+      align-self: start;
+      padding-top: 12px;
+    }
+
+    .def-list dd { color: var(--ink-2); line-height: 1.6; }
+
+    /* ── SCOPE ── */
+    .scope-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
     .scope-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--gray-50);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--gray-200);
+      background: var(--paper);
+      padding: 0.85rem 1.1rem;
       font-size: 13.5px;
-      color: var(--gray-600);
+      color: var(--ink-2);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
-    .scope-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--blue-600);
+
+    .scope-item::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--sage);
       border-radius: 50%;
-      margin-top: 6px;
       flex-shrink: 0;
     }
 
     /* ── MODULES ── */
+    .modules-intro {
+      font-size: 13.5px;
+      color: var(--ink-3);
+      margin-bottom: 1rem;
+    }
+
     .modules-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-      gap: 10px;
-      margin-top: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
     }
+
     .module-card {
-      border: 1.5px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
+      background: var(--paper);
+      padding: 1rem 1.1rem;
       cursor: pointer;
-      background: #fff;
-      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      transition: background .12s;
       user-select: none;
+      position: relative;
     }
-    .module-card:hover {
-      border-color: var(--blue-600);
-      background: var(--blue-50);
-      transform: translateY(-1px);
-    }
+
+    .module-card:hover { background: var(--paper-2); }
+
     .module-card.active {
-      border-color: var(--blue-600);
-      background: var(--blue-50);
+      background: var(--sage-pale);
     }
+
+    .module-card.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--sage);
+    }
+
     .module-card h4 {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--blue-800);
-      margin-bottom: 3px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+      line-height: 1.35;
     }
+
+    .module-card.active h4 { color: var(--sage-dark); }
+
     .module-card p {
-      font-size: 12px;
-      color: var(--gray-400);
+      font-size: 11.5px;
+      color: var(--ink-4);
       line-height: 1.4;
     }
+
     .module-count {
       display: inline-block;
-      background: var(--blue-600);
-      color: #fff;
+      font-family: 'DM Mono', monospace;
       font-size: 10px;
-      font-weight: 600;
-      padding: 1px 7px;
-      border-radius: 10px;
+      font-weight: 500;
+      color: var(--ink-4);
       margin-top: 8px;
     }
-    .module-card.active .module-count { background: var(--blue-800); }
 
-    /* ── TEST TABLE ── */
-    #test-detail { margin-top: 1.25rem; display: none; }
-    #test-detail h3 {
-      margin: 0 0 0.75rem;
-      font-size: 0.9rem;
-      color: var(--blue-800);
+    .module-card.active .module-count { color: var(--sage); }
+
+    /* ── DETAIL TABLE ── */
+    #test-detail {
+      display: none;
+      margin-top: 1.25rem;
     }
 
-    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--gray-200); }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    thead tr { background: var(--blue-900); }
-    th {
-      color: #B5D4F4;
-      text-align: left;
-      padding: 10px 14px;
+    .detail-label {
+      font-size: 10px;
       font-weight: 500;
-      font-size: 12px;
-      letter-spacing: 0.03em;
-      white-space: nowrap;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 0.75rem;
     }
-    td {
-      padding: 9px 14px;
-      border-bottom: 1px solid var(--gray-100);
-      color: var(--gray-600);
-      vertical-align: top;
-    }
-    td:first-child {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--gray-400);
-      white-space: nowrap;
-    }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: var(--gray-50); }
 
-    /* ── STRATEGY TAGS ── */
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      overflow-x: auto;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+    thead tr {
+      background: var(--paper-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      text-align: left;
+      padding: 9px 14px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--paper-3);
+      color: var(--ink-2);
+      vertical-align: top;
+      font-size: 13.5px;
+    }
+
+    td:first-child {
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      color: var(--ink-4);
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: var(--paper-2); }
+
+    /* ── TAGS ── */
     .tag {
       display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10.5px;
+      font-weight: 500;
       padding: 2px 8px;
-      border-radius: 4px;
+      border-radius: 3px;
       white-space: nowrap;
+      border: 1px solid transparent;
     }
-    .tag-eq    { background: var(--blue-50);   color: var(--blue-800); }
-    .tag-http  { background: var(--green-50);  color: var(--green-800); }
-    .tag-form  { background: var(--amber-50);  color: var(--amber-800); }
-    .tag-limit { background: var(--red-50);    color: var(--red-800); }
-    .tag-perm  { background: var(--purple-50); color: var(--purple-800); }
-    .tag-other { background: var(--gray-100);  color: var(--gray-600); }
 
-    /* ── STRATEGY SECTION ── */
+    .tag-eq    { background: var(--blue-pale);   color: var(--blue);   border-color: var(--blue-line); }
+    .tag-http  { background: var(--sage-pale);   color: var(--sage-dark); border-color: var(--sage-line); }
+    .tag-form  { background: var(--amber-pale);  color: var(--amber);  border-color: var(--amber-line); }
+    .tag-limit { background: var(--red-pale);    color: var(--red);    border-color: var(--red-line); }
+    .tag-perm  { background: var(--violet-pale); color: var(--violet); border-color: var(--violet-line); }
+    .tag-other { background: var(--gray-pale);   color: var(--ink-3);  border-color: var(--gray-line); }
+    .tag-integ { background: #ECFDF5; color: #065F46; border-color: #A7F3D0; }
+    .tag-cicd  { background: #FEF2F2; color: #991B1B; border-color: #FECACA; }
+    .tag-artf  { background: #FEF3C7; color: #92400E; border-color: #FCD34D; }
+    .tag-plan  { background: #E0E7FF; color: #3730A3; border-color: #C7D2FE; }
+    .tag-res   { background: #D1FAE5; color: #065F46; border-color: #A7F3D0; }
+
+    /* ── STRATEGY ── */
     .strategy-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 10px;
-      margin-top: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
     }
+
     .strategy-item {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.1rem;
+      background: var(--paper);
+      padding: 1.1rem 1.25rem;
     }
-    .strategy-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
+
+    .strategy-label { margin-bottom: 0.5rem; }
+
     .strategy-item p {
       font-size: 13px;
-      color: var(--gray-600);
-      line-height: 1.5;
+      color: var(--ink-3);
+      line-height: 1.6;
     }
 
     code {
-      background: var(--gray-100);
-      color: var(--blue-800);
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      background: var(--paper-2);
+      color: var(--sage-dark);
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+    }
+
+    /* ── COVERAGE ── */
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .coverage-item {
+      background: var(--paper);
+      padding: 1rem 1.2rem;
+    }
+
+    .coverage-item .label {
+      font-size: 11px;
+      color: var(--ink-4);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .coverage-item .value {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--sage-dark);
+      margin-top: 4px;
+    }
+
+    .coverage-item .value.high { color: var(--sage-dark); }
+    .coverage-item .value.mid { color: var(--amber); }
+
+    .coverage-note {
+      margin-top: 0.75rem;
+      font-size: 13px;
+      color: var(--ink-3);
+    }
+
+    /* ── HITO BLOCK ── */
+    .hito-block {
+      background: var(--paper-2);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 0.75rem;
+      border: 1px solid var(--line);
+    }
+
+    .hito-block h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .hito-block p {
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .hito-block .hito-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .hito-block .hito-meta span {
       font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-2);
+      background: white;
+      padding: 2px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+    }
+
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+
+    .pipeline-step {
+      background: var(--paper);
+      padding: 0.9rem 1.1rem;
+      font-size: 13px;
+      color: var(--ink-2);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pipeline-step .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--ink-4);
+    }
+
+    .pipeline-step .step-name {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── ARTEFACTOS GRID ── */
+    .artefactos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .artefacto-card {
+      background: var(--paper);
+      padding: 1.1rem 1.2rem;
+      transition: background .12s;
+    }
+
+    .artefacto-card:hover { background: var(--paper-2); }
+
+    .artefacto-card .artf-tag {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 0.3rem;
+    }
+
+    .artefacto-card h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .artefacto-card p {
+      font-size: 12.5px;
+      color: var(--ink-3);
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+
+    .artefacto-card .artf-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sage);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .15s;
+    }
+
+    .artefacto-card .artf-link:hover { border-bottom-color: var(--sage); }
+
+    /* ── PLAN CARDS ── */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .plan-card {
+      background: var(--paper);
+      padding: 1rem 1.2rem;
+    }
+
+    .plan-card h4 {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .plan-card p {
+      font-size: 12px;
+      color: var(--ink-3);
+      line-height: 1.5;
+    }
+
+    .plan-card .plan-status {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      margin-top: 6px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      border: 1px solid var(--sage-line);
     }
 
     /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--gray-400);
-      font-size: 13px;
-      border-top: 1px solid var(--gray-200);
+    .content-footer {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    footer span { color: var(--blue-600); font-weight: 500; }
 
-    @media (max-width: 600px) {
-      header { padding: 2.5rem 1rem 2rem; }
-      section { padding: 1.25rem 1rem; }
-      .desc-grid { grid-template-columns: 1fr; }
-      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-3);
+      letter-spacing: -0.01em;
+    }
+
+    .footer-right {
+      font-size: 12px;
+      color: var(--ink-4);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        border-bottom: 1px solid rgba(255,255,255,.07);
+      }
+      .sidebar-brand { border-bottom: none; padding: 1.25rem 1.25rem; flex: 1; }
+      .sidebar-stack { display: none; }
+      .sidebar-nav { display: flex; padding: 0.5rem 0; width: 100%; border-top: 1px solid rgba(255,255,255,.07); overflow-x: auto; }
+      .sidebar-nav a { padding: 8px 1rem; white-space: nowrap; }
+      .nav-section-label { display: none; }
+      .sidebar-footer { display: none; }
+      .content { margin-left: 0; }
+      .page-header { padding: 2rem 1.25rem 1.75rem; }
+      .sections { padding: 0 1.25rem 3rem; }
+      .card-row { grid-template-columns: 1fr; }
+      .def-list { grid-template-columns: 1fr; }
+      .def-list dt { padding-bottom: 0; border-top: 1px solid var(--line); padding-top: 11px; }
+      .def-list dd { border-top: none; padding-top: 2px; }
+      .content-footer { padding: 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .pipeline-steps { grid-template-columns: 1fr; }
+      .artefactos-grid { grid-template-columns: 1fr; }
+      .plan-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <!-- Contenedor para imagen (puedes agregar tu imagen aquí) -->
-    <div class="header-image">
-      <img src="logo.jpeg" alt="djangoSIGE" id="header-logo" />
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="logo_blanco.png" alt="djangoSIGE" class="brand-logo" />
+      <div class="brand-label">Documentación técnica</div>
+      <div class="brand-name">djangoSIGE</div>
+      <div class="brand-sub">Sistema de Gestión Integrado</div>
     </div>
-    <div class="header-chip">Software de gestión empresarial</div>
-    <h1>djangoSIGE</h1>
-    <p>Sistema de Gestión Integrado</p>
-    <div class="header-tags">
-      <span class="header-tag">Python</span>
-      <span class="header-tag">Django</span>
-      <span class="header-tag">ORM</span>
-      <span class="header-tag">SQLite</span>
+    <div class="sidebar-stack">
+      <span class="stack-chip">Python</span>
+      <span class="stack-chip">Django</span>
+      <span class="stack-chip">ORM</span>
+      <span class="stack-chip">SQLite</span>
+      <span class="stack-chip">unittest</span>
     </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Contenido</div>
+      <a href="#descripcion">Descripción</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#alcance">Alcance</a>
+      <a href="#modulos">Módulos del sistema</a>
+      <a href="#modulos-elegidos">Módulos evaluados</a>
+      <a href="#requisitos">Requisitos funcionales</a>
+      <a href="#resumen-pruebas">Resumen de pruebas</a>
+      <a href="#estrategia">Estrategia</a>
+      <a href="#plan-unitarias">Plan unitarias/funcionales</a>
+      <a href="#pruebas-unitarias">Pruebas unitarias</a>
+      <a href="#resultados-unitarias">Resultados unitarias</a>
+      <a href="#pruebas-funcionales">Pruebas funcionales</a>
+      <a href="#resultados-funcionales">Resultados funcionales</a>
+      <a href="#plan-integracion">Plan integración</a>
+      <a href="#plan-aceptacion">Plan aceptación</a>
+      <a href="#plan-seguridad">Plan seguridad</a>
+      <a href="#artefactos">Artefactos Hito 2</a>
+      <a href="#hitos">Hitos y CI/CD</a>
+    </nav>
+    <div class="sidebar-footer">
+      djangoSIGE<br>
+      Sistema de Gestión Integrado
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="page-header">
+      <div class="page-eyebrow">Documentación técnica</div>
+      <h1 class="page-title">djangoSIGE <em>— verificación integral</em></h1>
+      <p class="page-desc">
+        Documentación completa del proceso de pruebas sobre el sistema ERP djangoSIGE.
+        Incluye análisis de módulos, diseño de casos, ejecución de pruebas unitarias,
+        funcionales y de integración, así como la implementación de un pipeline CI/CD
+        automatizado con GitHub Actions.
+      </p>
+      <div class="page-meta">
+        <div class="meta-item">
+          <span class="meta-label">Módulos del sistema</span>
+          <span class="meta-value">9</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Módulos evaluados</span>
+          <span class="meta-value">3 (Compras, Ventas, Estoque)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Pruebas unitarias</span>
+          <span class="meta-value">245 casos · 0 errores</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Pruebas funcionales</span>
+          <span class="meta-value">60 casos · 100% exitosos</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Cobertura unitaria</span>
+          <span class="meta-value">98.73%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sections">
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 1: DESCRIPCIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="descripcion">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <h2>¿Qué es djangoSIGE?</h2>
+        </div>
+        <p class="desc-intro">
+          <strong style="color:var(--ink)">djangoSIGE</strong> es un Sistema Integrado de Gestión Empresarial
+          (ERP) de código abierto desarrollado en Python 3 con el framework Django 5.2.
+          Cubre de forma unificada los procesos centrales del negocio con integridad
+          transaccional garantizada a nivel de base de datos.
+        </p>
+        <div class="card-row">
+          <div class="info-card">
+            <div class="info-card-label">Cobertura funcional</div>
+            <p>Compras, ventas, inventario, finanzas, facturación fiscal, administración de usuarios, cadastro y más.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Arquitectura</div>
+            <p>Desplegado con Docker (Nginx + Gunicorn + PostgreSQL 18), lo que garantiza un entorno aislado y reproducible.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 2: TECNOLOGÍAS (solo las originales) -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="tecnologias">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2>Tecnologías del proyecto</h2>
+        </div>
+        <div class="badges">
+          <span class="badge">Python</span>
+          <span class="badge">Django Web Framework</span>
+          <span class="badge">Django ORM</span>
+          <span class="badge mono">unittest / TestCase</span>
+          <span class="badge mono">SQLite</span>
+        </div>
+        <dl class="def-list">
+          <dt>Python</dt>
+          <dd>Lenguaje principal del sistema. Elegido por su claridad sintáctica, robustez y amplio ecosistema para desarrollo empresarial.</dd>
+          <dt>Django</dt>
+          <dd>Framework de alto nivel con estructura MVT, sistema de rutas, abstracción de base de datos y componentes de seguridad integrados.</dd>
+          <dt>Django ORM</dt>
+          <dd>Capa de persistencia que traduce operaciones Python a SQL, garantizando integridad referencial sin consultas SQL explícitas.</dd>
+          <dt>unittest</dt>
+          <dd>Framework nativo extendido por Django para validar modelos, vistas, formularios y lógica de negocio con transacciones aisladas.</dd>
+          <dt>SQLite</dt>
+          <dd>Motor relacional liviano para entornos de prueba, con soporte ACID para garantizar consistencia transaccional completa.</dd>
+        </dl>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 3: ALCANCE DEL SISTEMA -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="alcance">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2>Alcance del sistema</h2>
+        </div>
+        <div class="scope-list">
+          <div class="scope-item">Operaciones CRUD mediante el ORM de Django</div>
+          <div class="scope-item">Métodos personalizados sobreescritos en modelos</div>
+          <div class="scope-item">Integridad de datos en operaciones transaccionales</div>
+          <div class="scope-item">Movimientos de inventario y actualización de existencias</div>
+          <div class="scope-item">Persistencia y sincronización de datos</div>
+          <div class="scope-item">Comportamiento ante entradas válidas e inválidas</div>
+          <div class="scope-item">Señales (Django Signals) para actualización automática de stock</div>
+          <div class="scope-item">Cálculos fiscales (ICMS, IPI, PIS, COFINS)</div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 4: MÓDULOS DEL SISTEMA -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="modulos">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2>Módulos del sistema</h2>
+        </div>
+        <p class="modules-intro">Selecciona un módulo para ver sus casos de prueba verificados durante el Hito 1 (análisis inicial).</p>
+        <div class="modules-grid" id="module-grid"></div>
+        <div id="test-detail">
+          <div class="detail-label" id="detail-title"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Estrategia</th>
+                  <th>Caso de prueba</th>
+                  <th>Resultado esperado</th>
+                </tr>
+              </thead>
+              <tbody id="detail-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 5: MÓDULOS EVALUADOS EN PROFUNDIDAD -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="modulos-elegidos">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2>Módulos evaluados en profundidad</h2>
+        </div>
+        <p class="desc-intro">
+          Para el Hito 2, el esfuerzo de validación se concentró en tres módulos críticos
+          del negocio, aplicando pruebas unitarias, funcionales y de integración.
+        </p>
+        <div class="card-row" style="margin-bottom:1.25rem;">
+          <div class="info-card">
+            <div class="info-card-label">Compras (<code>apps/compras</code>)</div>
+            <p>Gestión de proveedores, presupuestos de compra (<code>OrcamentoCompra</code>), pedidos de compra (<code>PedidoCompra</code>) y recepción de productos.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Ventas (<code>apps/vendas</code>)</div>
+            <p>Gestión de clientes, presupuestos de venta (<code>OrcamentoVenda</code>), pedidos de venta (<code>PedidoVenda</code>), condiciones de pago y generación de PDF.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Inventario / Estoque (<code>apps/estoque</code>)</div>
+            <p>Control de stock, movimientos de entrada, salida y transferencia (<code>MovimentoEstoque</code>), consulta de existencias y gestión de locales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 6: REQUISITOS FUNCIONALES CUBIERTOS -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="requisitos">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2>Requisitos funcionales cubiertos</h2>
+        </div>
+        <p class="desc-intro">
+          A continuación se detallan los requisitos funcionales que han sido cubiertos
+          por el conjunto de pruebas elaborado para los módulos de Compras, Ventas e Inventario.
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap:4px; margin-top:8px;">
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-COM-01</strong> · Gestión de presupuestos de compra</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-COM-02</strong> · Conversión de presupuesto a pedido</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-COM-03</strong> · Gestión de pedidos de compra</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-VEN-01</strong> · Gestión de presupuestos de venta</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-VEN-02</strong> · Conversión de presupuesto a pedido de venta</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-VEN-03</strong> · Gestión de pedidos de venta</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-EST-01</strong> · Gestión de movimientos de estoque</span>
+          <span style="font-size:13px; background:var(--paper-2); padding:6px 12px; border-radius:4px; border:1px solid var(--line);"><strong>RF-EST-02</strong> · Gestión de locales y consulta de estoque</span>
+        </div>
+        <p style="margin-top:0.75rem; font-size:13px; color:var(--ink-3);">
+          <span class="tag tag-eq">Todos los requisitos han sido verificados</span>
+          <span style="margin-left:0.5rem;">mediante casos de prueba diseñados con técnicas de caja negra.</span>
+        </p>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 7: RESUMEN DE PRUEBAS EJECUTADAS -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="resumen-pruebas">
+        <div class="section-header">
+          <span class="section-num">07</span>
+          <h2>Resumen de pruebas ejecutadas</h2>
+        </div>
+        <div class="card-row">
+          <div class="info-card" style="background:var(--sage-pale);">
+            <div class="info-card-label">Pruebas unitarias</div>
+            <p style="font-size:1.1rem; font-weight:600; color:var(--sage-dark);">245 casos</p>
+            <p style="font-size:13px;">Distribuidos en <code>test_models.py</code> y <code>test_forms.py</code> de los tres módulos evaluados. <strong>0 errores, 0 fallos.</strong></p>
+          </div>
+          <div class="info-card" style="background:var(--blue-pale);">
+            <div class="info-card-label">Pruebas funcionales</div>
+            <p style="font-size:1.1rem; font-weight:600; color:var(--blue);">60 casos</p>
+            <p style="font-size:13px;">Ejecutados manualmente sobre el frontend de los módulos de Compras, Ventas e Inventario. <strong>100% exitosos.</strong></p>
+          </div>
+          <div class="info-card" style="background:#ECFDF5;">
+            <div class="info-card-label">Escenarios de integración</div>
+            <p style="font-size:1.1rem; font-weight:600; color:#065F46;">7 casos (PI-01 a PI-07)</p>
+            <p style="font-size:13px;">Validación de la interacción entre módulos: Compra→Inventario, Inventario→Venta y flujo end-to-end completo.</p>
+          </div>
+        </div>
+        <p style="margin-top:0.75rem; font-size:13px; color:var(--ink-3);">
+          <span class="tag tag-eq">La cobertura de código obtenida en las pruebas unitarias se detalla en la sección correspondiente.</span>
+        </p>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 8: ESTRATEGIA DE VERIFICACIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="estrategia">
+        <div class="section-header">
+          <span class="section-num">08</span>
+          <h2>Estrategia de verificación</h2>
+        </div>
+        <div class="strategy-grid">
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-eq">Partición de equivalencia</span></div>
+            <p>Cada método se valida con datos representativos válidos e inválidos para cubrir distintas clases de comportamiento.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-limit">Valores límite</span></div>
+            <p>Se verifican condiciones de borde: presupuestos vencidos, stock en cero, fechas del día, cantidades máximas.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-http">Validación HTTP</span></div>
+            <p>Todas las vistas responden con los códigos correctos (200, 404, 500) y renderizan los templates correspondientes.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-form">Validación de formularios</span></div>
+            <p>Los campos obligatorios generan <code>FormError</code> al omitirse; ningún dato inválido se persiste en la base de datos.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-perm">Verificación de permisos</span></div>
+            <p>Usuarios sin los permisos requeridos son redirigidos o bloqueados automáticamente por el sistema.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-other">Pruebas automatizadas</span></div>
+            <p>Todos los casos se ejecutan garantizando resultados consistentes entre iteraciones de prueba.</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-integ">Transición de estados</span></div>
+            <p>Se modelan y evalúan las transiciones legales e ilegales de documentos (presupuesto → pedido → cancelado/recibido).</p>
+          </div>
+          <div class="strategy-item">
+            <div class="strategy-label"><span class="tag tag-integ">Tablas de decisión</span></div>
+            <p>Combinación de condiciones complejas para validar reglas de negocio (ej. cálculo de impuestos, descuentos).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 9: PLAN DE PRUEBAS UNITARIAS Y FUNCIONALES -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="plan-unitarias">
+        <div class="section-header">
+          <span class="section-num">09</span>
+          <h2>Plan de pruebas unitarias y funcionales</h2>
+        </div>
+        <p class="desc-intro">
+          El plan maestro establece la estrategia, el alcance, las métricas de calidad
+          y los criterios de aceptación para las pruebas unitarias y funcionales del sistema.
+        </p>
+        <div class="plan-grid">
+          <div class="plan-card">
+            <h4>Alcance</h4>
+            <p>Pruebas unitarias sobre modelos y formularios de los módulos Compras, Ventas e Inventario. Pruebas funcionales sobre la interfaz de usuario.</p>
+            <span class="plan-status">Definido</span>
+          </div>
+          <div class="plan-card">
+            <h4>Cobertura mínima</h4>
+            <p>Umbral mínimo del <strong>85%</strong> de cobertura de código para los componentes backend evaluados.</p>
+            <span class="plan-status">Cumplido (98.73%)</span>
+          </div>
+          <div class="plan-card">
+            <h4>Entornos</h4>
+            <p><strong>DEV:</strong> Ejecución local de pruebas unitarias. <strong>QA:</strong> Entorno Docker con PostgreSQL 18 para pruebas funcionales.</p>
+            <span class="plan-status">Configurado</span>
+          </div>
+          <div class="plan-card">
+            <h4>Herramientas</h4>
+            <p><code>unittest</code>, <code>django.test.TestCase</code>, <code>coverage.py</code>, <code>unittest.mock</code> y <code>MagicMock</code> para aislamiento de dependencias.</p>
+            <span class="plan-status">Implementado</span>
+          </div>
+          <div class="plan-card">
+            <h4>Métricas de calidad</h4>
+            <p>Cobertura ≥ 85%, Tasa de éxito ≥ 95%, Densidad de defectos en registro continuo.</p>
+            <span class="plan-status">Monitoreado</span>
+          </div>
+          <div class="plan-card">
+            <h4>Criterios de suspensión</h4>
+            <p>Fallos críticos en la base de datos, errores HTTP 500 en login, cobertura por debajo del 70% en algún módulo.</p>
+            <span class="plan-status">Documentado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 10: PRUEBAS UNITARIAS -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="pruebas-unitarias">
+        <div class="section-header">
+          <span class="section-num">10</span>
+          <h2>Pruebas unitarias</h2>
+        </div>
+        <p class="desc-intro">
+          Las pruebas unitarias se ejecutaron sobre los modelos y formularios de los tres
+          módulos evaluados, utilizando el framework <code>unittest</code> de Django y
+          <code>unittest.mock</code> para aislar dependencias externas.
+        </p>
+        <div style="overflow-x:auto; margin-top:0.5rem;">
+          <table style="width:100%; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+            <thead>
+              <tr>
+                <th style="padding:8px 12px;">Módulo</th>
+                <th style="padding:8px 12px;">Archivo</th>
+                <th style="padding:8px 12px;">Clases de prueba</th>
+                <th style="padding:8px 12px;">Casos</th>
+                <th style="padding:8px 12px;">Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;">Compras</td><td style="padding:8px 12px;">test_forms.py</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">12</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">Compras</td><td style="padding:8px 12px;">test_models.py</td><td style="padding:8px 12px;">8</td><td style="padding:8px 12px;">54</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">Estoque</td><td style="padding:8px 12px;">test_forms.py</td><td style="padding:8px 12px;">7</td><td style="padding:8px 12px;">27</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">Estoque</td><td style="padding:8px 12px;">test_models.py</td><td style="padding:8px 12px;">12</td><td style="padding:8px 12px;">22</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">Vendas</td><td style="padding:8px 12px;">test_forms.py</td><td style="padding:8px 12px;">7</td><td style="padding:8px 12px;">39</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">Vendas</td><td style="padding:8px 12px;">test_models.py</td><td style="padding:8px 12px;">24</td><td style="padding:8px 12px;">91</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr style="background:var(--paper-2); font-weight:500;">
+                <td colspan="3" style="padding:8px 12px; text-align:right;">TOTAL</td>
+                <td style="padding:8px 12px;">245</td>
+                <td style="padding:8px 12px;"><span class="tag tag-res">0 errores · 0 fallos</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <p style="font-size:12px; color:var(--ink-3);">
+            <strong>Nota técnica:</strong> En el módulo Estoque se utilizó una estrategia mixta combinando
+            <code>django.test.TestCase</code> (para validar señales <code>pre_delete</code> con base de datos real)
+            y <code>unittest.TestCase</code> (para métodos de formato y propiedades en memoria), coexistiendo sin conflicto en el mismo archivo.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 11: RESULTADOS DE PRUEBAS UNITARIAS - COBERTURA -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="resultados-unitarias">
+        <div class="section-header">
+          <span class="section-num">11</span>
+          <h2>Resultados de pruebas unitarias · Cobertura de código</h2>
+        </div>
+        <p class="desc-intro">
+          La cobertura general del código sobre los módulos evaluados alcanzó un <strong>98.73%</strong>,
+          superando ampliamente el umbral mínimo del 85% establecido en el plan de pruebas unitarias.
+        </p>
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="label">Módulo Compras (modelos + formularios)</div>
+            <div class="value high">96.42%</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Módulo Ventas (modelos + formularios)</div>
+            <div class="value high">100%</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Módulo Estoque (modelos + formularios)</div>
+            <div class="value high">99.49%</div>
+          </div>
+          <div class="coverage-item" style="background:var(--sage-pale);">
+            <div class="label">Cobertura total ponderada</div>
+            <div class="value high" style="font-size:1.8rem;">98.73%</div>
+          </div>
+        </div>
+        <div class="coverage-note">
+          <span class="tag tag-eq">Cobertura medida con <code>coverage.py</code></span>
+          <span style="margin-left:0.5rem;font-size:13px;color:var(--ink-3);">
+            Umbral mínimo exigido: 85% · Estado: <strong style="color:var(--sage-dark);">EXCEDIDO</strong>
+          </span>
+        </div>
+        <div style="margin-top:1rem; background:var(--paper-2); border-radius:10px; padding:1rem 1.25rem; border:1px solid var(--line);">
+          <p style="font-size:13px; color:var(--ink-2);">
+            <strong>Análisis de cobertura:</strong> Los resultados demuestran una excelente ejecución de casos de prueba unitarios
+            y una baja incidencia de líneas de código no ejercitadas. Se han probado exhaustivamente los métodos
+            <code>format_*</code> que utilizan <code>locale.format_string</code> para asegurar la correcta visualización
+            de valores numéricos, así como los cálculos fiscales de PIS/COFINS, ICMS e IPI.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 12: PRUEBAS FUNCIONALES -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="pruebas-funcionales">
+        <div class="section-header">
+          <span class="section-num">12</span>
+          <h2>Pruebas funcionales</h2>
+        </div>
+        <p class="desc-intro">
+          Las pruebas funcionales de caja negra se ejecutaron manualmente sobre la interfaz de usuario
+          del sistema, validando los principales procesos de negocio de los módulos de Compras, Ventas e Inventario.
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-COM-01</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de presupuestos de compra</div>
+            <div style="font-size:12px; color:var(--ink-3);">9 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-COM-02</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Conversión de presupuesto a pedido</div>
+            <div style="font-size:12px; color:var(--ink-3);">4 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-COM-03</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de pedidos de compra</div>
+            <div style="font-size:12px; color:var(--ink-3);">10 casos ejecutados · 90% exitosos (1 fallo documentado)</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-VEN-01</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de presupuestos de venta</div>
+            <div style="font-size:12px; color:var(--ink-3);">10 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-VEN-02</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Conversión de presupuesto a pedido de venta</div>
+            <div style="font-size:12px; color:var(--ink-3);">4 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-VEN-03</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de pedidos de venta</div>
+            <div style="font-size:12px; color:var(--ink-3);">11 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-EST-01</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de movimientos de estoque</div>
+            <div style="font-size:12px; color:var(--ink-3);">6 casos ejecutados · 100% exitosos</div>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500; letter-spacing:0.05em;">RF-EST-02</div>
+            <div style="font-size:13px; font-weight:500; color:var(--ink);">Gestión de locales y consulta de estoque</div>
+            <div style="font-size:12px; color:var(--ink-3);">5 casos ejecutados · 100% exitosos</div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <p style="font-size:12px; color:var(--ink-3);">
+            <strong>Técnicas aplicadas:</strong> Partición de equivalencia, Análisis de valores límite,
+            Tablas de decisión y Transición de estados. Todas las pruebas se ejecutaron sobre un entorno
+            Docker controlado y reproducible, simulando escenarios de uso real.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 13: RESULTADOS DE PRUEBAS FUNCIONALES -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="resultados-funcionales">
+        <div class="section-header">
+          <span class="section-num">13</span>
+          <h2>Resultados de pruebas funcionales</h2>
+        </div>
+        <p class="desc-intro">
+          Se ejecutaron <strong>60 casos de prueba funcional</strong> distribuidos entre los tres
+          módulos evaluados. El <strong>100% de los casos fueron exitosos</strong>, lo que refleja
+          una excelente estabilidad general de la aplicación desde el punto de vista funcional.
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+          <div style="background:var(--paper); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">Total de casos</div>
+            <div style="font-size:1.5rem; font-weight:600; color:var(--ink);">60</div>
+          </div>
+          <div style="background:var(--paper); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">Ejecutados</div>
+            <div style="font-size:1.5rem; font-weight:600; color:var(--sage-dark);">60</div>
+          </div>
+          <div style="background:var(--paper); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">Exitosos</div>
+            <div style="font-size:1.5rem; font-weight:600; color:var(--sage-dark);">59</div>
+          </div>
+          <div style="background:var(--paper); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">No exitosos</div>
+            <div style="font-size:1.5rem; font-weight:600; color:var(--red);">1</div>
+          </div>
+          <div style="background:var(--paper); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">Tasa de éxito</div>
+            <div style="font-size:1.5rem; font-weight:600; color:var(--sage-dark);">98.33%</div>
+          </div>
+          <div style="background:var(--sage-pale); padding:0.9rem 1.1rem; text-align:center;">
+            <div style="font-size:11px; color:var(--ink-4); font-weight:500;">Estado general</div>
+            <div style="font-size:1.2rem; font-weight:600; color:var(--sage-dark);">APROBADO</div>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem; background:#FEF2F2; border-radius:10px; padding:0.75rem 1rem; border:1px solid #FECACA;">
+          <p style="font-size:12px; color:var(--red);">
+            <strong>Defecto identificado:</strong> En el caso <code>COM03-CP-003</code>, el sistema permitió
+            crear un pedido de compra sin haber seleccionado ningún producto, a pesar de que la especificación
+            indicaba que al menos un ítem es obligatorio. Este defecto fue documentado y reportado al equipo de desarrollo.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 14: PLAN DE PRUEBAS DE INTEGRACIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="plan-integracion">
+        <div class="section-header">
+          <span class="section-num">14</span>
+          <h2>Plan de pruebas de integración</h2>
+        </div>
+        <p class="desc-intro">
+          El plan de pruebas de integración define la estrategia para verificar la interacción
+          correcta entre los módulos de Compras, Inventario y Ventas, garantizando la consistencia
+          de los datos y la correcta propagación de cambios.
+        </p>
+
+        <div style="margin-bottom:1.25rem;">
+          <h3>Flujos de negocio evaluados</h3>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
+            <span style="background:var(--sage-pale); padding:6px 14px; border-radius:6px; font-size:13px; border:1px solid var(--sage-line);">Compra → Inventario</span>
+            <span style="background:var(--sage-pale); padding:6px 14px; border-radius:6px; font-size:13px; border:1px solid var(--sage-line);">Inventario → Venta</span>
+            <span style="background:var(--sage-pale); padding:6px 14px; border-radius:6px; font-size:13px; border:1px solid var(--sage-line);">Compra → Inventario → Venta</span>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table style="width:100%; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+            <thead>
+              <tr>
+                <th style="padding:8px 12px;">ID</th>
+                <th style="padding:8px 12px;">Escenario</th>
+                <th style="padding:8px 12px;">Módulos involucrados</th>
+                <th style="padding:8px 12px;">Técnica</th>
+                <th style="padding:8px 12px;">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;">PI-01</td><td style="padding:8px 12px;">POST (Compras) → ORM (Inventario)</td><td style="padding:8px 12px;">compras, estoque</td><td style="padding:8px 12px;">Data Flow / Interface</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-02</td><td style="padding:8px 12px;">POST (Ventas) → ORM (Inventario)</td><td style="padding:8px 12px;">vendas, estoque</td><td style="padding:8px 12px;">Data Flow / Interface</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-03</td><td style="padding:8px 12px;">Venta con stock insuficiente</td><td style="padding:8px 12px;">vendas, estoque</td><td style="padding:8px 12px;">Manejo de errores</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-04</td><td style="padding:8px 12px;">End-to-End: Compra → Venta</td><td style="padding:8px 12px;">compras, estoque, vendas</td><td style="padding:8px 12px;">Bottom-Up incremental</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-05</td><td style="padding:8px 12px;">Múltiples movimientos concurrentes</td><td style="padding:8px 12px;">compras, estoque, vendas</td><td style="padding:8px 12px;">Transición de estados</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-06</td><td style="padding:8px 12px;">Trazabilidad transaccional</td><td style="padding:8px 12px;">compras, estoque, vendas</td><td style="padding:8px 12px;">Data Flow Testing</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+              <tr><td style="padding:8px 12px;">PI-07</td><td style="padding:8px 12px;">Rollback ante fallos en interfaces</td><td style="padding:8px 12px;">compras, estoque</td><td style="padding:8px 12px;">Inyección de fallos</td><td style="padding:8px 12px;"><span class="tag tag-res">PASSED</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hito-block" style="margin-top:1rem;">
+          <h4>Métricas de calidad para integración</h4>
+          <div class="hito-meta">
+            <span>Flujos integrales ejecutados: 100%</span>
+            <span>Integraciones cubiertas: 100%</span>
+            <span>Casos aprobados: 100%</span>
+            <span>Defectos críticos abiertos: 0</span>
+            <span>Consistencia de inventario: 100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 15: PLAN DE PRUEBAS DE ACEPTACIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="plan-aceptacion">
+        <div class="section-header">
+          <span class="section-num">15</span>
+          <h2>Plan de pruebas de aceptación</h2>
+        </div>
+        <p class="desc-intro">
+          El plan de pruebas de aceptación define los criterios y escenarios para validar
+          que el sistema cumple con los requisitos del negocio y está listo para su
+          implementación en producción.
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Criterios de entrada</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• Todas las pruebas unitarias pasadas</li>
+              <li style="padding:2px 0;">• Cobertura ≥ 85%</li>
+              <li style="padding:2px 0;">• Pruebas de integración exitosas</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Criterios de aceptación</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• 100% de flujos críticos validados</li>
+              <li style="padding:2px 0;">• 0 defectos bloqueantes</li>
+              <li style="padding:2px 0;">• Usuarios aceptan la solución</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Escenarios de aceptación</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• Creación de compras y ventas</li>
+              <li style="padding:2px 0;">• Actualización de inventario</li>
+              <li style="padding:2px 0;">• Generación de documentos PDF</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Estado actual</h4>
+            <span class="tag tag-res" style="font-size:1rem; padding:4px 12px;">Pendiente de ejecución</span>
+            <p style="font-size:12px; color:var(--ink-3); margin-top:6px;">Las pruebas de aceptación se ejecutarán una vez completadas todas las fases de pruebas previas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 16: PLAN DE PRUEBAS DE SEGURIDAD -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="plan-seguridad">
+        <div class="section-header">
+          <span class="section-num">16</span>
+          <h2>Plan de pruebas de seguridad</h2>
+        </div>
+        <p class="desc-intro">
+          El plan de pruebas de seguridad establece los lineamientos para evaluar la robustez
+          del sistema frente a amenazas y vulnerabilidades, garantizando la protección de los
+          datos y la integridad de las operaciones.
+        </p>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Alcance</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• Validación de autenticación</li>
+              <li style="padding:2px 0;">• Control de permisos y roles</li>
+              <li style="padding:2px 0;">• Protección CSRF y XSS</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Herramientas</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• Django Security Middleware</li>
+              <li style="padding:2px 0;">• Pruebas de penetración manuales</li>
+              <li style="padding:2px 0;">• Análisis de dependencias</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Escenarios</h4>
+            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
+              <li style="padding:2px 0;">• Acceso no autorizado a datos</li>
+              <li style="padding:2px 0;">• Inyección SQL (ORM previene)</li>
+              <li style="padding:2px 0;">• Manipulación de parámetros</li>
+            </ul>
+          </div>
+          <div style="background:var(--paper); padding:1rem 1.2rem;">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Estado actual</h4>
+            <span class="tag tag-res" style="font-size:1rem; padding:4px 12px;">Pendiente de ejecución</span>
+            <p style="font-size:12px; color:var(--ink-3); margin-top:6px;">Las pruebas de seguridad se planifican para una fase posterior del proyecto.</p>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <p style="font-size:12px; color:var(--ink-3);">
+            <strong>Nota:</strong> Django proporciona protección integrada contra las vulnerabilidades más comunes
+            (CSRF, XSS, SQL Injection mediante ORM, clickjacking). Las pruebas de seguridad se enfocarán
+            en validar la correcta configuración de estos mecanismos y la gestión de permisos.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 17: ARTEFACTOS DEL HITO 2 -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="artefactos">
+        <div class="section-header">
+          <span class="section-num">17</span>
+          <h2>Artefactos del Hito 2</h2>
+        </div>
+        <p class="desc-intro">
+          Durante el segundo hito se han generado los siguientes entregables, todos disponibles
+          en el repositorio del equipo. Cada artefacto representa un componente clave del
+          proceso de aseguramiento de calidad.
+        </p>
+
+        <div class="artefactos-grid">
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-artf">Gestión</span></div>
+            <h4>GitHub Project</h4>
+            <p>Tablero Scrum con todas las tareas del Sprint 2, organizadas en 4 épicas y 15 sub-issues. Todas completadas con estado <strong>Done</strong>.</p>
+            <a href="#" class="artf-link">Ver tablero →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-artf">Publicación</span></div>
+            <h4>GitHub Pages</h4>
+            <p>Sitio web estático que presenta el proyecto de forma visual e interactiva, integrando toda la información clave de los artefactos generados.</p>
+            <a href="#" class="artf-link">Visitar Pages →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-artf">Documentación</span></div>
+            <h4>GitHub Wiki</h4>
+            <p>Documentación técnica centralizada con 7 páginas: Home, Plan de pruebas unitarias y funcionales, Plan de pruebas de integración, Diseño de casos, Informe de pruebas unitarias, Informe de ejecución funcional y Plan de pruebas de seguridad.</p>
+            <a href="#" class="artf-link">Visitar Wiki →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-cicd">CI/CD</span></div>
+            <h4>GitHub Actions</h4>
+            <p>Pipeline automatizado que ejecuta las 245 pruebas unitarias en cada <code>push</code> o <code>pull_request</code>, garantizando que ningún cambio rompa la funcionalidad.</p>
+            <a href="#" class="artf-link">Ver Actions →</a>
+          </div>
+        </div>
+
+        <!-- Informes generados -->
+        <div style="margin-top:1.25rem; background:var(--paper-2); border-radius:10px; padding:1rem 1.25rem; border:1px solid var(--line);">
+          <h4 style="font-size:13px; font-weight:500; color:var(--ink); margin-bottom:4px;">Informes generados</h4>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:4px;">
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Informe de pruebas unitarias (245 casos, 98.73% cobertura)</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Informe de pruebas de integración (7 escenarios PI-01 a PI-07)</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Informe de ejecución de casos funcionales (60 casos, 100% exitosos)</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas unitarias y funcionales</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de integración</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Diseño de casos de pruebas funcionales</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de seguridad</span>
+            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de aceptación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 18: HITOS Y AUTOMATIZACIÓN CI/CD -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="hitos">
+        <div class="section-header">
+          <span class="section-num">18</span>
+          <h2>Hitos y automatización CI/CD</h2>
+        </div>
+
+        <!-- HITO 1 -->
+        <div class="hito-block">
+          <h4>Hito 1 · 27.MAY.2026 (15%)</h4>
+          <p>
+            Entregable: plan de pruebas unitarias, tablero Kanban/Scrum y presentación
+            del producto de software seleccionado. Se utilizó GitHub Projects para la
+            gestión del backlog y GitHub Wiki para la documentación inicial.
+          </p>
+          <div class="hito-meta">
+            <span>GitHub Projects configurado</span>
+            <span>Wiki inicial creada</span>
+            <span>Plan de pruebas unitarias definido</span>
+          </div>
+        </div>
+
+        <!-- HITO 2 -->
+        <div class="hito-block" style="margin-top:0.75rem;">
+          <h4>Hito 2 · 10.JUN.2026 (50%)</h4>
+          <p>
+            Entregable: informe de pruebas unitarias (245 casos, 0 errores, cobertura 98.73%);
+            plan e informe de pruebas de integración (7 escenarios PI-01 a PI-07);
+            implementación completa del proceso de pruebas con CI/CD mediante GitHub Actions.
+          </p>
+          <div class="hito-meta">
+            <span>245 pruebas unitarias ejecutadas</span>
+            <span>60 pruebas funcionales manuales</span>
+            <span>7 escenarios de integración</span>
+            <span>Pipeline CI/CD automatizado</span>
+          </div>
+        </div>
+
+        <!-- PIPELINE CI/CD (EXTENSO) -->
+        <div style="margin-top:1.25rem;">
+          <h3>Pipeline CI/CD con GitHub Actions</h3>
+          <p style="font-size:13px; color:var(--ink-3); margin-bottom:0.75rem;">
+            El pipeline de integración continua se define en el archivo
+            <code>.github/workflows/unit_tests.yml</code> y automatiza la ejecución
+            de las pruebas unitarias ante cada evento de <code>push</code> o
+            <code>pull_request</code> dirigido a las ramas <code>main</code> y <code>develop</code>.
+            Su propósito es garantizar que cualquier cambio introducido al código sea validado
+            de forma automática e inmediata, sin depender de la ejecución manual por parte del equipo.
+          </p>
+
+          <div class="pipeline-steps">
+            <div class="pipeline-step">
+              <span class="step-num">Paso 1</span>
+              <span class="step-name">Checkout del repositorio</span>
+              <span style="font-size:12px; color:var(--ink-4);">actions/checkout@v4</span>
+              <span style="font-size:11px; color:var(--ink-4);">Descarga el código fuente actualizado en el runner de GitHub.</span>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">Paso 2</span>
+              <span class="step-name">Construcción de imagen Docker</span>
+              <span style="font-size:12px; color:var(--ink-4);">docker build -t djangosige .</span>
+              <span style="font-size:11px; color:var(--ink-4);">Crea una imagen contenedorizada del proyecto, asegurando que las pruebas corran sobre el mismo entorno definido para QA.</span>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">Paso 3</span>
+              <span class="step-name">Ejecución de pruebas unitarias</span>
+              <span style="font-size:12px; color:var(--ink-4);">python manage.py test (6 módulos)</span>
+              <span style="font-size:11px; color:var(--ink-4);">Ejecuta los 245 casos de prueba sobre compras, estoque y vendas (models + forms).</span>
+            </div>
+          </div>
+
+          <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+            <p style="font-size:12px; color:var(--ink-3);">
+              <span class="tag tag-cicd">GitHub Actions</span>
+              Archivo de configuración: <code>.github/workflows/unit_tests.yml</code> ·
+              Módulos probados: compras (models + forms), estoque (models + forms), vendas (models + forms) ·
+              El pipeline actúa como puerta de calidad obligatoria: ningún cambio puede ser integrado a las ramas
+              protegidas sin haber superado satisfactoriamente todos los casos de prueba.
+            </p>
+          </div>
+
+          <div style="margin-top:0.75rem; background:#F0FDF4; border-radius:10px; padding:0.75rem 1rem; border:1px solid #BBF7D0;">
+            <p style="font-size:12px; color:#065F46;">
+              <strong>Beneficios del pipeline:</strong>
+              <span style="display:inline-block; margin-left:0.5rem;">• Validación automática en cada commit</span>
+              <span style="display:inline-block; margin-left:0.5rem;">• Entorno Docker consistente</span>
+              <span style="display:inline-block; margin-left:0.5rem;">• Resultados visibles en cada PR</span>
+              <span style="display:inline-block; margin-left:0.5rem;">• Reducción de errores en producción</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="content-footer">
+      <div class="footer-brand">djangoSIGE</div>
+      <div class="footer-right">Compras · Ventas · Estoque</div>
+    </footer>
+
   </div>
-</header>
-
-<nav>
-  <a href="#descripcion">Descripción</a>
-  <a href="#tecnologias">Tecnologías</a>
-  <a href="#alcance">Alcance</a>
-  <a href="#modulos">Módulos</a>
-  <a href="#estrategia">Estrategia</a>
-</nav>
-
-<main>
-
-  <section id="descripcion">
-    <h2>¿Qué es djangoSIGE?</h2>
-    <p>
-      <strong style="color:var(--gray-900)">djangoSIGE</strong> es un sistema de gestión empresarial integrado desarrollado en
-      Python y Django. Cubre de forma unificada los procesos centrales del negocio con integridad
-      transaccional garantizada a nivel de base de datos.
-    </p>
-    <div class="desc-grid">
-      <div class="desc-card">
-        <div class="desc-card-label">Cobertura funcional</div>
-        <p>Compras, ventas, inventario, finanzas, facturación fiscal y administración de usuarios en un solo sistema.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="tecnologias">
-    <h2>Tecnologías</h2>
-    <div class="tech-section">
-      <div class="badges">
-        <span class="badge">Python</span>
-        <span class="badge">Django Web Framework</span>
-        <span class="badge">Django ORM</span>
-        <span class="badge mono">unittest / TestCase</span>
-        <span class="badge">SQLite</span>
-      </div>
-      <div class="tech-description">
-        <p><strong>Python</strong> — Lenguaje de programación principal del sistema, elegido por su claridad sintáctica, robustez y amplio ecosistema de librerías para desarrollo empresarial.</p>
-        <p><strong>Django Web Framework</strong> — Framework de alto nivel que provee estructura MVT (Modelo-Vista-Template), sistema de rutas, capa de abstracción de base de datos y componentes de seguridad integrados.</p>
-        <p><strong>Django ORM (Object-Relational Mapper)</strong> — Capa de persistencia que traduce operaciones Python a SQL, garantizando integridad referencial y permitiendo manipular datos sin escribir consultas SQL explícitas.</p>
-        <p><strong>unittest / TestCase</strong> — Framework nativo de pruebas unitarias, extendido por Django para validar modelos, vistas, formularios y lógica de negocio mediante aserciones y transacciones aisladas.</p>
-        <p><strong>SQLite</strong> — Motor de base de datos relacional utilizado en entornos de desarrollo y pruebas, liviano, sin configuración adicional y con soporte ACID para garantizar consistencia transaccional.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="alcance">
-    <h2>Alcance del sistema</h2>
-    <div class="scope-grid">
-      <div class="scope-item"><span class="scope-dot"></span>Operaciones CRUD mediante el ORM de Django</div>
-      <div class="scope-item"><span class="scope-dot"></span>Métodos personalizados sobreescritos en modelos</div>
-      <div class="scope-item"><span class="scope-dot"></span>Integridad de datos en operaciones transaccionales</div>
-      <div class="scope-item"><span class="scope-dot"></span>Movimientos de inventario y actualización de existencias</div>
-      <div class="scope-item"><span class="scope-dot"></span>Persistencia y sincronización de datos</div>
-      <div class="scope-item"><span class="scope-dot"></span>Comportamiento ante entradas válidas e inválidas</div>
-    </div>
-  </section>
-
-  <section id="modulos">
-    <h2>Módulos del sistema</h2>
-    <p>Selecciona un módulo para ver sus casos verificados.</p>
-    <div class="modules-grid" id="module-grid"></div>
-    <div id="test-detail">
-      <h3 id="detail-title"></h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Estrategia</th>
-              <th>Caso</th>
-              <th>Resultado esperado</th>
-            </tr>
-          </thead>
-          <tbody id="detail-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section id="estrategia">
-    <h2>Estrategia de verificación</h2>
-    <div class="strategy-grid" id="strategy-grid">
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-eq">Partición de equivalencia</span></div>
-        <p>Cada método se valida con datos representativos válidos e inválidos para cubrir distintas clases de comportamiento.</p>
-      </div>
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-limit">Valores límite</span></div>
-        <p>Se verifican condiciones de borde: presupuestos vencidos, stock en cero, fechas del día, cantidades máximas.</p>
-      </div>
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-http">Validación HTTP</span></div>
-        <p>Todas las vistas responden con los códigos correctos (200, 404, 500) y renderizan los templates correspondientes.</p>
-      </div>
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-form">Validación de formularios</span></div>
-        <p>Los campos obligatorios generan <code>FormError</code> al omitirse; ningún dato inválido se persiste en la base de datos.</p>
-      </div>
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-perm">Verificación de permisos</span></div>
-        <p>Usuarios sin los permisos requeridos son redirigidos o bloqueados automáticamente por el sistema.</p>
-      </div>
-      <div class="strategy-item">
-        <div class="strategy-label"><span class="tag tag-other">Pruebas automatizadas</span></div>
-        <p>Todos los casos se ejecutan garantizando resultados consistentes entre iteraciones.</p>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <span>djangoSIGE</span> · Sistema de Gestión Integrado · Python + Django
-</footer>
+</div>
 
 <script>
+  // --------------------------------------------------------------
+  // Datos de módulos del sistema (Hito 1 - análisis inicial)
+  // --------------------------------------------------------------
   const modules = [
-    {
-      name: "Principal / Dashboard",
-      desc: "Inicio, contexto y errores",
-      cases: [
-        ["CP-01","Partición de equivalencia","Verificar resolución de URL principal /","La URL resuelve correctamente hacia IndexView"],
-        ["CP-02","Validación HTTP","Acceder a la página principal","Respuesta HTTP 200"],
-        ["CP-03","Verificación de templates","Acceder a /404/","Renderiza 404.html"],
-        ["CP-05","Manejo de excepciones","Acceder a /500/ con DEBUG=True","Renderiza 500.html y responde HTTP 500"],
-        ["CP-07","Verificación de contexto","Verificar variables de contexto del dashboard","El contexto contiene cantidad_cadastro, agenda_hoje y alertas"],
-        ["CP-08","Verificación de contexto","Verificar fecha actual en el contexto","Existe la variable data_atual"],
-        ["CP-09","Manejo de excepciones","Acceder sin registros de MovimentoCaixa","El contexto contiene saldo sin generar errores"],
-      ]
-    },
-    {
-      name: "Registros",
-      desc: "Personas, productos, marcas",
-      cases: [
-        ["CP-01","Partición de equivalencia","Acceder a vistas de agregar registros","Respuesta HTTP 200"],
-        ["CP-02","Verificación de permisos","Verificar permisos de acceso","Usuario sin permiso no accede"],
-        ["CP-03","Partición de equivalencia","Registrar persona con datos válidos","Registro exitoso"],
-        ["CP-05","Validación de formularios","Enviar nombre vacío al registrar persona","Error de campo obligatorio"],
-        ["CP-06","Partición de equivalencia","Registrar producto válido","Registro exitoso"],
-        ["CP-08","Validación de formularios","Enviar código vacío al registrar producto","Error de campo obligatorio"],
-        ["CP-15","Partición de equivalencia","Eliminar objeto desde vista de listado","Objeto eliminado correctamente"],
-        ["CP-26","Validación JSON","Solicitar información AJAX de cliente","Respuesta JSON válida"],
-      ]
-    },
-    {
-      name: "Compras",
-      desc: "Presupuestos y pedidos",
-      cases: [
-        ["CP-01","Validación HTTP","Acceder a vista de agregar presupuesto de compra","Respuesta HTTP 200"],
-        ["CP-03","Partición de equivalencia","Registrar presupuesto de compra válido","Registro exitoso"],
-        ["CP-05","Validación de formularios","Enviar proveedor vacío","Error de campo obligatorio"],
-        ["CP-10","Valores límite","Eliminar presupuesto vencido","Eliminación exitosa"],
-        ["CP-22","Partición de equivalencia","Generar pedido desde presupuesto","Pedido creado correctamente"],
-        ["CP-28","Partición de equivalencia","Cancelar pedido de compra","Estado cambia a Cancelado"],
-        ["CP-30","Manejo de persistencia","Recibir pedido de compra","Estado cambia a Recebido"],
-        ["CP-31","Validación de stock","Recibir pedido y verificar inventario","Stock actualizado correctamente"],
-      ]
-    },
-    {
-      name: "Stock / Inventario",
-      desc: "Entradas, salidas y transferencias",
-      cases: [
-        ["CP-01","Validación HTTP","Acceder a consulta de stock","Respuesta HTTP 200"],
-        ["CP-10","Partición de equivalencia","Registrar entrada de stock válida","Registro exitoso"],
-        ["CP-13","Partición de equivalencia","Registrar salida de stock válida","Registro exitoso"],
-        ["CP-16","Manejo de excepciones","Retirar productos de local sin stock","Sistema maneja correctamente la operación"],
-        ["CP-17","Valores límite","Retirar cantidad mayor al stock actual","Error de validación en formset"],
-        ["CP-18","Partición de equivalencia","Registrar transferencia válida","Transferencia exitosa"],
-        ["CP-20","Valores límite","Transferir con stock insuficiente","Sistema controla correctamente la operación"],
-      ]
-    },
-    {
-      name: "Modelos de Stock",
-      desc: "Integridad al eliminar movimientos",
-      cases: [
-        ["CP-01","Partición de equivalencia","Eliminar una salida de stock registrada","Stock global y local reajustados correctamente"],
-        ["CP-02","Validación de persistencia","Verificar estoque_atual tras eliminar salida","Stock del producto incrementado correctamente"],
-        ["CP-03","Validación de persistencia","Verificar ProdutoEstocado tras salida","Cantidad local incrementada correctamente"],
-        ["CP-04","Partición de equivalencia","Eliminar una entrada de stock registrada","Stock global y local reajustados correctamente"],
-        ["CP-05","Validación de persistencia","Verificar estoque_atual tras eliminar entrada","Stock del producto decrementado correctamente"],
-        ["CP-06","Validación de persistencia","Verificar ProdutoEstocado tras entrada","Cantidad local decrementada correctamente"],
-      ]
-    },
-    {
-      name: "Finanzas",
-      desc: "Flujo de caja y cuentas",
-      cases: [
-        ["CP-01","Partición de equivalencia","Acceder a flujo de caja sin filtros","HTTP 200 y contexto movimentos presente"],
-        ["CP-02","Validación de permisos","Usuario sin permiso accede a flujo de caja","Redirección o denegación de acceso"],
-        ["CP-06","Validación de errores","Enviar fecha en formato incorrecto","Mensaje de error Formato de data incorreto"],
-        ["CP-07","Validación de persistencia","Crear cuenta a pagar con movimentar_caixa=True","Movimiento de caja creado con salidas >= 100"],
-        ["CP-09","Validación de persistencia","Crear cuenta a recibir con movimentar_caixa=True","Movimiento de caja creado con entradas >= 100"],
-        ["CP-35","Validación de integración","Facturar pedido de venta con stock suficiente","Salida de stock creada correctamente"],
-        ["CP-36","Validación de errores","Facturar pedido con producto sin stock","Advertencia y facturación no realizada"],
-      ]
-    },
-    {
-      name: "Fiscal",
-      desc: "Notas y grupos fiscales",
-      cases: [
-        ["CP-01","Validación HTTP","Acceder al formulario de naturaleza de operación","Respuesta HTTP 200"],
-        ["CP-04","Partición de equivalencia","Registrar naturaleza de operación con CFOP válido","Registro exitoso"],
-        ["CP-05","Validación de formularios","Enviar formulario omitiendo CFOP","FormError en campo cfop"],
-        ["CP-06","Partición de equivalencia","Registrar grupo fiscal con parámetros válidos","Registro exitoso"],
-        ["CP-08","Partición de equivalencia","Registrar Nota Fiscal de salida con datos base","Registro exitoso"],
-        ["CP-10","Partición de equivalencia","Generar Nota Fiscal desde pedido de venta","Crea instancia de NotaFiscalSaida correctamente"],
-        ["CP-22","Verificación de permisos","Validar restricción a configuración NF-e","Sistema verifica código de permiso configurar_nfe"],
-      ]
-    },
-    {
-      name: "Login / Usuarios",
-      desc: "Autenticación y gestión",
-      cases: [
-        ["CP-01","Redirección de flujo","Acceder a login con sesión activa","Redirecciona hacia / automáticamente"],
-        ["CP-03","Partición de equivalencia","Login con credenciales válidas","Autenticación exitosa, renderiza dashboard"],
-        ["CP-05","Partición de equivalencia","Registrar nuevo usuario con datos válidos","Registro exitoso, objeto User persistido"],
-        ["CP-06","Validación de formularios","Registro con contraseñas que no coinciden","FormError en campo password"],
-        ["CP-07","Verificación de permisos","Usuario sin is_superuser intenta registrar","Sistema bloquea y redirige a /"],
-        ["CP-08","Redirección de flujo","Invocar cierre de sesión","Sesión destruida, redirige a /login/"],
-        ["CP-13","Validación de persistencia","Guardar cambios de perfil asociando empresa","Actualización exitosa, empresa asociada al Usuario"],
-        ["CP-18","Partición de equivalencia","Eliminar usuario enviando ID en POST","Objeto removido de la base de datos"],
-      ]
-    },
-    {
-      name: "Ventas",
-      desc: "Presupuestos, pedidos y pagos",
-      cases: [
-        ["CP-01","Validación HTTP","Acceder al formulario de presupuesto de venta","Respuesta HTTP 200"],
-        ["CP-04","Partición de equivalencia","Registrar presupuesto de venta con datos válidos","Registro exitoso"],
-        ["CP-05","Validación de formularios","Enviar presupuesto con cliente vacío","FormError en campo cliente"],
-        ["CP-08","Partición de equivalencia","Registrar condición de pago con plazos válidos","Registro exitoso"],
-        ["CP-22","Validación de contenido","Generar PDF de presupuesto de venta","HTTP 200 y Content-Type application/pdf"],
-        ["CP-24","Partición de equivalencia","Convertir presupuesto en Pedido de Venta","Crea PedidoVenda y lo asocia al presupuesto origen"],
-        ["CP-27","Partición de equivalencia","Cancelar pedido de venta","Estado cambia a Cancelado"],
-      ]
-    },
+    { name:"Principal / Dashboard", desc:"Inicio, contexto y errores", cases:[
+      ["CP-01","Partición de equivalencia","Verificar resolución de URL principal /","La URL resuelve correctamente hacia IndexView"],
+      ["CP-02","Validación HTTP","Acceder a la página principal","Respuesta HTTP 200"],
+      ["CP-03","Verificación de templates","Acceder a /404/","Renderiza 404.html"],
+      ["CP-05","Manejo de excepciones","Acceder a /500/ con DEBUG=True","Renderiza 500.html y responde HTTP 500"],
+      ["CP-07","Verificación de contexto","Verificar variables de contexto del dashboard","El contexto contiene cantidad_cadastro, agenda_hoje y alertas"],
+      ["CP-08","Verificación de contexto","Verificar fecha actual en el contexto","Existe la variable data_atual"],
+      ["CP-09","Manejo de excepciones","Acceder sin registros de MovimentoCaixa","El contexto contiene saldo sin generar errores"],
+    ]},
+    { name:"Registros", desc:"Personas, productos, marcas", cases:[
+      ["CP-01","Partición de equivalencia","Acceder a vistas de agregar registros","Respuesta HTTP 200"],
+      ["CP-02","Verificación de permisos","Verificar permisos de acceso","Usuario sin permiso no accede"],
+      ["CP-03","Partición de equivalencia","Registrar persona con datos válidos","Registro exitoso"],
+      ["CP-05","Validación de formularios","Enviar nombre vacío al registrar persona","Error de campo obligatorio"],
+      ["CP-06","Partición de equivalencia","Registrar producto válido","Registro exitoso"],
+      ["CP-08","Validación de formularios","Enviar código vacío al registrar producto","Error de campo obligatorio"],
+      ["CP-15","Partición de equivalencia","Eliminar objeto desde vista de listado","Objeto eliminado correctamente"],
+      ["CP-26","Validación JSON","Solicitar información AJAX de cliente","Respuesta JSON válida"],
+    ]},
+    { name:"Compras", desc:"Presupuestos y pedidos", cases:[
+      ["CP-01","Validación HTTP","Acceder a vista de agregar presupuesto de compra","Respuesta HTTP 200"],
+      ["CP-03","Partición de equivalencia","Registrar presupuesto de compra válido","Registro exitoso"],
+      ["CP-05","Validación de formularios","Enviar proveedor vacío","Error de campo obligatorio"],
+      ["CP-10","Valores límite","Eliminar presupuesto vencido","Eliminación exitosa"],
+      ["CP-22","Partición de equivalencia","Generar pedido desde presupuesto","Pedido creado correctamente"],
+      ["CP-28","Partición de equivalencia","Cancelar pedido de compra","Estado cambia a Cancelado"],
+      ["CP-30","Manejo de persistencia","Recibir pedido de compra","Estado cambia a Recebido"],
+      ["CP-31","Validación de stock","Recibir pedido y verificar inventario","Stock actualizado correctamente"],
+    ]},
+    { name:"Stock / Inventario", desc:"Entradas, salidas y transferencias", cases:[
+      ["CP-01","Validación HTTP","Acceder a consulta de stock","Respuesta HTTP 200"],
+      ["CP-10","Partición de equivalencia","Registrar entrada de stock válida","Registro exitoso"],
+      ["CP-13","Partición de equivalencia","Registrar salida de stock válida","Registro exitoso"],
+      ["CP-16","Manejo de excepciones","Retirar productos de local sin stock","Sistema maneja correctamente la operación"],
+      ["CP-17","Valores límite","Retirar cantidad mayor al stock actual","Error de validación en formset"],
+      ["CP-18","Partición de equivalencia","Registrar transferencia válida","Transferencia exitosa"],
+      ["CP-20","Valores límite","Transferir con stock insuficiente","Sistema controla correctamente la operación"],
+    ]},
+    { name:"Modelos de Stock", desc:"Integridad al eliminar movimientos", cases:[
+      ["CP-01","Partición de equivalencia","Eliminar una salida de stock registrada","Stock global y local reajustados correctamente"],
+      ["CP-02","Validación de persistencia","Verificar estoque_atual tras eliminar salida","Stock del producto incrementado correctamente"],
+      ["CP-03","Validación de persistencia","Verificar ProdutoEstocado tras salida","Cantidad local incrementada correctamente"],
+      ["CP-04","Partición de equivalencia","Eliminar una entrada de stock registrada","Stock global y local reajustados correctamente"],
+      ["CP-05","Validación de persistencia","Verificar estoque_atual tras eliminar entrada","Stock del producto decrementado correctamente"],
+      ["CP-06","Validación de persistencia","Verificar ProdutoEstocado tras entrada","Cantidad local decrementada correctamente"],
+    ]},
+    { name:"Finanzas", desc:"Flujo de caja y cuentas", cases:[
+      ["CP-01","Partición de equivalencia","Acceder a flujo de caja sin filtros","HTTP 200 y contexto movimentos presente"],
+      ["CP-02","Validación de permisos","Usuario sin permiso accede a flujo de caja","Redirección o denegación de acceso"],
+      ["CP-06","Validación de errores","Enviar fecha en formato incorrecto","Mensaje de error Formato de data incorreto"],
+      ["CP-07","Validación de persistencia","Crear cuenta a pagar con movimentar_caixa=True","Movimiento de caja creado con salidas >= 100"],
+      ["CP-09","Validación de persistencia","Crear cuenta a recibir con movimentar_caixa=True","Movimiento de caja creado con entradas >= 100"],
+      ["CP-35","Validación de integración","Facturar pedido de venta con stock suficiente","Salida de stock creada correctamente"],
+      ["CP-36","Validación de errores","Facturar pedido con producto sin stock","Advertencia y facturación no realizada"],
+    ]},
+    { name:"Fiscal", desc:"Notas y grupos fiscales", cases:[
+      ["CP-01","Validación HTTP","Acceder al formulario de naturaleza de operación","Respuesta HTTP 200"],
+      ["CP-04","Partición de equivalencia","Registrar naturaleza de operación con CFOP válido","Registro exitoso"],
+      ["CP-05","Validación de formularios","Enviar formulario omitiendo CFOP","FormError en campo cfop"],
+      ["CP-06","Partición de equivalencia","Registrar grupo fiscal con parámetros válidos","Registro exitoso"],
+      ["CP-08","Partición de equivalencia","Registrar Nota Fiscal de salida con datos base","Registro exitoso"],
+      ["CP-10","Partición de equivalencia","Generar Nota Fiscal desde pedido de venta","Crea instancia de NotaFiscalSaida correctamente"],
+      ["CP-22","Verificación de permisos","Validar restricción a configuración NF-e","Sistema verifica código de permiso configurar_nfe"],
+    ]},
+    { name:"Login / Usuarios", desc:"Autenticación y gestión", cases:[
+      ["CP-01","Redirección de flujo","Acceder a login con sesión activa","Redirecciona hacia / automáticamente"],
+      ["CP-03","Partición de equivalencia","Login con credenciales válidas","Autenticación exitosa, renderiza dashboard"],
+      ["CP-05","Partición de equivalencia","Registrar nuevo usuario con datos válidos","Registro exitoso, objeto User persistido"],
+      ["CP-06","Validación de formularios","Registro con contraseñas que no coinciden","FormError en campo password"],
+      ["CP-07","Verificación de permisos","Usuario sin is_superuser intenta registrar","Sistema bloquea y redirige a /"],
+      ["CP-08","Redirección de flujo","Invocar cierre de sesión","Sesión destruida, redirige a /login/"],
+      ["CP-13","Validación de persistencia","Guardar cambios de perfil asociando empresa","Actualización exitosa, empresa asociada al Usuario"],
+      ["CP-18","Partición de equivalencia","Eliminar usuario enviando ID en POST","Objeto removido de la base de datos"],
+    ]},
+    { name:"Ventas", desc:"Presupuestos, pedidos y pagos", cases:[
+      ["CP-01","Validación HTTP","Acceder al formulario de presupuesto de venta","Respuesta HTTP 200"],
+      ["CP-04","Partición de equivalencia","Registrar presupuesto de venta con datos válidos","Registro exitoso"],
+      ["CP-05","Validación de formularios","Enviar presupuesto con cliente vacío","FormError en campo cliente"],
+      ["CP-08","Partición de equivalencia","Registrar condición de pago con plazos válidos","Registro exitoso"],
+      ["CP-22","Validación de contenido","Generar PDF de presupuesto de venta","HTTP 200 y Content-Type application/pdf"],
+      ["CP-24","Partición de equivalencia","Convertir presupuesto en Pedido de Venta","Crea PedidoVenda y lo asocia al presupuesto origen"],
+      ["CP-27","Partición de equivalencia","Cancelar pedido de venta","Estado cambia a Cancelado"],
+    ]},
   ];
 
   const tagClass = s => {
@@ -705,6 +1853,7 @@
     if (s.includes("formularios")) return "tag-form";
     if (s.includes("límite") || s.includes("limite")) return "tag-limit";
     if (s.includes("permisos")) return "tag-perm";
+    if (s.includes("Integración") || s.includes("integración")) return "tag-integ";
     return "tag-other";
   };
 
@@ -728,7 +1877,7 @@
       document.querySelectorAll(".module-card").forEach(c => c.classList.remove("active"));
       card.classList.add("active");
       activeIdx = i;
-      detailTitle.textContent = mod.name + " — casos verificados";
+      detailTitle.textContent = mod.name.toUpperCase() + " — CASOS VERIFICADOS (Hito 1)";
       detailBody.innerHTML = mod.cases.map(([id, strat, caso, result]) => `
         <tr>
           <td>${id}</td>
