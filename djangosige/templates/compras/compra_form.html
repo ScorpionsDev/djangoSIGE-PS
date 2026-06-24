@@ -3,12 +3,12 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#tab_informacoes" data-toggle="tab">INFORMAÇÕES</a></li>
-      <li role="presentation"><a href="#tab_fornecedor" data-toggle="tab">FORNECEDOR</a></li>
+      <li role="presentation" class="active"><a href="#tab_informacoes" data-toggle="tab">INFORMACIÓN</a></li>
+      <li role="presentation"><a href="#tab_fornecedor" data-toggle="tab">PROVEEDOR</a></li>
       <li role="presentation"><a href="#tab_transporte" data-toggle="tab">TRANSPORTE</a></li>
-      <li role="presentation"><a href="#tab_produtos" data-toggle="tab">PRODUTOS</a></li>
-      <li role="presentation"><a href="#tab_pagamento" data-toggle="tab">PAGAMENTO</a></li>
-      <li role="presentation"><a href="#tab_estoque" data-toggle="tab">ESTOQUE</a></li>
+      <li role="presentation"><a href="#tab_produtos" data-toggle="tab">PRODUcTOS</a></li>
+      <li role="presentation"><a href="#tab_pagamento" data-toggle="tab">PAGO</a></li>
+      <li role="presentation"><a href="#tab_estoque" data-toggle="tab">INVENTARIO</a></li>
     </ul>
 
     <div class="tab-content">
@@ -127,7 +127,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>Inscrição estadual/RG</label>
+              <label>Inscripcion estatal/DNI</label>
               <span class="form-control display-fornecedor-field" id="ie_rg_fornecedor"></span>
             </div>
           </div>
@@ -145,7 +145,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>Endereço</label>
+              <label>Direccion</label>
               <span class="form-control display-fornecedor-field" id="endereco_fornecedor"></span>
             </div>
           </div>
@@ -154,7 +154,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>Bairro</label>
+              <label>Barrio</label>
               <span class="form-control display-fornecedor-field" id="bairro_fornecedor"></span>
             </div>
           </div>
@@ -163,7 +163,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>Município</label>
+              <label>Municipio</label>
               <span type="text" class="form-control display-fornecedor-field" id="municipio_fornecedor"></span>
             </div>
           </div>
@@ -172,7 +172,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>UF</label>
+              <label>Provincia</label>
               <span type="text" class="form-control display-fornecedor-field" id="uf_fornecedor"></span>
             </div>
           </div>
@@ -181,7 +181,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>CEP</label>
+              <label>Codigo Postal</label>
               <span type="text" class="form-control display-fornecedor-field" id="cep_fornecedor"></span>
             </div>
           </div>
@@ -199,7 +199,7 @@
         <div class="col-sm-6">
           <div class="form-group">
             <div class="form-line">
-              <label>Telefone</label>
+              <label>Telefono</label>
               <span type="text" class="form-control display-fornecedor-field" id="telefone_fornecedor"></span>
             </div>
           </div>
@@ -297,7 +297,7 @@
 
         <div class="col-sm-12" style="padding:0px;">
           
-        <h4 style="border-bottom: 1px solid #afabab;">Produtos</h4>
+        <h4 style="border-bottom: 1px solid #afabab;">Productos</h4>
 
         {% include 'formset/formset_table.html' with formset=produtos_form title='Itens' %}
 
@@ -327,7 +327,7 @@
         <div class="col-sm-3">
           <div class="form-group">
             <div class="form-line">
-              <label>Número de parcelas</label>
+              <label>Número de cuotas</label>
               <span type="text" class="form-control" id="id_n_parcelas"></span>
             </div>
           </div>
@@ -345,7 +345,7 @@
         <div class="col-sm-3">
           <div class="form-group">
             <div class="form-line">
-              <a id="calcular-parcelas" class="btn btn-primary" style="margin-top: 25px;">Calcular parcelas</a>
+              <a id="calcular-parcelas" class="btn btn-primary" style="margin-top: 25px;">Calcular cuotas</a>
             </div>
           </div>
         </div>
