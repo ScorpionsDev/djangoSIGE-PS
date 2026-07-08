@@ -268,7 +268,9 @@ class VendaMetodosTestCase(TestCase):
     def test_format_valor_total(self):
         from djangosige.apps.vendas.models.vendas import Venda
         ns = self._make_ns('1500.00', '0.00')
-        self.assertIn('1500', Venda.format_valor_total(ns))
+        formatted = Venda.format_valor_total(ns)
+        val = formatted.replace('.', '').replace(',', '.')
+        self.assertEqual(float(val), 1500.00)
 
     def test_format_frete(self):
         from djangosige.apps.vendas.models.vendas import Venda

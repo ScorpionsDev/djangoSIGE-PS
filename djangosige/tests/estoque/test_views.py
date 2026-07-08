@@ -151,8 +151,8 @@ class EstoqueAdicionarViewsTestCase(BaseTestCase):
         data['itens_form-TOTAL_FORMS'] = 3
         response = self.client.post(url, data, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertFormsetError(
-            response, 'itens_form', 2, 'quantidade', 'Quantidade retirada do estoque maior que o estoque atual (' + str(prod1.estoque_atual).replace('.', ',') + ') do produto.')
+        self.assertFormSetError(
+            response.context['itens_form'], 2, 'quantidade', 'Quantidade retirada do estoque maior que o estoque atual (' + str(prod1.estoque_atual).replace('.', ',') + ') do produto.')
 
     def test_add_transferencia_estoque_view_post_request(self):
         url = reverse('estoque:addtransferenciaestoqueview')

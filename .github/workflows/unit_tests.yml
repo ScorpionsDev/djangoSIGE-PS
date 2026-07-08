@@ -23,7 +23,7 @@ jobs:
         run: |
           docker build -t djangosige .
 
-      - name: Run unit tests (Models and Forms)
+      - name: Run Django tests (Models, Forms, Views, and Integration)
         run: |
           docker run --rm \
             -e SECRET_KEY=test-secret-key \
@@ -32,7 +32,11 @@ jobs:
             python manage.py test \
             djangosige.tests.compras.test_models \
             djangosige.tests.compras.test_forms \
+            djangosige.tests.compras.test_views \
             djangosige.tests.estoque.test_models \
             djangosige.tests.estoque.test_forms \
+            djangosige.tests.estoque.test_views \
             djangosige.tests.vendas.test_models \
-            djangosige.tests.vendas.test_forms
+            djangosige.tests.vendas.test_forms \
+            djangosige.tests.vendas.test_views \
+            djangosige.tests.test_integration
