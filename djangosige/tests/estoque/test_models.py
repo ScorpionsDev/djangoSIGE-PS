@@ -125,11 +125,11 @@ class ItensMovimentoGetEstoqueAtualTestCase(TestCase):
 
     def test_retorna_nao_controlado_quando_nao_controla_estoque(self):
         item = self._make_item(controlar=False, estoque_atual=None)
-        self.assertEqual(item.get_estoque_atual_produto(), 'Não controlado')
+        self.assertEqual(item.get_estoque_atual_produto(), 'No controlado')
 
     def test_retorna_nao_controlado_quando_estoque_atual_none(self):
         item = self._make_item(controlar=True, estoque_atual=None)
-        self.assertEqual(item.get_estoque_atual_produto(), 'Não controlado')
+        self.assertEqual(item.get_estoque_atual_produto(), 'No controlado')
 
     def test_retorna_none_quando_produto_none(self):
         from djangosige.apps.estoque.models import ItensMovimento
@@ -162,7 +162,7 @@ class ItensMovimentoFormatEstoqueAtualTestCase(TestCase):
 
     def test_format_retorna_nao_controlado_string(self):
         item = self._make_item(controlar=False)
-        self.assertEqual(item.format_estoque_atual_produto(), 'Não controlado')
+        self.assertEqual(item.format_estoque_atual_produto(), 'No controlado')
 
 
 # ─────────────────────────────────────────────
@@ -231,7 +231,7 @@ class SaidaEstoqueGetTipoTestCase(TestCase):
     def test_get_tipo_retorna_saida(self):
         from djangosige.apps.estoque.models import SaidaEstoque
         saida = SaidaEstoque.__new__(SaidaEstoque)
-        self.assertEqual(saida.get_tipo(), 'Saída')
+        self.assertEqual(saida.get_tipo(), 'Salida')
 
     def test_get_edit_url_contiene_ruta_correcta(self):
         from djangosige.apps.estoque.models import SaidaEstoque
@@ -251,7 +251,7 @@ class TransferenciaEstoqueGetTipoTestCase(TestCase):
     def test_get_tipo_retorna_transferencia(self):
         from djangosige.apps.estoque.models import TransferenciaEstoque
         transf = TransferenciaEstoque.__new__(TransferenciaEstoque)
-        self.assertEqual(transf.get_tipo(), 'Transferência')
+        self.assertEqual(transf.get_tipo(), 'Transferencia')
 
     def test_get_edit_url_contiene_ruta_correcta(self):
         from djangosige.apps.estoque.models import TransferenciaEstoque

@@ -318,7 +318,7 @@ class ComprasAcoesUsuarioViewsTestCase(BaseTestCase):
 
         # Assert que estoque foi movimentado corretamente
         obj.refresh_from_db()
-        self.assertEqual(obj.get_status_display(), 'Recebido')
+        self.assertEqual(obj.get_status_display(), 'Recibido')
         self.assertEqual(len(obj.entrada_estoque_pedido.all()), 1)
         mvmt_entrada = obj.entrada_estoque_pedido.all()[0]
         for item in mvmt_entrada.itens_movimento.all():

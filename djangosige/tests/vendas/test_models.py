@@ -400,7 +400,7 @@ class OrcamentoVendaTestCase(TestCase):
 
     def test_tipo_venda(self):
         orc = self._make_orcamento()
-        self.assertEqual(orc.tipo_venda, 'Orçamento')
+        self.assertEqual(orc.tipo_venda, 'Presupuesto')
 
     def test_str(self):
         orc = self._make_orcamento()

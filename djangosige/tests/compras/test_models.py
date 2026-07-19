@@ -327,7 +327,7 @@ class OrcamentoCompraTestCase(TestCase):
 
     def test_tipo_compra_es_orcamento(self):
         orc = self._make_orcamento()
-        self.assertEqual(orc.tipo_compra, 'Orçamento')
+        self.assertEqual(orc.tipo_compra, 'Presupuesto')
 
     def test_str_contiene_id(self):
         orc = self._make_orcamento()
@@ -377,7 +377,7 @@ class PedidoCompraTestCase(TestCase):
         ped = self._make_pedido(status='0')
         texto = str(ped)
         self.assertIn('20', texto)
-        self.assertIn('Aberto', texto)
+        self.assertIn('Abierto', texto)
 
     def test_str_status_cancelado(self):
         ped = self._make_pedido(status='2')
@@ -385,7 +385,7 @@ class PedidoCompraTestCase(TestCase):
 
     def test_str_status_recebido(self):
         ped = self._make_pedido(status='4')
-        self.assertIn('Recebido', str(ped))
+        self.assertIn('Recibido', str(ped))
 
     def test_format_data_entrega(self):
         ped = self._make_pedido(data_entrega='2024-08-15')

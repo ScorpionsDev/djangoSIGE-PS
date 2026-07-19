@@ -45,7 +45,7 @@ class ItensMovimento(models.Model):
             if self.produto.controlar_estoque and self.produto.estoque_atual:
                 return self.produto.estoque_atual
             else:
-                return 'Não controlado'
+                return 'No controlado'
 
     def format_estoque_atual_produto(self):
         estoque_atual = self.get_estoque_atual_produto()
@@ -130,7 +130,7 @@ class SaidaEstoque(MovimentoEstoque):
         return reverse_lazy('estoque:detalharsaidaestoqueview', kwargs={'pk': self.id})
 
     def get_tipo(self):
-        return 'Saída'
+        return 'Salida'
 
 
 class TransferenciaEstoque(MovimentoEstoque):
@@ -143,4 +143,4 @@ class TransferenciaEstoque(MovimentoEstoque):
         return reverse_lazy('estoque:detalhartransferenciaestoqueview', kwargs={'pk': self.id})
 
     def get_tipo(self):
-        return 'Transferência'
+        return 'Transferencia'

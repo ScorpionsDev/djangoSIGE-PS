@@ -397,11 +397,11 @@ class Venda(models.Model):
             return OrcamentoVenda.objects.get(id=self.id)
 
     def __unicode__(self):
-        s = u'Venda nº %s' % (self.id)
+        s = u'Venta nº %s' % (self.id)
         return s
 
     def __str__(self):
-        s = u'Venda nº %s' % (self.id)
+        s = u'Venta nº %s' % (self.id)
         return s
 
 
@@ -411,7 +411,7 @@ class OrcamentoVenda(Venda):
         max_length=1, choices=STATUS_ORCAMENTO_ESCOLHAS, default='0')
 
     class Meta:
-        verbose_name = "Orçamento de Venda"
+        verbose_name = "Presupuesto de Venta"
 
     @property
     def format_data_vencimento(self):
@@ -419,17 +419,17 @@ class OrcamentoVenda(Venda):
 
     @property
     def tipo_venda(self):
-        return 'Orçamento'
+        return 'Presupuesto'
 
     def edit_url(self):
         return reverse_lazy('vendas:editarorcamentovendaview', kwargs={'pk': self.id})
 
     def __unicode__(self):
-        s = u'Orçamento de venda nº %s' % (self.id)
+        s = u'Presupuesto de venta nº %s' % (self.id)
         return s
 
     def __str__(self):
-        s = u'Orçamento de venda nº %s' % (self.id)
+        s = u'Presupuesto de venta nº %s' % (self.id)
         return s
 
 
@@ -441,9 +441,9 @@ class PedidoVenda(Venda):
         max_length=1, choices=STATUS_PEDIDO_VENDA_ESCOLHAS, default='0')
 
     class Meta:
-        verbose_name = "Pedido de Venda"
+        verbose_name = "Pedido de Venta"
         permissions = (
-            ("faturar_pedidovenda", "Pode faturar Pedidos de Venda"),
+            ("faturar_pedidovenda", "Puede facturar Pedidos de Venta"),
         )
 
     @property
@@ -458,11 +458,11 @@ class PedidoVenda(Venda):
         return reverse_lazy('vendas:editarpedidovendaview', kwargs={'pk': self.id})
 
     def __unicode__(self):
-        s = u'Pedido de venda nº %s (%s)' % (
+        s = u'Pedido de venta nº %s (%s)' % (
             self.id, self.get_status_display())
         return s
 
     def __str__(self):
-        s = u'Pedido de venda nº %s (%s)' % (
+        s = u'Pedido de venta nº %s (%s)' % (
             self.id, self.get_status_display())
         return s
