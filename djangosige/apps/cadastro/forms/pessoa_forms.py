@@ -31,12 +31,12 @@ class PessoaJuridicaForm(forms.ModelForm):
             'suframa': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nome_fantasia': _('Nome Fantasia'),
+            'nome_fantasia': _('Nombre Comercial'),
             'cnpj': _('CNPJ'),
-            'inscricao_estadual': _('Inscrição Estadual'),
-            'responsavel': _('Responsável'),
-            'sit_fiscal': _('Situação Fiscal'),
-            'suframa': _('Inscrição SUFRAMA'),
+            'inscricao_estadual': _('Inscripción Estatal'),
+            'responsavel': _('Responsable'),
+            'sit_fiscal': _('Situación Fiscal'),
+            'suframa': _('Inscripción SUFRAMA'),
         }
 
 
@@ -63,5 +63,5 @@ class PessoaFisicaForm(forms.ModelForm):
         labels = {
             'cpf': _('CPF'),
             'rg': _('RG'),
-            'nascimento': _('Nascimento'),
+            'nascimento': _('Fecha de Nacimiento'),
         }
