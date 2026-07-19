@@ -7,25 +7,25 @@ from decimal import Decimal
 
 ORIGEM_ESCOLHAS = (
     (u'0', u'0 - Nacional'),
-    (u'1', u'1 - Estrangeira - Importação direta.'),
-    (u'2', u'2 - Estrangeira - Adquirida no mercado interno.'),
-    (u'3', u'3 - Nacional - Mercadoria ou bem com Conteúdo de Importação superior a 40% e inferior ou igual a 70%.'),
-    (u'4', u'4 - Nacional - Cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam o Decreto-Lei nº 288/67, e as Leis nºs 8.248/91, 8.387/91, 10.176/01 e 11.484/ 07'),
-    (u'5', u'5 - Nacional - Mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40% (quarenta por cento)'),
-    (u'6', u'6 - Estrangeira - Importação direta, sem similar nacional, constante em lista da Resolução CAMEX nº 79/2012 e gás natural'),
-    (u'7', u'7 - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante em lista da Resolução CAMEX nº 79/2012 e gás natural'),
-    (u'8', u'8 - Nacional - Mercadoria ou bem com Conteúdo de Importação superior a 70% (setenta por cento).'),
+    (u'1', u'1 - Extranjera - Importación directa.'),
+    (u'2', u'2 - Extranjera - Adquirida en el mercado interno.'),
+    (u'3', u'3 - Nacional - Mercancía o bien con Contenido de Importación superior al 40% e inferior o igual al 70%.'),
+    (u'4', u'4 - Nacional - Cuya producción haya sido hecha en conformidad con los procesos productivos básicos de los que tratan el Decreto-Ley nº 288/67, y las Leyes nºs 8.248/91, 8.387/91, 10.176/01 y 11.484/ 07'),
+    (u'5', u'5 - Nacional - Mercancía o bien con Contenido de Importación inferior o igual al 40% (cuarenta por ciento)'),
+    (u'6', u'6 - Extranjera - Importación directa, sin similar nacional, constante en lista de la Resolución CAMEX nº 79/2012 y gas natural'),
+    (u'7', u'7 - Extranjera - Adquirida en el mercado interno, sin similar nacional, constante en lista de la Resolución CAMEX nº 79/2012 y gas natural'),
+    (u'8', u'8 - Nacional - Mercancía o bien con Contenido de Importación superior al 70% (setenta por ciento).'),
 )
 
 TP_OPERACAO_OPCOES = (
     (u'0', u'0 - Entrada'),
-    (u'1', u'1 - Saída'),
+    (u'1', u'1 - Salida'),
 )
 
 ID_DEST_OPCOES = (
-    (u'1', u'1 - Operação interna.'),
-    (u'2', u'2 - Operação interestadual.'),
-    (u'3', u'3 - Operação com exterior'),
+    (u'1', u'1 - Operación interna.'),
+    (u'2', u'2 - Operación interestatal.'),
+    (u'3', u'3 - Operación con exterior'),
 )
 
 
@@ -33,7 +33,7 @@ class Categoria(models.Model):
     categoria_desc = models.CharField(max_length=32)
 
     class Meta:
-        verbose_name = "Categoria"
+        verbose_name = "Categoría"
 
     def __unicode__(self):
         s = u'%s' % (self.categoria_desc)
@@ -64,7 +64,7 @@ class Unidade(models.Model):
     unidade_desc = models.CharField(max_length=16)
 
     class Meta:
-        verbose_name = "Unidade"
+        verbose_name = "Unidad"
 
     def __unicode__(self):
         s = u'(%s) %s' % (self.sigla_unidade, self.unidade_desc)
@@ -113,7 +113,7 @@ class Produto(models.Model):
     controlar_estoque = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = "Produto"
+        verbose_name = "Producto"
 
     @property
     def format_unidade(self):
