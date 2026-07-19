@@ -2,9 +2,9 @@
   <div class="form-group">
     <div class="form-line">
       <input type="radio" name="{{form.prefix}}-tipo_pessoa" id="fisica" value="PF" {% if form.tipo_pessoa.value == 'PF' %}checked="checked"{% endif %}/>
-      <label for="fisica"><strong>Pessoa Física</strong></label>
+      <label for="fisica"><strong>Persona Natural</strong></label>
       <input type="radio" name="{{form.prefix}}-tipo_pessoa" id="juridica" value="PJ" {% if form.tipo_pessoa.value == 'PJ' %}checked="checked"{% endif %}/>
-      <label for="juridica"><strong>Pessoa Jurídica</strong></label>
+      <label for="juridica"><strong>Persona Jurídica</strong></label>
       <strong style="color:red;"> *</strong>
       {% if form.tipo_pessoa.errors %}<label class="error">{% for error in form.tipo_pessoa.errors %}{{error}}{% endfor %}</label>{% endif %}
     </div>
