@@ -9,7 +9,7 @@ from djangosige.apps.vendas.models import OrcamentoVenda, PedidoVenda, ItensVend
 
 class VendaForm(forms.ModelForm):
     total_sem_imposto = forms.DecimalField(widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Total s/ imposto (R$)', required=False)
+        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Total s/ impuesto (S/)', required=False)
 
     def __init__(self, *args, **kwargs):
         super(VendaForm, self).__init__(*args, **kwargs)
@@ -61,24 +61,24 @@ class VendaForm(forms.ModelForm):
             'observacoes': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'data_emissao': _('Data de Emissão'),
+            'data_emissao': _('Fecha de Emisión'),
             'cliente': _('Cliente'),
-            'ind_final': _('Consumidor final?'),
-            'transportadora': _('Transportadora'),
-            'mod_frete': _('Modalidade do frete'),
-            'local_orig': _('Localização de estoque de origem dos produtos'),
-            'movimentar_estoque': _('Movimentar estoque?'),
-            'veiculo': _('Veículo'),
+            'ind_final': _('¿Consumidor final?'),
+            'transportadora': _('Transportista'),
+            'mod_frete': _('Modalidad del flete'),
+            'local_orig': _('Ubicación de stock de origen de los productos'),
+            'movimentar_estoque': _('¿Mover stock?'),
+            'veiculo': _('Vehículo'),
             'vendedor': _('Vendedor'),
-            'valor_total': _('Total (R$)'),
-            'tipo_desconto': _('Tipo de desconto'),
-            'desconto': _('Desconto (% ou R$)'),
-            'frete': _('Frete (R$)'),
-            'despesas': _('Despesas (R$)'),
-            'seguro': _('Seguro (R$)'),
-            'impostos': _('Impostos (R$)'),
-            'cond_pagamento': _('Condição de pagamento'),
-            'observacoes': _('Observações'),
+            'valor_total': _('Total (S/)'),
+            'tipo_desconto': _('Tipo de descuento'),
+            'desconto': _('Descuento (% o S/)'),
+            'frete': _('Flete (S/)'),
+            'despesas': _('Gastos (S/)'),
+            'seguro': _('Seguro (S/)'),
+            'impostos': _('Impuestos (S/)'),
+            'cond_pagamento': _('Condición de pago'),
+            'observacoes': _('Observaciones'),
         }
 
 
@@ -93,8 +93,8 @@ class OrcamentoVendaForm(VendaForm):
         widgets['status'] = forms.Select(
             attrs={'class': 'form-control', 'disabled': True})
         labels = VendaForm.Meta.labels
-        labels['data_vencimento'] = _('Data de Vencimento')
-        labels['status'] = _('Status')
+        labels['data_vencimento'] = _('Fecha de Vencimiento')
+        labels['status'] = _('Estado')
 
 
 class PedidoVendaForm(VendaForm):
@@ -111,20 +111,20 @@ class PedidoVendaForm(VendaForm):
         widgets['orcamento'] = forms.Select(
             attrs={'class': 'form-control', 'disabled': True})
         labels = VendaForm.Meta.labels
-        labels['data_entrega'] = _('Data de Entrega')
-        labels['status'] = _('Status')
-        labels['orcamento'] = _('Orçamento')
+        labels['data_entrega'] = _('Fecha de Entrega')
+        labels['status'] = _('Estado')
+        labels['orcamento'] = _('Presupuesto')
 
 
 class ItensVendaForm(forms.ModelForm):
     total_sem_desconto = forms.DecimalField(widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Subtotal s/ desconto', required=False)
+        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Subtotal s/ descuento', required=False)
     total_impostos = forms.DecimalField(widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Impostos', required=False)
+        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Impuestos', required=False)
     total_com_impostos = forms.DecimalField(widget=forms.TextInput(
         attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Total', required=False)
     calculo_imposto = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'hidden', 'disabled': True}), label='Cálc. Impostos', required=False)
+        attrs={'class': 'hidden', 'disabled': True}), label='Cálc. Impuestos', required=False)
 
     # IMPOSTO
     p_red_bc = forms.DecimalField(widget=forms.TextInput(
@@ -217,17 +217,16 @@ class ItensVendaForm(forms.ModelForm):
 
         }
         labels = {
-            'produto': _('Produto'),
-            'quantidade': _('Quantidade'),
-            'valor_unit': _('Vl. Unit.'),
+            'produto': _('Producto'),
+            'quantidade': _('Cantidad'),
+            'valor_unit': _('Val. Unit.'),
             'subtotal': _('Subtotal'),
 
-            'tipo_desconto': _('Tipo de desconto'),
-            'desconto': _('Desconto (% ou R$)'),
-            'valor_rateio_frete': _('Frete(R$)'),
-            'valor_rateio_despesas': _('Despesas(R$)'),
-            'valor_rateio_seguro': _('Seguro(R$)'),
-
+            'tipo_desconto': _('Tipo de descuento'),
+            'desconto': _('Descuento (% o S/)'),
+            'valor_rateio_frete': _('Flete (S/)'),
+            'valor_rateio_despesas': _('Gastos (S/)'),
+            'valor_rateio_seguro': _('Seguro (S/)'),
         }
 
     def is_valid(self):
