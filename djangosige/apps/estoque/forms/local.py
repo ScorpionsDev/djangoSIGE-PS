@@ -15,5 +15,5 @@ class LocalEstoqueForm(forms.ModelForm):
             'descricao': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
+            'descricao': _('Descripción'),
         }
