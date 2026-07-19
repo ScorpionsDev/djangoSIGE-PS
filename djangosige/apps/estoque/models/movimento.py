@@ -17,14 +17,14 @@ locale.setlocale(locale.LC_ALL, '')
 TIPOS_MOVIMENTO_ENTRADA = (
     (u'0', u'Ajuste'),
     (u'1', u'Entrada por pedido de compra'),
-    (u'2', u'Entrada por importação de nota fiscal de fornecedor'),
+    (u'2', u'Entrada por importación de factura de proveedor'),
     (u'3', u'Ajuste inicial'),
 )
 
 TIPOS_MOVIMENTO_SAIDA = (
     (u'0', u'Ajuste'),
-    (u'1', u'Saída por pedido de venda'),
-    (u'2', u'Saída por importação de nota fiscal'),
+    (u'1', u'Salida por pedido de venta'),
+    (u'2', u'Salida por importación de factura'),
 )
 
 
@@ -64,9 +64,9 @@ class MovimentoEstoque(models.Model):
     observacoes = models.CharField(max_length=1055, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Movimento de Estoque"
+        verbose_name = "Movimiento de Inventario"
         permissions = (
-            ("consultar_estoque", "Pode consultar estoque"),
+            ("consultar_estoque", "Puede consultar inventario"),
         )
 
     @property
