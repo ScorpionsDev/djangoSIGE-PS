@@ -26,12 +26,12 @@ class EmpresaForm(forms.ModelForm):
             'informacoes_adicionais': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nome_razao_social': _('Razão Social'),
+            'nome_razao_social': _('Razón Social'),
             'cnae': _('CNAE'),
-            'inscricao_municipal': _('Inscrição Municipal'),
+            'inscricao_municipal': _('Inscripción Municipal'),
             'logo_file': _('Logo'),
-            'iest': _('IE do substituto tributário'),
-            'informacoes_adicionais': _('Informações Adicionais'),
+            'iest': _('IE del sustituto tributario'),
+            'informacoes_adicionais': _('Información Adicional'),
         }
 
     def save(self, commit=True):
@@ -55,5 +55,5 @@ class MinhaEmpresaForm(forms.ModelForm):
             'm_empresa': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
-            'm_empresa': _('Minha Empresa'),
+            'm_empresa': _('Mi Empresa'),
         }
