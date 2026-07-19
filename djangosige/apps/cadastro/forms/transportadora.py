@@ -23,9 +23,9 @@ class TransportadoraForm(forms.ModelForm):
             'informacoes_adicionais': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nome_razao_social': _('Razão Social'),
+            'nome_razao_social': _('Nombre o Razón Social'),
             'tipo_pessoa': _(''),
-            'informacoes_adicionais': _('Informações Adicionais'),
+            'informacoes_adicionais': _('Información Adicional'),
         }
 
     def save(self, commit=True):
@@ -47,9 +47,9 @@ class VeiculoForm(forms.ModelForm):
             'uf': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
+            'descricao': _('Descripción'),
             'placa': _('Placa'),
-            'uf': _('UF'),
+            'uf': _('Departamento / Región (UF)'),
         }
 
 
