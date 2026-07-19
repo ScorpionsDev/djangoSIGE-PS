@@ -1,5 +1,5 @@
 if (typeof jQuery === "undefined") {
-    throw new Error("Carregar JQuery antes deste arquivo.");
+    throw new Error("Cargar JQuery antes de este archivo.");
 }
 
 $.Admin = {};
@@ -123,7 +123,7 @@ $.Admin.messages = {
     msgSucesso: function(message){
         $('#modal-msg .modal-header span i').text('done').addClass('icon-success');
         $('#modal-msg .modal-body p').text(message);
-        $('#modal-msg .modal-title').text('Sucesso');
+        $('#modal-msg .modal-title').text('Éxito"');
         $('#modal-msg').modal('show');
         $('#modal-msg #btn-ok').show();
         $('#modal-msg #btn-sim').hide();
@@ -134,7 +134,7 @@ $.Admin.messages = {
     msgRemove: function(message){
         $('#modal-msg .modal-header span i').text('error_outline').addClass('icon-alert');
         $('#modal-msg .modal-body p').text(message);
-        $('#modal-msg .modal-title').text('Tem certeza?');
+        $('#modal-msg .modal-title').text('Estás seguro?');
         $('#modal-msg').modal('show');
         $('#modal-msg #btn-sim').show();
         $('#modal-msg #btn-nao').show();
@@ -145,7 +145,7 @@ $.Admin.messages = {
     msgAlerta: function(message){
         $('#modal-msg .modal-header span i').text('error_outline').addClass('icon-alert');
         $('#modal-msg .modal-body p').text(message);
-        $('#modal-msg .modal-title').text('Operação não permitida');
+        $('#modal-msg .modal-title').text('Operación no permitida');
         $('#modal-msg').modal('show');
         $('#modal-msg #btn-ok').show();
         $('#modal-msg #btn-sim').hide();
@@ -193,26 +193,26 @@ $.Admin.table = {
         dTable = $('#lista-database').DataTable({
             "dom" : 'ltipr',
             "language" : {
-                "sEmptyTable": "Nenhum registro encontrado",
-                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sEmptyTable": "Ningún registro encontrado",
+                "sInfo": "Mostrando del START al END de TOTAL registros",
+                "sInfoEmpty": "Mostrando 0 al 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de MAX registros totales)",
                 "sInfoPostFix": "",
                 "sInfoThousands": ".",
-                "sLengthMenu": "Mostrar _MENU_ resultados por página",
-                "sLoadingRecords": "Carregando...",
-                "sProcessing": "Processando...",
-                "sZeroRecords": "Nenhum registro encontrado",
-                "sSearch": "Pesquisar",
+                "sLengthMenu": "Mostrar MENU resultados por página",
+                "sLoadingRecords": "Cargando...",
+                "sProcessing": "Procesando...",
+                "sZeroRecords": "Ningún registro encontrado",
+                "sSearch": "Buscar",
                 "oPaginate": {
-                    "sNext": "Próximo",
+                    "sNext": "Siguiente",
                     "sPrevious": "Anterior",
-                    "sFirst": "Primeiro",
+                    "sFirst": "Primero",
                     "sLast": "Último"
                 },
                 "oAria": {
-                    "sSortAscending": ": Ordenar colunas de forma ascendente",
-                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                    "sSortAscending": ": Ordenar columnas de forma ascendente",
+                    "sSortDescending": ": Ordenar columnas de forma descendente"
                 },
             }
         });
@@ -236,7 +236,7 @@ $.Admin.table = {
         $btnRemove.on('click',function(event){
             event.preventDefault();
             var form = $(this).parents('form');
-            $.Admin.messages.msgRemove("Os items selecionados serão removidos permanentemente da Base de Dados.");
+            $.Admin.messages.msgRemove("Los elementos seleccionados serán eliminados permanentemente de la Base de Datos.");
             $('#btn-sim').one('click', function(){
                 form.submit();
             });
@@ -1880,11 +1880,11 @@ $.Admin.vendaForm = {
                     $('#limite_credito_cliente').text(data[i].fields.limite_de_credito.replace(/\./g,','));
                     var ind_ie = data[i].fields.indicador_ie;
                     if(ind_ie == '1'){
-                        $('#ind_ie_cliente').text('Contribuinte ICMS');
+                        $('#ind_ie_cliente').text('Contribuyente');
                     }else if(ind_ie == '2'){
-                        $('#ind_ie_cliente').text('Contribuinte isento de Inscrição');
+                        $('#ind_ie_cliente').text('Contribuyente exento');
                     }else if(ind_ie == '9'){
-                        $('#ind_ie_cliente').text('Não Contribuinte');
+                        $('#ind_ie_cliente').text('No Contribuyente');
                     }
                 }
 
@@ -2612,7 +2612,7 @@ $.Admin.movimentoEstoqueForm = {
                     estoque_atual_input.val(data[0].fields.estoque_atual.replace(/\./g,','));
                     estoque_atual_input.removeClass('input_no_edit');
                 }else{
-                    estoque_atual_input.val('Não controlado');
+                    estoque_atual_input.val('No controlado');
                     estoque_atual_input.addClass('input_no_edit');
                 }
             }
@@ -2808,37 +2808,37 @@ $.Admin.notaFiscalForm = {
         //Page loaders para cada servico
         $('form[id=emitir_nota_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Enviando nota fiscal, aguarde...');
+            $('.loader .loader-message').text('Enviando factura, espere...');
         });
 
         $('form[id=cancelar_nota_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Cancelando nota fiscal, aguarde...');
+            $('.loader .loader-message').text('Cancelando factura, espere...');
         });
 
         $('form[id=consultar_cadastro_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Consultando cadastro, aguarde...');
+            $('.loader .loader-message').text('Consultando registro, espere...');
         });
 
         $('form[id=inutilizar_notas_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Inutilizando numeração de notas, aguarde...');
+            $('.loader .loader-message').text('Inutilizando numeración de facturas, espere...');
         });
 
         $('form[id=consultar_nota_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Consultando nota, aguarde...');
+            $('.loader .loader-message').text('Consultando factura, espere...');
         });
 
         $('form[id=baixar_nota_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Baixando nota, aguarde...');
+            $('.loader .loader-message').text('Descargando factura, espere...');
         });
 
         $('form[id=manifestacao_destinatario_form]').on('submit', function(){
             $('.page-loader-wrapper').show();
-            $('.loader .loader-message').text('Enviando manifestação do destinatário, aguarde...');
+            $('.loader .loader-message').text('Enviando declaración del destinatario, espere...');
         });
 
     },
@@ -2898,11 +2898,11 @@ $.Admin.notaFiscalForm = {
                 if(data[i].model == 'cadastro.cliente'){
                     var ind_ie = data[i].fields.indicador_ie;
                     if(ind_ie == '1'){
-                        $('#ind_ie_dest').text('Contribuinte ICMS');
+                        $('#ind_ie_dest').text('Contribuyente');
                     }else if(ind_ie == '2'){
-                        $('#ind_ie_dest').text('Contribuinte isento de Inscrição');
+                        $('#ind_ie_dest').text('Contribuyente exento');
                     }else if(ind_ie == '9'){
-                        $('#ind_ie_dest').text('Não Contribuinte');
+                        $('#ind_ie_dest').text('No Contribuyente');
                     }
                     if(data[i].fields.id_estrangeiro){
                         $('#cpf_cnpj_id_dest').text(data[i].fields.id_estrangeiro);
@@ -3192,12 +3192,12 @@ $.Admin.datepicker = {
     init: function(cookieName){
         $( ".datepicker" ).datepicker({
             dateFormat: 'dd/mm/yy',
-            dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-            dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-            dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-            monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-            nextText: 'Próximo',
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            nextText: 'Siguiente',
             prevText: 'Anterior'
         });
     },
