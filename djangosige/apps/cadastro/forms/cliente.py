@@ -27,13 +27,13 @@ class ClienteForm(forms.ModelForm):
             'informacoes_adicionais': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nome_razao_social': _('Razão Social'),
+            'nome_razao_social': _('Nombre o Razón Social'),
             'tipo_pessoa': _(''),
-            'limite_de_credito': _('Limite de Crédito'),
-            'indicador_ie': _('Indicador da IE do Destinatário'),
-            'inscricao_municipal': _('Inscrição Municipal'),
-            'id_estrangeiro': _('Documento legal (Estrangeiro)'),
-            'informacoes_adicionais': _('Informações Adicionais'),
+            'limite_de_credito': _('Límite de Crédito'),
+            'indicador_ie': _('Indicador de IE del Destinatario'),
+            'inscricao_municipal': _('Inscripción Municipal'),
+            'id_estrangeiro': _('Documento legal (Extranjero)'),
+            'informacoes_adicionais': _('Información Adicional'),
         }
 
     def save(self, commit=True):
