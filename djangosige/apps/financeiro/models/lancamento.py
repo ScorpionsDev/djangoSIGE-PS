@@ -10,14 +10,14 @@ import locale
 locale.setlocale(locale.LC_ALL, '')
 
 STATUS_CONTA_SAIDA_ESCOLHAS = (
-    (u'0', u'Paga'),
-    (u'1', u'A pagar'),
+    (u'0', u'Pagada'),
+    (u'1', u'Por pagar'),
     (u'2', u'Atrasada'),
 )
 
 STATUS_CONTA_ENTRADA_ESCOLHAS = (
-    (u'0', u'Recebida'),
-    (u'1', u'A receber'),
+    (u'0', u'Cobrada'),
+    (u'1', u'Por cobrar'),
     (u'2', u'Atrasada'),
 )
 
@@ -41,7 +41,7 @@ class Lancamento(models.Model):
         'financeiro.MovimentoCaixa', related_name="movimento_caixa_lancamento", on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Lançamento"
+        verbose_name = "Asiento"
 
     def format_valor_liquido(self):
         return locale.format_string(u'%.2f', self.valor_liquido, 1)
@@ -103,9 +103,9 @@ class MovimentoCaixa(models.Model):
                                  MinValueValidator(Decimal('0.00'))], default=Decimal('0.00'))
 
     class Meta:
-        verbose_name = "Movimento de Caixa"
+        verbose_name = "Movimiento de Caja"
         permissions = (
-            ("acesso_fluxodecaixa", "Pode acessar o Fluxo de Caixa"),
+            ("acesso_fluxodecaixa", "Puede acceder al Flujo de Caja"),
         )
 
     @property
@@ -117,9 +117,9 @@ class MovimentoCaixa(models.Model):
         return self.saldo_final - self.saldo_inicial
 
     def __unicode__(self):
-        s = u'Movimento dia %s' % (self.data_movimento)
+        s = u'Movimiento día %s' % (self.data_movimento)
         return s
 
     def __str__(self):
-        s = u'Movimento dia %s' % (self.data_movimento)
+        s = u'Movimiento día %s' % (self.data_movimento)
         return s
