@@ -19,7 +19,7 @@ class NaturezaOperacaoForm(forms.ModelForm):
         }
         labels = {
             'cfop': _('CFOP'),
-            'descricao': _('Descrição'),
-            'tp_operacao': _('Tipo de operação'),
-            'id_dest': _('Local destino da operação'),
+            'descricao': _('Descripción'),
+            'tp_operacao': _('Tipo de operación'),
+            'id_dest': _('Lugar de destino de la operación'),
         }
