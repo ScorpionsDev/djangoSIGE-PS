@@ -15,8 +15,8 @@ class GrupoFiscalForm(forms.ModelForm):
             'regime_trib': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
-            'regime_trib': _('Regime Tributário'),
+            'descricao': _('Descripción'),
+            'regime_trib': _('Régimen Tributario'),
         }
 
 
@@ -63,19 +63,19 @@ class ICMSForm(forms.ModelForm):
         }
         labels = {
             'cst': _('CST ICMS'),
-            'mod_bc': _('Modalidade de determinação da BC do ICMS'),
-            'p_icms': _('Alíquota ICMS'),
-            'p_red_bc': _('% da Redução de BC'),
-            'mod_bcst': _('Modalidade de determinação da BC do ICMS ST'),
-            'p_mvast': _('% Margem de valor Adicionado do ICMS ST'),
-            'p_red_bcst': _('% da Redução de BC do ICMS ST'),
-            'p_icmsst': _('Alíquota ICMS ST'),
-            'mot_des_icms': _('Motivo da desoneração do ICMS'),
-            'p_dif': _('% do diferimento'),
-            'p_bc_op': _('% da BC operação própria'),
-            'ufst': _('UF para qual é devido o ICMS ST'),
-            'icms_incluido_preco': _('ICMS incluso no preço'),
-            'icmsst_incluido_preco': _('ICMS-ST incluso no preço'),
+            'mod_bc': _('Modalidad de determinación de la BC del ICMS'),
+            'p_icms': _('Alícuota ICMS'),
+            'p_red_bc': _('% de Reducción de BC'),
+            'mod_bcst': _('Modalidad de determinación de la BC del ICMS ST'),
+            'p_mvast': _('% Margen de valor Agregado del ICMS ST'),
+            'p_red_bcst': _('% de Reducción de BC del ICMS ST'),
+            'p_icmsst': _('Alícuota ICMS ST'),
+            'mot_des_icms': _('Motivo de exoneración del ICMS'),
+            'p_dif': _('% de diferimiento'),
+            'p_bc_op': _('% de la BC operación propia'),
+            'ufst': _('UF para la cual se debe el ICMS ST'),
+            'icms_incluido_preco': _('ICMS incluido en el precio'),
+            'icmsst_incluido_preco': _('ICMS-ST incluido en el precio'),
         }
 
 
@@ -118,16 +118,16 @@ class ICMSSNForm(forms.ModelForm):
         }
         labels = {
             'csosn': _('CSOSN'),
-            'p_cred_sn': _('Alíquota aplicável de cálculo do crédito'),
-            'mod_bc': _('Modalidade de determinação da BC do ICMS'),
-            'p_icms': _('Alíquota ICMS'),
-            'p_red_bc': _('% da Redução de BC'),
-            'mod_bcst': _('Modalidade de determinação da BC do ICMS ST'),
-            'p_mvast': _('% Margem de valor Adicionado do ICMS ST'),
-            'p_red_bcst': _('% da Redução de BC do ICMS ST'),
-            'p_icmsst': _('Alíquota ICMS ST'),
-            'icmssn_incluido_preco': _('ICMS incluso no preço'),
-            'icmssnst_incluido_preco': _('ICMS-ST incluso no preço'),
+            'p_cred_sn': _('Alícuota aplicable de cálculo del crédito'),
+            'mod_bc': _('Modalidad de determinación de la BC del ICMS'),
+            'p_icms': _('Alícuota ICMS'),
+            'p_red_bc': _('% de Reducción de BC'),
+            'mod_bcst': _('Modalidad de determinación de la BC del ICMS ST'),
+            'p_mvast': _('% Margen de valor Agregado del ICMS ST'),
+            'p_red_bcst': _('% de Reducción de BC del ICMS ST'),
+            'p_icmsst': _('Alícuota ICMS ST'),
+            'icmssn_incluido_preco': _('ICMS incluido en el precio'),
+            'icmssnst_incluido_preco': _('ICMS-ST incluido en el precio'),
         }
 
 
@@ -158,10 +158,10 @@ class ICMSUFDestForm(forms.ModelForm):
             'p_icms_inter_part': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
-            'p_fcp_dest': _('% do ICMS relativo ao FCP de destino'),
-            'p_icms_dest': _('Alíquota interna da UF de destino'),
-            'p_icms_inter': _('Alíquota interestadual das UF envolvidas'),
-            'p_icms_inter_part': _('% provisório de partilha do ICMS Interestadual'),
+            'p_fcp_dest': _('% del ICMS relativo al FCP de destino'),
+            'p_icms_dest': _('Alícuota interna de la UF de destino'),
+            'p_icms_inter': _('Alícuota interestatal de las UF involucradas'),
+            'p_icms_inter_part': _('% provisorio de partición del ICMS Interestatal'),
         }
 
 
@@ -196,15 +196,15 @@ class IPIForm(forms.ModelForm):
         }
         labels = {
             'cst': _('CST IPI'),
-            'cl_enq': _('Classe de enquadramento para Cigarros e Bebidas'),
-            'c_enq': _('Código de Enquadramento Legal'),
-            'cnpj_prod': _('CNPJ do produtor da mercadoria'),
-            'p_ipi': _('Alíquota do IPI'),
-            'tipo_ipi': _('Tipo de cáculo'),
-            'valor_fixo': _('Vl. fixo IPI (por produto)'),
-            'ipi_incluido_preco': _('IPI incluso no preço'),
-            'incluir_bc_icms': _('Incluir IPI na BC do ICMS'),
-            'incluir_bc_icmsst': _('Incluir IPI na BC do ICMS-ST'),
+            'cl_enq': _('Clase de encuadramiento para Cigarros y Bebidas'),
+            'c_enq': _('Código de Encuadramiento Legal'),
+            'cnpj_prod': _('CNPJ del productor de la mercancía'),
+            'p_ipi': _('Alícuota del IPI'),
+            'tipo_ipi': _('Tipo de cálculo'),
+            'valor_fixo': _('Val. fijo IPI (por producto)'),
+            'ipi_incluido_preco': _('IPI incluido en el precio'),
+            'incluir_bc_icms': _('Incluir IPI en la BC del ICMS'),
+            'incluir_bc_icmsst': _('Incluir IPI en la BC del ICMS-ST'),
         }
 
 
@@ -231,8 +231,8 @@ class PISForm(forms.ModelForm):
         }
         labels = {
             'cst': _('CST PIS'),
-            'p_pis': _('Alíquota do PIS (em %)'),
-            'valiq_pis': _('Alíquota do PIS por produto (em R$)'),
+            'p_pis': _('Alícuota del PIS (en %)'),
+            'valiq_pis': _('Alícuota del PIS por producto (en S/)'),
         }
 
 
@@ -260,6 +260,6 @@ class COFINSForm(forms.ModelForm):
         }
         labels = {
             'cst': _('CST COFINS'),
-            'p_cofins': _('Alíquota do COFINS (em %)'),
-            'valiq_cofins': _('Alíquota do COFINS por produto (em R$)'),
+            'p_cofins': _('Alícuota del COFINS (en %)'),
+            'valiq_cofins': _('Alícuota del COFINS por producto (en S/)'),
         }
