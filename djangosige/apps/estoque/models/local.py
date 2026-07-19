@@ -24,7 +24,7 @@ class LocalEstoque(models.Model):
         Produto, through='estoque.ProdutoEstocado')
 
     class Meta:
-        verbose_name = "Local de Estoque"
+        verbose_name = "Producto en Stock"
 
     def __unicode__(self):
         s = u'%s' % (self.descricao)
