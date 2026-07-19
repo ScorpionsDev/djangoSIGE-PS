@@ -53,16 +53,16 @@ class LancamentoForm(forms.ModelForm):
             'movimentar_caixa': forms.CheckboxInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
-            'grupo_plano': _('Grupo (Plano de contas)'),
-            'conta_corrente': _('Conta corrente (Banco/Agência/Conta)'),
-            'data_pagamento': _('Data do pagamento'),
-            'data_vencimento': _('Data de vencimento'),
-            'valor_total': _('Valor total (bruto)'),
-            'abatimento': _('Abatimento'),
-            'juros': _('Juros'),
-            'valor_liquido': _('Valor líquido'),
-            'movimentar_caixa': _('Movimentar Caixa?'),
+            'descricao': _('Descripción'),
+            'grupo_plano': _('Grupo (Plan de cuentas)'),
+            'conta_corrente': _('Cuenta corriente (Banco/Agencia/Cuenta)'),
+            'data_pagamento': _('Fecha de pago'),
+            'data_vencimento': _('Fecha de vencimiento'),
+            'valor_total': _('Monto total (bruto)'),
+            'abatimento': _('Deducción'),
+            'juros': _('Intereses'),
+            'valor_liquido': _('Monto líquido'),
+            'movimentar_caixa': _('¿Mover caja?'),
         }
 
 
@@ -87,7 +87,7 @@ class EntradaForm(LancamentoForm):
             attrs={'class': 'form-control', 'disabled': True})
         labels = LancamentoForm.Meta.labels
         labels['cliente'] = _('Cliente')
-        labels['status'] = _('Status')
+        labels['status'] = _('Estado')
 
 
 class SaidaForm(LancamentoForm):
@@ -110,8 +110,8 @@ class SaidaForm(LancamentoForm):
         widgets['status'] = forms.Select(
             attrs={'class': 'form-control', 'disabled': True})
         labels = LancamentoForm.Meta.labels
-        labels['fornecedor'] = _('Fornecedor')
-        labels['status'] = _('Status')
+        labels['fornecedor'] = _('Proveedor')
+        labels['status'] = _('Estado')
 
 
 class ContaReceberForm(EntradaForm):
