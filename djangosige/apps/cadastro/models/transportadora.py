@@ -7,7 +7,7 @@ from .base import Pessoa, UF_SIGLA
 class Transportadora(Pessoa):
 
     class Meta:
-        verbose_name = "Transportadora"
+        verbose_name = "Vehículo"
 
 
 class Veiculo(models.Model):
