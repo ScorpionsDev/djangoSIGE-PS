@@ -7,9 +7,9 @@ from decimal import Decimal
 from .base import Pessoa
 
 INDICADOR_IE_DEST = [
-    ('1', 'Contribuinte ICMS'),
-    ('2', 'Contribuinte isento de Inscrição'),
-    ('9', 'Não Contribuinte'),
+    ('1', 'Contribuyente ICMS'),
+    ('2', 'Contribuyente exento de Inscripción'),
+    ('9', 'No Contribuyente'),
 ]
 
 
