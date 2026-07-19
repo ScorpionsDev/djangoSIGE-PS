@@ -24,11 +24,11 @@ class FornecedorForm(forms.ModelForm):
             'informacoes_adicionais': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'nome_razao_social': _('Razão Social'),
+            'nome_razao_social': _('Razón Social'),
             'tipo_pessoa': _(''),
-            'ramo': _('Ramo'),
-            'inscricao_municipal': _('Inscrição Municipal'),
-            'informacoes_adicionais': _('Informações Adicionais'),
+            'ramo': _('Rubro'),
+            'inscricao_municipal': _('Inscripción Municipal'),
+            'informacoes_adicionais': _('Información Adicional'),
         }
 
     def save(self, commit=True):
