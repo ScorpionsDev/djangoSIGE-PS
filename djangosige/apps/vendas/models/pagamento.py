@@ -9,16 +9,16 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 FORMAS_PAG_ESCOLHAS = (
-    (u'01', u'Dinheiro'),
+    (u'01', u'Efectivo'),
     (u'02', u'Cheque'),
-    (u'03', u'Cartão de Crédito'),
-    (u'04', u'Cartão de Débito'),
-    (u'05', u'Crédito Loja'),
-    (u'10', u'Vale Alimentação'),
-    (u'11', u'Vale Refeição'),
-    (u'12', u'Vale Presente'),
-    (u'13', u'Vale Combustível'),
-    (u'99', u'Outros'),
+    (u'03', u'Tarjeta de Crédito'),
+    (u'04', u'Tarjeta de Débito'),
+    (u'05', u'Crédito en Tienda'),
+    (u'10', u'Vale de Alimentación'),
+    (u'11', u'Vale de Comida'),
+    (u'12', u'Vale de Regalo'),
+    (u'13', u'Vale de Combustible'),
+    (u'99', u'Otros'),
 )
 
 
@@ -48,7 +48,7 @@ class CondicaoPagamento(models.Model):
     parcela_inicial = models.IntegerField(default=0)  # Dias
 
     class Meta:
-        verbose_name = "Condição de Pagamento"
+        verbose_name = "Condición de Pago"
 
     def __unicode__(self):
         s = u'%s' % (self.descricao)
