@@ -25,9 +25,9 @@ class MovimentoForm(forms.ModelForm):
             'observacoes': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'quantidade_itens': _('Nº de itens'),
-            'valor_total': _('Valor total dos produtos (R$)'),
-            'observacoes': _('Observações'),
+            'quantidade_itens': _('Nº de ítems'),
+            'valor_total': _('Valor total de los productos (S/)'),
+            'observacoes': _('Observaciones'),
         }
 
 
@@ -48,11 +48,11 @@ class EntradaEstoqueForm(MovimentoForm):
         widgets['fornecedor'] = forms.Select(attrs={'class': 'form-control'})
         widgets['local_dest'] = forms.Select(attrs={'class': 'form-control'})
         labels = MovimentoForm.Meta.labels
-        labels['data_movimento'] = _('Data da entrada')
+        labels['data_movimento'] = _('Fecha de entrada')
         labels['tipo_movimento'] = _('Tipo')
         labels['pedido_compra'] = _('Pedido de compra')
-        labels['fornecedor'] = _('Fornecedor')
-        labels['local_dest'] = _('Local de destino')
+        labels['fornecedor'] = _('Proveedor')
+        labels['local_dest'] = _('Lugar de destino')
 
 
 class SaidaEstoqueForm(MovimentoForm):
@@ -70,10 +70,10 @@ class SaidaEstoqueForm(MovimentoForm):
         widgets['pedido_venda'] = forms.Select(attrs={'class': 'form-control'})
         widgets['local_orig'] = forms.Select(attrs={'class': 'form-control'})
         labels = MovimentoForm.Meta.labels
-        labels['data_movimento'] = _('Data da saída')
+        labels['data_movimento'] = _('Fecha de salida')
         labels['tipo_movimento'] = _('Tipo')
-        labels['pedido_venda'] = _('Pedido de venda')
-        labels['local_orig'] = _('Local de origem')
+        labels['pedido_venda'] = _('Pedido de venta')
+        labels['local_orig'] = _('Lugar de origen')
 
 
 class TransferenciaEstoqueForm(MovimentoForm):
@@ -91,14 +91,14 @@ class TransferenciaEstoqueForm(MovimentoForm):
         widgets['local_estoque_dest'] = forms.Select(
             attrs={'class': 'form-control'})
         labels = MovimentoForm.Meta.labels
-        labels['data_movimento'] = _('Data da transferência')
-        labels['local_estoque_orig'] = _('Local de origem')
-        labels['local_estoque_dest'] = _('Local de destino')
+        labels['data_movimento'] = _('Fecha de transferencia')
+        labels['local_estoque_orig'] = _('Lugar de origen')
+        labels['local_estoque_dest'] = _('Lugar de destino')
 
 
 class ItensMovimentoForm(forms.ModelForm):
     estoque_atual = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'readonly': True}), label='Estoque atual', required=False)
+        attrs={'class': 'form-control', 'readonly': True}), label='Stock actual', required=False)
 
     def __init__(self, *args, **kwargs):
         super(ItensMovimentoForm, self).__init__(*args, **kwargs)
@@ -126,9 +126,9 @@ class ItensMovimentoForm(forms.ModelForm):
 
         }
         labels = {
-            'produto': _('Produto'),
-            'quantidade': _('Quantidade'),
-            'valor_unit': _('Vl. Unit.'),
+            'produto': _('Producto'),
+            'quantidade': _('Cantidad'),
+            'valor_unit': _('Val. Unit.'),
             'subtotal': _('Subtotal'),
         }
 
