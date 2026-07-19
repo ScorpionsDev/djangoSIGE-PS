@@ -12,9 +12,9 @@ from djangosige.configs.settings import MEDIA_ROOT, APP_ROOT
 
 
 IND_PAG_ESCOLHAS = (
-    (u'0', u'Pagamento à vista'),
-    (u'1', u'Pagamento a prazo'),
-    (u'2', u'Outros'),
+    (u'0', u'Pago al contado'),
+    (u'1', u'Pago a plazos'),
+    (u'2', u'Otros'),
 )
 
 MOD_NFE_ESCOLHAS = (
@@ -24,52 +24,52 @@ MOD_NFE_ESCOLHAS = (
 
 TP_NFE_ESCOLHAS = (
     (u'0', u'Entrada'),
-    (u'1', u'Saída'),
+    (u'1', u'Salida'),
 )
 
 IDDEST_ESCOLHAS = (
-    (u'1', u'Operação interna'),
-    (u'2', u'Operação interestadual'),
-    (u'3', u'Operação com exterior'),
+    (u'1', u'Operación interna'),
+    (u'2', u'Operación interestatal'),
+    (u'3', u'Operación con exterior'),
 )
 
 TP_IMP_ESCOLHAS = (
-    (u'0', u'Sem geração de DANFE'),
-    (u'1', u'DANFE normal, Retrato'),
-    (u'2', u'DANFE normal, Paisagem'),
+    (u'0', u'Sin generación de DANFE'),
+    (u'1', u'DANFE normal, Vertical'),
+    (u'2', u'DANFE normal, Horizontal'),
     (u'4', u'DANFE NFC-e'),
 )
 
 TP_EMIS_ESCOLHAS = (
-    (u'1', u'Emissão normal'),
-    (u'2', u'Emissão em contingência'),
+    (u'1', u'Emisión normal'),
+    (u'2', u'Emisión en contingencia'),
 )
 
 TP_AMB_ESCOLHAS = (
-    (u'1', 'Produção'),
-    (u'2', 'Homologação'),
+    (u'1', u'Producción'),
+    (u'2', u'Homologación'),
 )
 
 FIN_NFE_ESCOLHAS = (
     (u'1', u'NF-e normal'),
-    (u'2', u'NF-e complementar'),
+    (u'2', u'NF-e complementaria'),
     (u'3', u'NF-e de ajuste'),
-    (u'4', u'Devolução de mercadoria'),
+    (u'4', u'Devolución de mercancía'),
 )
 
 IND_FINAL_ESCOLHAS = (
-    (u'0', u'0 - Não'),
-    (u'1', u'1 - Sim'),
+    (u'0', u'0 - No'),
+    (u'1', u'1 - Sí'),
 )
 
 IND_PRES_ESCOLHAS = (
-    (u'0', u'Não se aplica'),
-    (u'1', u'Operação presencial'),
-    (u'2', u'Operação não presencial, pela Internet'),
-    (u'3', u'Operação não presencial, Teleatendimento'),
-    (u'4', u'NFC-e em operação com entrega a domicílio'),
-    (u'5', u'Operação presencial, fora do estabelecimento'),
-    (u'9', u'Operação não presencial, outros.'),
+    (u'0', u'No se aplica'),
+    (u'1', u'Operación presencial'),
+    (u'2', u'Operación no presencial, por Internet'),
+    (u'3', u'Operación no presencial, Teleatención'),
+    (u'4', u'NFC-e en operación con entrega a domicilio'),
+    (u'5', u'Operación presencial, fuera del establecimiento'),
+    (u'9', u'Operación no presencial, otros.'),
 )
 
 VERSOES = (
@@ -82,28 +82,28 @@ ORIENTACAO_LOGO_DANFE = (
 )
 
 STATUS_NFE_ESCOLHAS = (
-    (u'0', u'Assinada'),
+    (u'0', u'Firmada'),
     (u'1', u'Autorizada'),
     (u'2', u'Denegada'),
-    (u'3', u'Em Digitação'),
-    (u'4', u'Em Processamento na SEFAZ'),
-    (u'5', u'Rejeitada'),
+    (u'3', u'En Digitación'),
+    (u'4', u'En Procesamiento en SEFAZ'),
+    (u'5', u'Rechazada'),
     (u'6', u'Validada'),
-    (u'7', u'Pendente'),
+    (u'7', u'Pendiente'),
     (u'8', u'Cancelada'),
     (u'9', u'Importada por XML')
 )
 
 ERROS_NFE_TIPOS = (
-    (u'0', 'Erro'),
-    (u'1', 'Alerta'),
+    (u'0', u'Error'),
+    (u'1', u'Alerta'),
 )
 
 RETORNO_SEFAZ_TIPOS = (
-    (u'0', u'Erro'),
-    (u'1', u'Resultado do processamento'),
-    (u'2', u'Rejeição'),
-    (u'3', u'Motivo denegação'),
+    (u'0', u'Error'),
+    (u'1', u'Resultado del procesamiento'),
+    (u'2', u'Rechazo'),
+    (u'3', u'Motivo de denegación'),
     (u'4', u'Alerta'),
 )
 
@@ -197,14 +197,14 @@ class NotaFiscalSaida(NotaFiscal):
     class Meta:
         verbose_name = "Nota Fiscal"
         permissions = (
-            ("emitir_notafiscal", "Pode emitir notas fiscais"),
-            ("cancelar_notafiscal", "Pode cancelar notas fiscais"),
-            ("gerar_danfe", "Pode gerar DANFE/DANFCE"),
-            ("consultar_cadastro", "Pode consultar cadastro no SEFAZ"),
-            ("inutilizar_notafiscal", "Pode inutilizar notas fiscais"),
-            ("consultar_notafiscal", "Pode consultar notas fiscais"),
-            ("baixar_notafiscal", "Pode baixar notas fiscais"),
-            ("manifestacao_destinatario", "Pode efetuar manifestação do destinatário"),
+            ("emitir_notafiscal", "Puede emitir notas fiscales"),
+            ("cancelar_notafiscal", "Puede cancelar notas fiscales"),
+            ("gerar_danfe", "Puede generar DANFE/DANFCE"),
+            ("consultar_cadastro", "Puede consultar registro en SEFAZ"),
+            ("inutilizar_notafiscal", "Puede inutilizar notas fiscales"),
+            ("consultar_notafiscal", "Puede consultar notas fiscales"),
+            ("baixar_notafiscal", "Puede descargar notas fiscales"),
+            ("manifestacao_destinatario", "Puede efectuar manifestación del destinatario"),
         )
 
     @property
@@ -242,7 +242,7 @@ class NotaFiscalEntrada(NotaFiscal):
         'cadastro.Empresa', related_name="dest_nfe_entrada", on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Nota Fiscal de Fornecedor"
+        verbose_name = "Nota Fiscal de Proveedor"
 
     @property
     def estado(self):
@@ -290,9 +290,9 @@ class ConfiguracaoNotaFiscal(models.Model):
 
     class Meta:
         default_permissions = ()
-        verbose_name = "Configuração NF-e"
+        verbose_name = "Configuración NF-e"
         permissions = (
-            ("configurar_nfe", "Pode modificar configuração de NF-e"),
+            ("configurar_nfe", "Puede modificar configuración de NF-e"),
         )
 
     @property
