@@ -56,22 +56,22 @@ class CompraForm(forms.ModelForm):
             'observacoes': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'data_emissao': _('Data de Emissão'),
-            'fornecedor': _('Fornecedor'),
-            'mod_frete': _('Modalidade do frete'),
-            'local_dest': _('Localização de estoque de destino dos produtos'),
-            'movimentar_estoque': _('Movimentar estoque?'),
+            'data_emissao': _('Fecha de Emisión'),
+            'fornecedor': _('Proveedor'),
+            'mod_frete': _('Modalidad del flete'),
+            'local_dest': _('Ubicación de stock de destino de los productos'),
+            'movimentar_estoque': _('¿Mover stock?'),
             'vendedor': _('Vendedor'),
-            'valor_total': _('Total (R$)'),
-            'tipo_desconto': _('Tipo de desconto'),
-            'desconto': _('Desconto (% ou R$)'),
-            'frete': _('Frete (R$)'),
-            'despesas': _('Despesas (R$)'),
-            'seguro': _('Seguro (R$)'),
-            'total_ipi': _('Valor total IPI (R$)'),
-            'total_icms': _('Valor total ICMS (R$)'),
-            'cond_pagamento': _('Condição de pagamento'),
-            'observacoes': _('Observações'),
+            'valor_total': _('Total (S/)'),
+            'tipo_desconto': _('Tipo de descuento'),
+            'desconto': _('Descuento (% o S/)'),
+            'frete': _('Flete (S/)'),
+            'despesas': _('Gastos (S/)'),
+            'seguro': _('Seguro (S/)'),
+            'total_ipi': _('Valor total IPI (S/)'),
+            'total_icms': _('Valor total ICMS (S/)'),
+            'cond_pagamento': _('Condición de pago'),
+            'observacoes': _('Observaciones'),
         }
 
 
@@ -86,8 +86,8 @@ class OrcamentoCompraForm(CompraForm):
         widgets['status'] = forms.Select(
             attrs={'class': 'form-control', 'disabled': True})
         labels = CompraForm.Meta.labels
-        labels['data_vencimento'] = _('Data de Vencimento')
-        labels['status'] = _('Status')
+        labels['data_vencimento'] = _('Fecha de Vencimiento')
+        labels['status'] = _('Estado')
 
 
 class PedidoCompraForm(CompraForm):
@@ -104,20 +104,20 @@ class PedidoCompraForm(CompraForm):
         widgets['orcamento'] = forms.Select(
             attrs={'class': 'form-control', 'disabled': True})
         labels = CompraForm.Meta.labels
-        labels['data_entrega'] = _('Data de Entrega')
-        labels['status'] = _('Status')
-        labels['orcamento'] = _('Orçamento')
+        labels['data_entrega'] = _('Fecha de Entrega')
+        labels['status'] = _('Estado')
+        labels['orcamento'] = _('Presupuesto')
 
 
 class ItensCompraForm(forms.ModelForm):
     total_sem_desconto = forms.DecimalField(widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Subtotal s/ desconto', required=False)
+        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Subtotal s/ descuento', required=False)
     total_impostos = forms.DecimalField(widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Impostos', required=False)
+        attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Impuestos', required=False)
     total_com_impostos = forms.DecimalField(widget=forms.TextInput(
         attrs={'class': 'form-control decimal-mask', 'readonly': True}), label='Total', required=False)
     calculo_imposto = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'hidden', 'disabled': True}), label='Cálc. Impostos', required=False)
+        attrs={'class': 'hidden', 'disabled': True}), label='Cálc. Impuestos', required=False)
 
     # IMPOSTO
     p_red_bc = forms.DecimalField(widget=forms.TextInput(
@@ -171,12 +171,12 @@ class ItensCompraForm(forms.ModelForm):
 
         }
         labels = {
-            'produto': _('Produto'),
-            'quantidade': _('Quantidade'),
-            'valor_unit': _('Vl. Unit.'),
+            'produto': _('Producto'),
+            'quantidade': _('Cantidad'),
+            'valor_unit': _('Val. Unit.'),
             'subtotal': _('Subtotal'),
-            'tipo_desconto': _('Tipo de desconto'),
-            'desconto': _('Desconto (% ou R$)'),
+            'tipo_desconto': _('Tipo de descuento'),
+            'desconto': _('Descuento (% o S/)'),
         }
 
     def is_valid(self):
