@@ -4,13 +4,13 @@ from django.db import models
 
 TP_OPERACAO_OPCOES = (
     (u'0', u'0 - Entrada'),
-    (u'1', u'1 - Saída'),
+    (u'1', u'1 - Salida'),
 )
 
 ID_DEST_OPCOES = (
-    (u'1', u'1 - Operação interna'),
-    (u'2', u'2 - Operação interestadual'),
-    (u'3', u'3 - Operação com exterior'),
+    (u'1', u'1 - Operación interna'),
+    (u'2', u'2 - Operación interestatal'),
+    (u'3', u'3 - Operación con exterior'),
 )
 
 
@@ -23,7 +23,7 @@ class NaturezaOperacao(models.Model):
         max_length=1, choices=ID_DEST_OPCOES, null=True, blank=True)
 
     class Meta:
-        verbose_name = "Natureza da Operação"
+        verbose_name = "Naturaleza de la Operación"
 
     def set_values_by_cfop(self):
         if self.cfop:
