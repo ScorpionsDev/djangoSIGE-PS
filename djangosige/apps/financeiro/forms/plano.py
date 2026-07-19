@@ -17,8 +17,8 @@ class PlanoContasGrupoForm(forms.ModelForm):
             'tipo_grupo': forms.Select(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
-            'tipo_grupo': _('Tipo de lançamento'),
+            'descricao': _('Descripción'),
+            'tipo_grupo': _('Tipo de asiento'),
         }
 
 
@@ -31,7 +31,7 @@ class PlanoContasSubgrupoForm(forms.ModelForm):
             'descricao': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'descricao': _('Descrição'),
+            'descricao': _('Descripción'),
         }
 
 
