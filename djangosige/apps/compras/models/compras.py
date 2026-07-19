@@ -14,11 +14,11 @@ import locale
 locale.setlocale(locale.LC_ALL, '')
 
 STATUS_PEDIDO_COMPRA_ESCOLHAS = (
-    (u'0', u'Aberto'),
+    (u'0', u'Abierto'),
     (u'1', u'Realizado'),
     (u'2', u'Cancelado'),
     (u'3', u'Importado por XML'),
-    (u'4', u'Recebido')
+    (u'4', u'Recibido')
 )
 
 
@@ -244,7 +244,7 @@ class OrcamentoCompra(Compra):
         max_length=1, choices=STATUS_ORCAMENTO_ESCOLHAS, default='0')
 
     class Meta:
-        verbose_name = "Orçamento de Compra"
+        verbose_name = "Presupuesto de Compra"
 
     @property
     def format_data_vencimento(self):
@@ -252,17 +252,17 @@ class OrcamentoCompra(Compra):
 
     @property
     def tipo_compra(self):
-        return 'Orçamento'
+        return 'Presupuesto'
 
     def edit_url(self):
         return reverse_lazy('compras:editarorcamentocompraview', kwargs={'pk': self.id})
 
     def __unicode__(self):
-        s = u'Orçamento nº %s' % (self.id)
+        s = u'Presupuesto nº %s' % (self.id)
         return s
 
     def __str__(self):
-        s = u'Orçamento nº %s' % (self.id)
+        s = u'Presupuesto nº %s' % (self.id)
         return s
 
 
@@ -276,7 +276,7 @@ class PedidoCompra(Compra):
     class Meta:
         verbose_name = "Pedido de Compra"
         permissions = (
-            ("faturar_pedidocompra", "Pode faturar Pedidos de Compra"),
+            ("faturar_pedidocompra", "Puede facturar Pedidos de Compra"),
         )
 
     @property
