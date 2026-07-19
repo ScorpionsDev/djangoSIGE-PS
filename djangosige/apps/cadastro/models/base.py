@@ -17,24 +17,24 @@ ENQUADRAMENTO_FISCAL = [
 ]
 
 TIPO_PESSOA = [
-    ('PF', 'Pessoa Física'),
-    ('PJ', 'Pessoa Jurídica'),
+    ('PF', 'Persona Natural'),
+    ('PJ', 'Persona Jurídica'),
 ]
 
 TIPO_TELEFONE = [
-    ('FIX', "Fixo"),
+    ('FIX', "Fijo"),
     ('CEL', "Celular"),
     ('FAX', "Fax"),
-    ('OUT', "Outro"),
+    ('OUT', "Otro"),
 ]
 
 TIPO_ENDERECO = [
     ('UNI', 'Único'),
     ('RES', 'Residencial'),
     ('COM', 'Comercial'),
-    ('COB', 'Cobrança'),
+    ('COB', 'Cobranza'),
     ('ENT', 'Entrega'),
-    ('OUT', 'Outro'),
+    ('OUT', 'Otro'),
 ]
 
 UF_SIGLA = [
