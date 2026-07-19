@@ -11,17 +11,17 @@ from decimal import Decimal
 
 class ProdutoForm(forms.ModelForm):
     custo = forms.DecimalField(max_digits=16, decimal_places=2, localize=True, widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'placeholder': 'R$ 0,00'}), initial=Decimal('0.00'), label='Custo', required=False)
+        attrs={'class': 'form-control decimal-mask', 'placeholder': 'R$ 0,00'}), initial=Decimal('0.00'), label='Costo', required=False)
     venda = forms.DecimalField(max_digits=16, decimal_places=2, localize=True, widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask', 'placeholder': 'R$ 0,00'}), initial=Decimal('0.00'), label='Venda', required=False)
+        attrs={'class': 'form-control decimal-mask', 'placeholder': 'R$ 0,00'}), initial=Decimal('0.00'), label='Venta', required=False)
 
     # Estoque
     estoque_inicial = forms.DecimalField(max_digits=16, decimal_places=2, localize=True, widget=forms.TextInput(
-        attrs={'class': 'form-control decimal-mask'}), label='Qtd. em estoque inicial', initial=Decimal('0.00'), required=False)
+        attrs={'class': 'form-control decimal-mask'}), label='Cant. en stock inicial', initial=Decimal('0.00'), required=False)
     fornecedor = forms.ChoiceField(choices=[(None, '----------')], widget=forms.Select(
-        attrs={'class': 'form-control'}), label='Fornecedor', required=False)
+        attrs={'class': 'form-control'}), label='Proveedor', required=False)
     local_dest = forms.ModelChoiceField(queryset=LocalEstoque.objects.all(), widget=forms.Select(
-        attrs={'class': 'form-control'}), empty_label=None, label='Localização do estoque de destino', required=False)
+        attrs={'class': 'form-control'}), empty_label=None, label='Ubicación del stock de destino', required=False)
 
     def __init__(self, *args, **kwargs):
         super(ProdutoForm, self).__init__(*args, **kwargs)
@@ -52,18 +52,18 @@ class ProdutoForm(forms.ModelForm):
         labels = {
             'codigo': _('Código'),
             'codigo_barras': _('Código de Barras (GTIN/EAN)'),
-            'descricao': _('Descrição'),
-            'categoria': _('Categoria'),
+            'descricao': _('Descripción'),
+            'categoria': _('Categoría'),
             'marca': _('Marca'),
-            'unidade': _('Unidade'),
+            'unidade': _('Unidad'),
             'ncm': _('NCM'),
-            'inf_adicionais': _('Informações adicionais'),
-            'origem': _('Origem'),
+            'inf_adicionais': _('Información adicional'),
+            'origem': _('Origen'),
             'cest': _('CEST'),
-            'cfop_padrao': _('CFOP (Padrão)'),
-            'grupo_fiscal': _('Grupo Fiscal (Padrão)'),
-            'estoque_minimo': _('Qtd. em estoque mínima'),
-            'controlar_estoque': _('Controlar estoque deste produto?'),
+            'cfop_padrao': _('CFOP (Estándar)'),
+            'grupo_fiscal': _('Grupo Fiscal (Estándar)'),
+            'estoque_minimo': _('Cant. en stock mínima'),
+            'controlar_estoque': _('¿Controlar stock de este producto?'),
         }
 
 
@@ -76,7 +76,7 @@ class CategoriaForm(forms.ModelForm):
             'categoria_desc': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'categoria_desc': _('Categoria'),
+            'categoria_desc': _('Categoría'),
         }
 
 
@@ -103,6 +103,6 @@ class UnidadeForm(forms.ModelForm):
             'sigla_unidade': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
-            'unidade_desc': _('Nome descritivo'),
+            'unidade_desc': _('Nombre descriptivo'),
             'sigla_unidade': _('Sigla'),
         }
