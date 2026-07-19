@@ -22,9 +22,9 @@ class PagamentoForm(forms.ModelForm):
             'valor_parcela': forms.TextInput(attrs={'class': 'form-control decimal-mask'}),
         }
         labels = {
-            'indice_parcela': _('Ind. Parcela'),
-            'vencimento': _('Vencimento'),
-            'valor_parcela': _('Valor'),
+            'indice_parcela': _('Nro. Cuota'),
+            'vencimento': _('Vencimiento'),
+            'valor_parcela': _('Monto'),
         }
 
 
