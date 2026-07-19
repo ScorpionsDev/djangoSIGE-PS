@@ -12,7 +12,7 @@ class AdicionarLocalEstoqueView(CustomCreateView):
     form_class = LocalEstoqueForm
     template_name = "base/popup_form.html"
     success_url = reverse_lazy('estoque:listalocalview')
-    success_message = "Localização de estoque <b>%(descricao)s </b>adicionada com sucesso."
+    success_message = "Local de inventario <b>%(descricao)s </b>añadido con éxito."
     permission_codename = 'add_localestoque'
 
     def get_success_message(self, cleaned_data):
@@ -24,7 +24,7 @@ class AdicionarLocalEstoqueView(CustomCreateView):
         return self.view_context(context)
 
     def view_context(self, context):
-        context['titulo'] = 'ADICIONAR LOCAL DE ESTOQUE'
+        context['titulo'] = 'AÑADIR LOCAL DE INVENTARIO'
         return context
 
 
@@ -36,7 +36,7 @@ class LocalEstoqueListView(CustomListView):
     permission_codename = 'view_localestoque'
 
     def view_context(self, context):
-        context['title_complete'] = 'LOCAIS DE ESTOQUE'
+        context['title_complete'] = 'LOCALES DE INVENTARIO'
         context['add_url'] = reverse_lazy('estoque:addlocalview')
         return context
 
@@ -50,14 +50,14 @@ class EditarLocalEstoqueView(CustomUpdateView):
     model = LocalEstoque
     template_name = "base/popup_form.html"
     success_url = reverse_lazy('estoque:listalocalview')
-    success_message = "Localização de estoque <b>%(descricao)s </b>editada com sucesso."
+    success_message = "Local de inventario <b>%(descricao)s </b>editado con éxito."
     permission_codename = 'change_localestoque'
 
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(cleaned_data, descricao=self.object.descricao)
 
     def view_context(self, context):
-        context['titulo'] = 'Editar local de estoque: ' + str(self.object)
+        context['titulo'] = 'Editar local de inventario: ' + str(self.object)
         return context
 
     def get_context_data(self, **kwargs):

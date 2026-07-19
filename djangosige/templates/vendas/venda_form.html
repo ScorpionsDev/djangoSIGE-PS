@@ -104,7 +104,7 @@
                 <div class="form-line">
                   {{form.transportadora}}
                 </div>
-                <a class="input-group-addon newwindow" style="color: green;" title="Adicionar transportadora" href="{% url 'cadastro:addtransportadoraview' %}"><i class="material-icons add-new-icon" title="Adicionar transportadora">&#xE147;</i></a>
+                <a class="input-group-addon newwindow" style="color: green;" title="Añadir transportadora" href="{% url 'cadastro:addtransportadoraview' %}"><i class="material-icons add-new-icon" title="Añadir transportadora">&#xE147;</i></a>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@
               <div class="form-line">
                 {{form.cliente}}
               </div>
-              <a class="input-group-addon newwindow" style="color: green;" title="Adicionar cliente" href="{% url 'cadastro:addclienteview' %}"><i class="material-icons add-new-icon" title="Adicionar cliente">&#xE147;</i></a>
+              <a class="input-group-addon newwindow" style="color: green;" title="Añadir cliente" href="{% url 'cadastro:addclienteview' %}"><i class="material-icons add-new-icon" title="Añadir cliente">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -369,7 +369,7 @@
           
         <h4 style="border-bottom: 1px solid #afabab;">Productos</h4>
 
-        {% include 'formset/formset_table.html' with formset=produtos_form title='Itens' %}
+        {% include 'formset/formset_table.html' with formset=produtos_form title='Productos' %}
 
         </div>
 
@@ -389,7 +389,7 @@
               <div class="form-line">
                 {{form.cond_pagamento}}
               </div>
-              <a class="input-group-addon newwindow" style="color: green;" title="Adicionar condição de pagamento" href="{% url 'vendas:addcondicaopagamentoview' %}"><i class="material-icons add-new-icon" title="Adicionar condição de pagamento">&#xE147;</i></a>
+              <a class="input-group-addon newwindow" style="color: green;" title="Añadir condición de pago" href="{% url 'vendas:addcondicaopagamentoview' %}"><i class="material-icons add-new-icon" title="Añadir condición de pago">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -436,7 +436,7 @@
               <div class="form-line">
                 {{form.local_orig}}
               </div>
-              <a class="input-group-addon popup" style="color: green;" title="Adicionar localização de estoque" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Adicionar localização de estoque">&#xE147;</i></a>
+              <a class="input-group-addon popup" style="color: green;" title="Añadir local de inventario" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Añadir local de inventario">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -445,7 +445,7 @@
           <div class="form-group">
             <div class="form-line">
               {{form.movimentar_estoque}}
-              <label for="id_movimentar_estoque" style="font-weight: bold;" title="Selecionar para movimentar o estoque dos produtos com estoque controlado ao faturar o pedido.">{{form.movimentar_estoque.label}}</label>
+              <label for="id_movimentar_estoque" style="font-weight: bold;" title="Selecionar para movimentar o estoque dos produtos com estoque controlled ao faturar o pedido.">{{form.movimentar_estoque.label}}</label>
             </div>
           </div>
         </div>
@@ -458,7 +458,7 @@
       
   </div>
   {% if object.status == '0' or not object%}
-  <button class="btn btn-success foot-btn" type="submit"><i class="material-icons">&#xE148;</i><span> SALVAR</span></button>
+  <button class="btn btn-success foot-btn" type="submit"><i class="material-icons">&#xE148;</i><span> GUARDAR</span></button>
   {% endif %}
 </div>
 <!--#Body-->

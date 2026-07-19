@@ -59,7 +59,7 @@ class CompraForm(forms.ModelForm):
             'data_emissao': _('Fecha de Emisión'),
             'fornecedor': _('Proveedor'),
             'mod_frete': _('Modalidad del flete'),
-            'local_dest': _('Ubicación de stock de destino de los productos'),
+            'local_dest': _('Local de inventario de destino de los productos'),
             'movimentar_estoque': _('¿Mover stock?'),
             'vendedor': _('Vendedor'),
             'valor_total': _('Total (S/)'),

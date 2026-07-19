@@ -40,7 +40,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-line">
-                          <label>{% if object.get_tipo == 'Entrada' %}Data da entrada{% elif object.get_tipo == 'Saída' %}Data da saída{% elif object.get_tipo == 'Transferência'  %}Data da transferência{% endif %}</label>
+                          <label>{% if object.get_tipo == 'Entrada' %}Fecha de entrada{% elif object.get_tipo == 'Saída' %}Fecha de salida{% elif object.get_tipo == 'Transferência'  %}Fecha de transferencia{% endif %}</label>
                           <span class="form-control">{{object.data_movimento}}</span>
                         </div>
                       </div>
@@ -184,7 +184,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <div class="form-line">
-                          <label>Valor total de los productos (R$)</label>
+                          <label>Valor total de los productos (S/)</label>
                           <span class="form-control">{{object.valor_total}}</span>
                         </div>
                       </div>
@@ -193,7 +193,7 @@
 
                     <div class="col-sm-12 lista" style="padding:0px;">
 
-                      <h4 style="border-bottom: 1px solid #afabab;">Artículos movilizados</h4>
+                      <h4 style="border-bottom: 1px solid #afabab;">Artículos movidos</h4>
                       <table class="table table-bordered lista-table">
                         <thead>
                           <tr>

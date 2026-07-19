@@ -22,7 +22,7 @@
                 <a href="{{add_url}}" class="btn btn-success"><i class="material-icons">&#xE148;</i><span> AÑADIR</span></a>
                 {% else %}
                 <div class="dropdown" style="display: inline-block;float:right;">
-                  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Adicionar
+                  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Añadir
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu pull-right">
                     <li><a href="{% url 'estoque:addentradaestoqueview' %}">Entrada de inventario</a></li>
@@ -48,7 +48,7 @@
            {% elif all_transferencias %}
            {% include 'estoque/movimento/transferencias_estoque_list_table.html' %}
            {% else %}
-           Nenhum registro encontrado
+           Ningún registro encontrado
            {% endif %}
 
       </div>

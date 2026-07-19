@@ -46,7 +46,7 @@
                 <div class="col-sm-5">
                   <div class="form-group">
                     <div class="form-line">
-                      <label>Ubicacion de inventario</label>
+                      <label>Local de inventario</label>
                       <select class="form-control" id="local_id" name="local">
                         <option value="">Todos</option>
                       {% for local in todos_locais %}
@@ -89,7 +89,7 @@
                     <td>{{produto.venda}}</td>
                   </tr>
                     <tr colspan="6" class="plano-subgrupo-row accordion-{{produto.id}} in">
-                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Ubicacion</th>
+                      <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Local</th>
                       <th colspan="3" style="font-weight: bolder; border-bottom-color: darkblue;">Cantidad</th>
                     </tr>
                     {% for pe in produto.produto_estocado.all %}

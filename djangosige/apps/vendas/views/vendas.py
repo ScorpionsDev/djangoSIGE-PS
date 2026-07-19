@@ -91,11 +91,11 @@ class AdicionarOrcamentoVendaView(AdicionarVendaView):
     form_class = OrcamentoVendaForm
     template_name = "vendas/orcamento_venda/orcamento_venda_add.html"
     success_url = reverse_lazy('vendas:listaorcamentovendaview')
-    success_message = "<b>Orçamento de venda %(id)s </b>adicionado com sucesso."
+    success_message = "<b>Presupuesto de venta %(id)s </b>añadido con éxito."
     permission_codename = 'add_orcamentovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR ORÇAMENTO DE VENDA'
+        context['title_complete'] = 'AÑADIR PRESUPUESTO DE VENTA'
         context['return_url'] = reverse_lazy('vendas:listaorcamentovendaview')
         return context
 
@@ -112,11 +112,11 @@ class AdicionarPedidoVendaView(AdicionarVendaView):
     form_class = PedidoVendaForm
     template_name = "vendas/pedido_venda/pedido_venda_add.html"
     success_url = reverse_lazy('vendas:listapedidovendaview')
-    success_message = "<b>Pedido de venda %(id)s </b>adicionado com sucesso."
+    success_message = "<b>Pedido de venta %(id)s </b>añadido con éxito."
     permission_codename = 'add_pedidovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR PEDIDO DE VENDA'
+        context['title_complete'] = 'AÑADIR PEDIDO DE VENTA'
         context['return_url'] = reverse_lazy('vendas:listapedidovendaview')
         return context
 
@@ -144,7 +144,7 @@ class OrcamentoVendaListView(VendaListView):
     permission_codename = 'view_orcamentovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE VENDA'
+        context['title_complete'] = 'PRESUPUESTOS DE VENTA'
         context['add_url'] = reverse_lazy('vendas:addorcamentovendaview')
         return context
 
@@ -153,7 +153,7 @@ class OrcamentoVendaVencidosListView(OrcamentoVendaListView):
     success_url = reverse_lazy('vendas:listaorcamentovendavencidoview')
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE VENDA VENCIDOS'
+        context['title_complete'] = 'PRESUPUESTOS DE VENTA VENCIDOS'
         context['add_url'] = reverse_lazy('vendas:addorcamentovendaview')
         return context
 
@@ -165,7 +165,7 @@ class OrcamentoVendaVencimentoHojeListView(OrcamentoVendaListView):
     success_url = reverse_lazy('vendas:listaorcamentovendahojeview')
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE VENDA COM VENCIMENTO DIA ' + \
+        context['title_complete'] = 'PRESUPUESTOS DE VENTA CON VENCIMIENTO DÍA ' + \
             datetime.now().date().strftime('%d/%m/%Y')
         context['add_url'] = reverse_lazy('vendas:addorcamentovendaview')
         return context
@@ -182,7 +182,7 @@ class PedidoVendaListView(VendaListView):
     permission_codename = 'view_pedidovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'PEDIDOS DE VENDA'
+        context['title_complete'] = 'PEDIDOS DE VENTA'
         context['add_url'] = reverse_lazy('vendas:addpedidovendaview')
         return context
 
@@ -191,7 +191,7 @@ class PedidoVendaAtrasadosListView(PedidoVendaListView):
     success_url = reverse_lazy('vendas:listapedidovendaatrasadosview')
 
     def view_context(self, context):
-        context['title_complete'] = 'PEDIDOS DE VENDA ATRASADOS'
+        context['title_complete'] = 'PEDIDOS DE VENTA ATRASADOS'
         context['add_url'] = reverse_lazy('vendas:addpedidovendaview')
         return context
 
@@ -203,7 +203,7 @@ class PedidoVendaEntregaHojeListView(PedidoVendaListView):
     success_url = reverse_lazy('vendas:listapedidovendahojeview')
 
     def view_context(self, context):
-        context['title_complete'] = 'PEDIDOS DE VENDA COM ENTREGA DIA ' + \
+        context['title_complete'] = 'PEDIDOS DE VENTA CON ENTREGA DÍA ' + \
             datetime.now().date().strftime('%d/%m/%Y')
         context['add_url'] = reverse_lazy('vendas:addpedidovendaview')
         return context
@@ -291,11 +291,11 @@ class EditarOrcamentoVendaView(EditarVendaView):
     model = OrcamentoVenda
     template_name = "vendas/orcamento_venda/orcamento_venda_edit.html"
     success_url = reverse_lazy('vendas:listaorcamentovendaview')
-    success_message = "<b>Orçamento de venda %(id)s </b>editado com sucesso."
+    success_message = "<b>Presupuesto de venta %(id)s </b>editado con éxito."
     permission_codename = 'change_orcamentovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'EDITAR ORÇAMENTO DE VENDA N°' + \
+        context['title_complete'] = 'EDITAR PRESUPUESTO DE VENTA N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy('vendas:listaorcamentovendaview')
         return context
@@ -316,11 +316,11 @@ class EditarPedidoVendaView(EditarVendaView):
     model = PedidoVenda
     template_name = "vendas/pedido_venda/pedido_venda_edit.html"
     success_url = reverse_lazy('vendas:listapedidovendaview')
-    success_message = "<b>Pedido de venda %(id)s </b>editado com sucesso."
+    success_message = "<b>Pedido de venta %(id)s </b>editado con éxito."
     permission_codename = 'change_pedidovenda'
 
     def view_context(self, context):
-        context['title_complete'] = 'EDITAR PEDIDO DE VENDA N°' + \
+        context['title_complete'] = 'EDITAR PEDIDO DE VENTA N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy('vendas:listapedidovendaview')
         return context

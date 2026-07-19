@@ -66,7 +66,7 @@ class VendaForm(forms.ModelForm):
             'ind_final': _('¿Consumidor final?'),
             'transportadora': _('Transportista'),
             'mod_frete': _('Modalidad del flete'),
-            'local_orig': _('Ubicación de stock de origen de los productos'),
+            'local_orig': _('Local de inventario de origen de los productos'),
             'movimentar_estoque': _('¿Mover stock?'),
             'veiculo': _('Vehículo'),
             'vendedor': _('Vendedor'),

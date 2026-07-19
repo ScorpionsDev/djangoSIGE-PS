@@ -135,10 +135,10 @@ class AdicionarEntradaEstoqueView(AdicionarMovimentoEstoqueBaseView):
     form_class = EntradaEstoqueForm
     template_name = "estoque/movimento/movimento_estoque_add.html"
     success_url = reverse_lazy('estoque:listaentradasestoqueview')
-    success_message = "<b>Movimento de estoque de entrada nº%(pk)s</b> adicionado com sucesso."
+    success_message = "<b>Movimiento de inventario de entrada nº%(pk)s</b> añadido con éxito."
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR ENTRADA EM ESTOQUE'
+        context['title_complete'] = 'AÑADIR ENTRADA EN INVENTARIO'
         context['return_url'] = reverse_lazy(
             'estoque:listaentradasestoqueview')
         return context
@@ -148,10 +148,10 @@ class AdicionarSaidaEstoqueView(AdicionarMovimentoEstoqueBaseView):
     form_class = SaidaEstoqueForm
     template_name = "estoque/movimento/movimento_estoque_add.html"
     success_url = reverse_lazy('estoque:listasaidasestoqueview')
-    success_message = "<b>Movimento de estoque de saída nº%(pk)s</b> adicionado com sucesso."
+    success_message = "<b>Movimiento de inventario de salida nº%(pk)s</b> añadido con éxito."
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR SAÍDA EM ESTOQUE'
+        context['title_complete'] = 'AÑADIR SALIDA EN INVENTARIO'
         context['return_url'] = reverse_lazy('estoque:listasaidasestoqueview')
         return context
 
@@ -160,10 +160,10 @@ class AdicionarTransferenciaEstoqueView(AdicionarMovimentoEstoqueBaseView):
     form_class = TransferenciaEstoqueForm
     template_name = "estoque/movimento/movimento_estoque_add.html"
     success_url = reverse_lazy('estoque:listatransferenciasestoqueview')
-    success_message = "<b>Movimento de estoque de transferência nº%(pk)s</b> adicionado com sucesso."
+    success_message = "<b>Movimiento de inventario de transferencia nº%(pk)s</b> añadido con éxito."
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR TRANSFERÊNCIA EM ESTOQUE'
+        context['title_complete'] = 'AÑADIR TRANSFERENCIA EN INVENTARIO'
         context['return_url'] = reverse_lazy(
             'estoque:listatransferenciasestoqueview')
         return context
@@ -184,7 +184,7 @@ class MovimentoEstoqueListView(MovimentoEstoqueBaseListView):
     success_url = reverse_lazy('estoque:listamovimentoestoqueview')
 
     def view_context(self, context):
-        context['title_complete'] = 'TODAS AS MOVIMENTAÇÕES DE ESTOQUE'
+        context['title_complete'] = 'TODOS LOS MOVIMIENTOS DE INVENTARIO'
         return context
 
     def get_queryset(self):
@@ -217,7 +217,7 @@ class EntradaEstoqueListView(MovimentoEstoqueBaseListView):
     success_url = reverse_lazy('estoque:listaentradasestoqueview')
 
     def view_context(self, context):
-        context['title_complete'] = 'ENTRADAS EM ESTOQUE'
+        context['title_complete'] = 'ENTRADAS EN INVENTARIO'
         context['add_url'] = reverse_lazy('estoque:addentradaestoqueview')
         return context
 
@@ -229,7 +229,7 @@ class SaidaEstoqueListView(MovimentoEstoqueBaseListView):
     success_url = reverse_lazy('estoque:listasaidasestoqueview')
 
     def view_context(self, context):
-        context['title_complete'] = 'SAÍDAS EM ESTOQUE'
+        context['title_complete'] = 'SALIDAS EN INVENTARIO'
         context['add_url'] = reverse_lazy('estoque:addsaidaestoqueview')
         return context
 
@@ -241,7 +241,7 @@ class TransferenciaEstoqueListView(MovimentoEstoqueBaseListView):
     success_url = reverse_lazy('estoque:listatransferenciasestoqueview')
 
     def view_context(self, context):
-        context['title_complete'] = 'TRANSFERÊNCIAS EM ESTOQUE'
+        context['title_complete'] = 'TRANSFERENCIAS EN INVENTARIO'
         context['add_url'] = reverse_lazy(
             'estoque:addtransferenciaestoqueview')
         return context
@@ -261,7 +261,7 @@ class DetalharEntradaEstoqueView(DetalharMovimentoEstoqueBaseView):
     model = EntradaEstoque
 
     def view_context(self, context):
-        context['title_complete'] = 'MOVIMENTO DE ENTRADA EM ESTOQUE N°' + \
+        context['title_complete'] = 'MOVIMIENTO DE ENTRADA EN INVENTARIO N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy(
             'estoque:listaentradasestoqueview')
@@ -272,7 +272,7 @@ class DetalharSaidaEstoqueView(DetalharMovimentoEstoqueBaseView):
     model = SaidaEstoque
 
     def view_context(self, context):
-        context['title_complete'] = 'MOVIMENTO DE SAÍDA EM ESTOQUE N°' + \
+        context['title_complete'] = 'MOVIMIENTO DE SALIDA EN INVENTARIO N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy('estoque:listasaidasestoqueview')
         return context
@@ -282,7 +282,7 @@ class DetalharTransferenciaEstoqueView(DetalharMovimentoEstoqueBaseView):
     model = TransferenciaEstoque
 
     def view_context(self, context):
-        context['title_complete'] = 'MOVIMENTO DE TRANSFERÊNCIA EM ESTOQUE N°' + \
+        context['title_complete'] = 'MOVIMIENTO DE TRANSFERENCIA EN INVENTARIO N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy(
             'estoque:listatransferenciasestoqueview')

@@ -21,7 +21,7 @@ class ProdutoForm(forms.ModelForm):
     fornecedor = forms.ChoiceField(choices=[(None, '----------')], widget=forms.Select(
         attrs={'class': 'form-control'}), label='Proveedor', required=False)
     local_dest = forms.ModelChoiceField(queryset=LocalEstoque.objects.all(), widget=forms.Select(
-        attrs={'class': 'form-control'}), empty_label=None, label='Ubicación del stock de destino', required=False)
+        attrs={'class': 'form-control'}), empty_label=None, label='Local de inventario de destino', required=False)
 
     def __init__(self, *args, **kwargs):
         super(ProdutoForm, self).__init__(*args, **kwargs)

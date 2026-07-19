@@ -19,7 +19,7 @@ class ConsultaEstoqueView(CustomListView):
         context['todos_produtos'] = Produto.objects.filter(
             controlar_estoque=True)
         context['todos_locais'] = LocalEstoque.objects.all()
-        context['title_complete'] = 'CONSULTA DE ESTOQUE'
+        context['title_complete'] = 'CONSULTA DE INVENTARIO'
         return context
 
     def get_queryset(self):

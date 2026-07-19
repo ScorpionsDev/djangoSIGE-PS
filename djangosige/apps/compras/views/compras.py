@@ -93,11 +93,11 @@ class AdicionarOrcamentoCompraView(AdicionarCompraView):
     form_class = OrcamentoCompraForm
     template_name = "compras/orcamento_compra/orcamento_compra_add.html"
     success_url = reverse_lazy('compras:listaorcamentocompraview')
-    success_message = "<b>Orçamento de compra %(id)s </b>adicionado com sucesso."
+    success_message = "<b>Presupuesto de compra %(id)s </b>añadido con éxito."
     permission_codename = 'add_orcamentocompra'
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR ORÇAMENTO DE COMPRA'
+        context['title_complete'] = 'AÑADIR PRESUPUESTO DE COMPRA'
         context['return_url'] = reverse_lazy(
             'compras:listaorcamentocompraview')
         return context
@@ -115,11 +115,11 @@ class AdicionarPedidoCompraView(AdicionarCompraView):
     form_class = PedidoCompraForm
     template_name = "compras/pedido_compra/pedido_compra_add.html"
     success_url = reverse_lazy('compras:listapedidocompraview')
-    success_message = "<b>Pedido de compra %(id)s </b>adicionado com sucesso."
+    success_message = "<b>Pedido de compra %(id)s </b>añadido con éxito."
     permission_codename = 'add_pedidocompra'
 
     def view_context(self, context):
-        context['title_complete'] = 'ADICIONAR PEDIDO DE COMPRA'
+        context['title_complete'] = 'AÑADIR PEDIDO DE COMPRA'
         context['return_url'] = reverse_lazy('compras:listapedidocompraview')
         return context
 
@@ -147,7 +147,7 @@ class OrcamentoCompraListView(CompraListView):
     permission_codename = 'view_orcamentocompra'
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE COMPRA'
+        context['title_complete'] = 'PRESUPUESTOS DE COMPRA'
         context['add_url'] = reverse_lazy('compras:addorcamentocompraview')
         return context
 
@@ -156,7 +156,7 @@ class OrcamentoCompraVencidosListView(OrcamentoCompraListView):
     success_url = reverse_lazy('compras:listaorcamentocompravencidosview')
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE COMPRA VENCIDOS'
+        context['title_complete'] = 'PRESUPUESTOS DE COMPRA VENCIDOS'
         context['add_url'] = reverse_lazy('compras:addorcamentocompraview')
         return context
 
@@ -168,7 +168,7 @@ class OrcamentoCompraVencimentoHojeListView(OrcamentoCompraListView):
     success_url = reverse_lazy('compras:listaorcamentocomprahojeview')
 
     def view_context(self, context):
-        context['title_complete'] = 'ORÇAMENTOS DE COMPRA COM VENCIMENTO DIA ' + \
+        context['title_complete'] = 'PRESUPUESTOS DE COMPRA CON VENCIMIENTO DÍA ' + \
             datetime.now().date().strftime('%d/%m/%Y')
         context['add_url'] = reverse_lazy('compras:addorcamentocompraview')
         return context
@@ -206,7 +206,7 @@ class PedidoCompraEntregaHojeListView(PedidoCompraListView):
     success_url = reverse_lazy('compras:listapedidocomprahojeview')
 
     def view_context(self, context):
-        context['title_complete'] = 'PEDIDOS DE COMPRA COM ENTREGA DIA ' + \
+        context['title_complete'] = 'PEDIDOS DE COMPRA CON ENTREGA DÍA ' + \
             datetime.now().date().strftime('%d/%m/%Y')
         context['add_url'] = reverse_lazy('compras:addpedidocompraview')
         return context
@@ -296,11 +296,11 @@ class EditarOrcamentoCompraView(EditarCompraView):
     model = OrcamentoCompra
     template_name = "compras/orcamento_compra/orcamento_compra_edit.html"
     success_url = reverse_lazy('compras:listaorcamentocompraview')
-    success_message = "<b>Orçamento de compra %(id)s </b>editado com sucesso."
+    success_message = "<b>Presupuesto de compra %(id)s </b>editado con éxito."
     permission_codename = 'change_orcamentocompra'
 
     def view_context(self, context):
-        context['title_complete'] = 'EDITAR ORÇAMENTO DE COMPRA N°' + \
+        context['title_complete'] = 'EDITAR PRESUPUESTO DE COMPRA N°' + \
             str(self.object.id)
         context['return_url'] = reverse_lazy(
             'compras:listaorcamentocompraview')
@@ -322,7 +322,7 @@ class EditarPedidoCompraView(EditarCompraView):
     model = PedidoCompra
     template_name = "compras/pedido_compra/pedido_compra_edit.html"
     success_url = reverse_lazy('compras:listapedidocompraview')
-    success_message = "<b>Pedido de compra %(id)s </b>editado com sucesso."
+    success_message = "<b>Pedido de compra %(id)s </b>editado con éxito."
     permission_codename = 'change_pedidocompra'
 
     def view_context(self, context):
@@ -502,7 +502,7 @@ class ReceberPedidoCompraView(CustomView):
         pedido.save()
 
         messages.success(
-            request, "<b>Pedido de compra {0} </b>recebido com sucesso.".format(str(pedido.id)))
+            request, "<b>Pedido de compra {0} </b>recibido con éxito.".format(str(pedido.id)))
 
         return redirect(reverse_lazy('compras:listapedidocompraview'))
 

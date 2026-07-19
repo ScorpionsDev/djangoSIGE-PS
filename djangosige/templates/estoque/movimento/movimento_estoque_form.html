@@ -42,7 +42,7 @@
               <div class="form-line">
                 {{form.pedido_compra}}
               </div>
-              <a class="input-group-addon newwindow" style="color: green;" title="Adicionar pedido de compra" href="{% url 'compras:addpedidocompraview' %}"><i class="material-icons add-new-icon" title="Adicionar pedido de compra">&#xE147;</i></a>
+              <a class="input-group-addon newwindow" style="color: green;" title="Añadir pedido de compra" href="{% url 'compras:addpedidocompraview' %}"><i class="material-icons add-new-icon" title="Añadir pedido de compra">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@
               <div class="form-line">
                 {{form.pedido_venda}}
               </div>
-              <a class="input-group-addon newwindow" style="color: green;" title="Adicionar pedido de venda" href="{% url 'vendas:addpedidovendaview' %}"><i class="material-icons add-new-icon" title="Adicionar pedido de venda">&#xE147;</i></a>
+              <a class="input-group-addon newwindow" style="color: green;" title="Añadir pedido de venta" href="{% url 'vendas:addpedidovendaview' %}"><i class="material-icons add-new-icon" title="Añadir pedido de venta">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
               <div class="form-line">
                 {{form.local_orig}}
               </div>
-              <a class="input-group-addon popup" style="color: green;" title="Adicionar local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Adicionar local">&#xE147;</i></a>
+              <a class="input-group-addon popup" style="color: green;" title="Añadir local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Añadir local">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
               <div class="form-line">
                 {{form.local_dest}}
               </div>
-              <a class="input-group-addon popup" style="color: green;" title="Adicionar local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Adicionar local">&#xE147;</i></a>
+              <a class="input-group-addon popup" style="color: green;" title="Añadir local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Añadir local">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
               <div class="form-line">
                 {{form.fornecedor}}
               </div>
-              <a class="input-group-addon newwindow" style="color: green;" title="Adicionar fornecedor" href="{% url 'cadastro:addfornecedorview' %}"><i class="material-icons add-new-icon" title="Adicionar fornecedor">&#xE147;</i></a>
+              <a class="input-group-addon newwindow" style="color: green;" title="Añadir proveedor" href="{% url 'cadastro:addfornecedorview' %}"><i class="material-icons add-new-icon" title="Añadir proveedor">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
               <div class="form-line">
                 {{form.local_estoque_orig}}
               </div>
-              <a class="input-group-addon popup" style="color: green;" title="Adicionar local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Adicionar local">&#xE147;</i></a>
+              <a class="input-group-addon popup" style="color: green;" title="Añadir local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Añadir local">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@
               <div class="form-line">
                 {{form.local_estoque_dest}}
               </div>
-              <a class="input-group-addon popup" style="color: green;" title="Adicionar local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Adicionar local">&#xE147;</i></a>
+              <a class="input-group-addon popup" style="color: green;" title="Añadir local" href="{% url 'estoque:addlocalview' %}"><i class="material-icons add-new-icon" title="Añadir local">&#xE147;</i></a>
             </div>
           </div>
         </div>
@@ -179,9 +179,9 @@
 
         <div class="col-sm-12" style="padding:0px;">
 
-          <h4 style="border-bottom: 1px solid #afabab;">Itens movimentados</h4>
+          <h4 style="border-bottom: 1px solid #afabab;">Artículos movidos</h4>
 
-            {% include 'formset/formset_table.html' with formset=itens_form title='Itens' %}
+            {% include 'formset/formset_table.html' with formset=itens_form title='Artículos' %}
         </div>
 
       </div>
@@ -192,6 +192,6 @@
 
   </div>
   
-  <button class="btn btn-success foot-btn" type="submit"><i class="material-icons">&#xE148;</i><span> SALVAR</span></button>
+  <button class="btn btn-success foot-btn" type="submit"><i class="material-icons">&#xE148;</i><span> GUARDAR</span></button>
 </div>
 <!--#Body-->

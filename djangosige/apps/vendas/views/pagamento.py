@@ -14,7 +14,7 @@ class AdicionarCondicaoPagamentoView(CustomCreateView):
     form_class = CondicaoPagamentoForm
     template_name = "vendas/pagamento/condicao_pagamento_add.html"
     success_url = reverse_lazy('vendas:listacondicaopagamentoview')
-    success_message = "Condição de pagamento <b>%(descricao)s </b>adicionada com sucesso."
+    success_message = "Condición de pago <b>%(descricao)s </b>añadida con éxito."
     permission_codename = 'add_condicaopagamento'
 
     def get_success_message(self, cleaned_data):
@@ -23,7 +23,7 @@ class AdicionarCondicaoPagamentoView(CustomCreateView):
     def get_context_data(self, **kwargs):
         context = super(AdicionarCondicaoPagamentoView,
                         self).get_context_data(**kwargs)
-        context['title_complete'] = 'ADICIONAR CONDIÇÃO DE PAGAMENTO'
+        context['title_complete'] = 'AÑADIR CONDICIÓN DE PAGO'
         context['return_url'] = reverse_lazy(
             'vendas:listacondicaopagamentoview')
         return context
@@ -39,7 +39,7 @@ class CondicaoPagamentoListView(CustomListView):
     def get_context_data(self, **kwargs):
         context = super(CondicaoPagamentoListView,
                         self).get_context_data(**kwargs)
-        context['title_complete'] = 'CONDIÇÕES DE PAGAMENTO CADASTRADAS'
+        context['title_complete'] = 'CONDICIONES DE PAGO REGISTRADAS'
         context['add_url'] = reverse_lazy('vendas:addcondicaopagamentoview')
         return context
 
@@ -49,7 +49,7 @@ class EditarCondicaoPagamentoView(CustomUpdateView):
     model = CondicaoPagamento
     template_name = "vendas/pagamento/condicao_pagamento_edit.html"
     success_url = reverse_lazy('vendas:listacondicaopagamentoview')
-    success_message = "Condição de pagamento <b>%(descricao)s </b>editada com sucesso."
+    success_message = "Condición de pago <b>%(descricao)s </b>editada con éxito."
     permission_codename = 'change_condicaopagamento'
 
     def get_success_message(self, cleaned_data):

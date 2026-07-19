@@ -52,7 +52,7 @@ class EntradaEstoqueForm(MovimentoForm):
         labels['tipo_movimento'] = _('Tipo')
         labels['pedido_compra'] = _('Pedido de compra')
         labels['fornecedor'] = _('Proveedor')
-        labels['local_dest'] = _('Lugar de destino')
+        labels['local_dest'] = _('Local de destino')
 
 
 class SaidaEstoqueForm(MovimentoForm):
@@ -73,7 +73,7 @@ class SaidaEstoqueForm(MovimentoForm):
         labels['data_movimento'] = _('Fecha de salida')
         labels['tipo_movimento'] = _('Tipo')
         labels['pedido_venda'] = _('Pedido de venta')
-        labels['local_orig'] = _('Lugar de origen')
+        labels['local_orig'] = _('Local de origen')
 
 
 class TransferenciaEstoqueForm(MovimentoForm):
@@ -92,8 +92,8 @@ class TransferenciaEstoqueForm(MovimentoForm):
             attrs={'class': 'form-control'})
         labels = MovimentoForm.Meta.labels
         labels['data_movimento'] = _('Fecha de transferencia')
-        labels['local_estoque_orig'] = _('Lugar de origen')
-        labels['local_estoque_dest'] = _('Lugar de destino')
+        labels['local_estoque_orig'] = _('Local de origen')
+        labels['local_estoque_dest'] = _('Local de destino')
 
 
 class ItensMovimentoForm(forms.ModelForm):
