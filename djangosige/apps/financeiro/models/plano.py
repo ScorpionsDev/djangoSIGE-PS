@@ -4,7 +4,7 @@ from django.db import models
 
 TIPO_GRUPO_ESCOLHAS = (
     (u'0', u'Entrada'),
-    (u'1', u'Saída'),
+    (u'1', u'Salida'),
 )
 
 
@@ -14,7 +14,7 @@ class PlanoContasGrupo(models.Model):
     descricao = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name = "Grupo do Plano de Contas"
+        verbose_name = "Grupo del Plan de Cuentas"
 
     def __unicode__(self):
         s = u'%s' % (self.descricao)
