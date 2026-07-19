@@ -14,28 +14,28 @@ import locale
 locale.setlocale(locale.LC_ALL, '')
 
 STATUS_ORCAMENTO_ESCOLHAS = (
-    (u'0', u'Aberto'),
-    (u'1', u'Baixado'),
+    (u'0', u'Abierto'),
+    (u'1', u'Procesado'), 
     (u'2', u'Cancelado'),
 )
 
 STATUS_PEDIDO_VENDA_ESCOLHAS = (
-    (u'0', u'Aberto'),
-    (u'1', u'Faturado'),
+    (u'0', u'Abierto'),
+    (u'1', u'Facturado'),
     (u'2', u'Cancelado'),
     (u'3', u'Importado por XML'),
 )
 
 TIPOS_DESCONTO_ESCOLHAS = (
     (u'0', u'Valor'),
-    (u'1', u'Percentual'),
+    (u'1', u'Porcentaje'),
 )
 
 MOD_FRETE_ESCOLHAS = (
-    (u'0', u'Por conta do emitente'),
-    (u'1', u'Por conta do destinatário/remetente'),
-    (u'2', u'Por conta de terceiros'),
-    (u'9', u'Sem frete'),
+    (u'0', u'Por cuenta del emisor'),
+    (u'1', u'Por cuenta del destinatario/remitente'),
+    (u'2', u'Por cuenta de terceros'),
+    (u'9', u'Sin flete'),
 )
 
 
