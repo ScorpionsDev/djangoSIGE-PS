@@ -16,16 +16,16 @@ class EnderecoForm(forms.ModelForm):
 
         labels = {
             'tipo_endereco': _('Tipo'),
-            'logradouro': _("Logradouro"),
-            'numero': _("Número"),
-            'bairro': _("Bairro"),
-            'complemento': _("Complemento"),
-            'pais': _("País"),
-            'cpais': _("Código do País"),
-            'municipio': _("Município (sem acentuação)"),
-            'cmun': _("Código do município"),
-            'cep': _("CEP (Apenas dígitos)"),
-            'uf': _("UF"),
+            'logradouro': _('Dirección'),
+            'numero': _('Número'),
+            'bairro': _('Barrio / Urbanización'),
+            'complemento': _('Complemento'),
+            'pais': _('País'),
+            'cpais': _('Código del País'),
+            'municipio': _('Municipio (sin tildes)'),
+            'cmun': _('Código del municipio'),
+            'cep': _('Código Postal (Solo dígitos)'),
+            'uf': _('Departamento / Región (UF)'),
         }
         widgets = {
             'tipo_endereco': forms.Select(attrs={'class': 'form-control'}),
@@ -48,7 +48,7 @@ class TelefoneForm(forms.ModelForm):
         model = Telefone
         fields = ('tipo_telefone', 'telefone',)
         labels = {
-            'tipo_telefone': _("Telefone"),
+            'tipo_telefone': _('Teléfono'),
             'telefone': _(''),
         }
         widgets = {
@@ -76,7 +76,7 @@ class SiteForm(forms.ModelForm):
         model = Site
         fields = ('site',)
         labels = {
-            'site': _('Site'),
+            'site': _('Sitio Web'),
         }
         widgets = {
             'site': forms.TextInput(attrs={'class': 'form-control'}),
@@ -90,8 +90,8 @@ class BancoForm(forms.ModelForm):
         fields = ('banco', 'agencia', 'conta', 'digito',)
         labels = {
             'banco': _('Banco'),
-            'agencia': _('Agência'),
-            'conta': _('Conta'),
+            'agencia': _('Agencia'),
+            'conta': _('Cuenta'),
             'digito': _('Dígito'),
         }
         widgets = {
