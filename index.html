@@ -906,6 +906,13 @@
       <a href="#plan-seguridad">Plan seguridad</a>
       <a href="#artefactos">Artefactos Hito 2</a>
       <a href="#hitos">Hitos y CI/CD</a>
+      <a href="#plan-sistema">Plan pruebas de sistema</a>
+      <a href="#resultados-sistema">Informe pruebas de sistema</a>
+      <a href="#casos-aceptacion">Casos de aceptación</a>
+      <a href="#resultados-aceptacion">Informe de aceptación</a>
+      <a href="#cicd-hito3">CI/CD y despliegue Hito 3</a>
+      <a href="#documentacion-hito3">Documentación Hito 3</a>
+      <a href="#hito3">Hito 3 · Sprint 3–4</a>
     </nav>
     <div class="sidebar-footer">
       djangoSIGE<br>
@@ -1504,7 +1511,7 @@
         <p class="desc-intro">
           El plan de pruebas de aceptación define los criterios y escenarios para validar
           que el sistema cumple con los requisitos del negocio y está listo para su
-          implementación en producción.
+          implementación en producción. El plan fue ejecutado en su totalidad durante el Hito 3.
         </p>
         <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
           <div style="background:var(--paper); padding:1rem 1.2rem;">
@@ -1531,73 +1538,23 @@
               <li style="padding:2px 0;">• Generación de documentos PDF</li>
             </ul>
           </div>
-          <div style="background:var(--paper); padding:1rem 1.2rem;">
-            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Estado actual</h4>
-            <span class="tag tag-res" style="font-size:1rem; padding:4px 12px;">Pendiente de ejecución</span>
-            <p style="font-size:12px; color:var(--ink-3); margin-top:6px;">Las pruebas de aceptación se ejecutarán una vez completadas todas las fases de pruebas previas.</p>
+          <div style="background:var(--sage-pale); padding:1rem 1.2rem; border-left:3px solid var(--sage);">
+            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Estado de ejecución</h4>
+            <span class="tag tag-res" style="font-size:1rem; padding:4px 12px;">Ejecutado</span>
+            <p style="font-size:12px; color:var(--ink-3); margin-top:6px;">
+              <strong>72 casos UAT</strong> diseñados y ejecutados · 100% de cobertura<br>
+              <strong>67 exitosos</strong> · <strong>5 fallidos</strong> · Tasa de éxito: 93.1%
+            </p>
           </div>
         </div>
       </div>
 
       <!-- ============================================================ -->
-      <!-- SECCIÓN 16: PLAN DE PRUEBAS DE SEGURIDAD -->
-      <!-- ============================================================ -->
-      <div class="doc-section" id="plan-seguridad">
-        <div class="section-header">
-          <span class="section-num">16</span>
-          <h2>Plan de pruebas de seguridad</h2>
-        </div>
-        <p class="desc-intro">
-          El plan de pruebas de seguridad establece los lineamientos para evaluar la robustez
-          del sistema frente a amenazas y vulnerabilidades, garantizando la protección de los
-          datos y la integridad de las operaciones.
-        </p>
-        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;">
-          <div style="background:var(--paper); padding:1rem 1.2rem;">
-            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Alcance</h4>
-            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
-              <li style="padding:2px 0;">• Validación de autenticación</li>
-              <li style="padding:2px 0;">• Control de permisos y roles</li>
-              <li style="padding:2px 0;">• Protección CSRF y XSS</li>
-            </ul>
-          </div>
-          <div style="background:var(--paper); padding:1rem 1.2rem;">
-            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Herramientas</h4>
-            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
-              <li style="padding:2px 0;">• Django Security Middleware</li>
-              <li style="padding:2px 0;">• Pruebas de penetración manuales</li>
-              <li style="padding:2px 0;">• Análisis de dependencias</li>
-            </ul>
-          </div>
-          <div style="background:var(--paper); padding:1rem 1.2rem;">
-            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Escenarios</h4>
-            <ul style="font-size:12px; color:var(--ink-3); list-style:none; padding:0; margin-top:4px;">
-              <li style="padding:2px 0;">• Acceso no autorizado a datos</li>
-              <li style="padding:2px 0;">• Inyección SQL (ORM previene)</li>
-              <li style="padding:2px 0;">• Manipulación de parámetros</li>
-            </ul>
-          </div>
-          <div style="background:var(--paper); padding:1rem 1.2rem;">
-            <h4 style="font-size:13px; font-weight:500; color:var(--ink);">Estado actual</h4>
-            <span class="tag tag-res" style="font-size:1rem; padding:4px 12px;">Pendiente de ejecución</span>
-            <p style="font-size:12px; color:var(--ink-3); margin-top:6px;">Las pruebas de seguridad se planifican para una fase posterior del proyecto.</p>
-          </div>
-        </div>
-        <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
-          <p style="font-size:12px; color:var(--ink-3);">
-            <strong>Nota:</strong> Django proporciona protección integrada contra las vulnerabilidades más comunes
-            (CSRF, XSS, SQL Injection mediante ORM, clickjacking). Las pruebas de seguridad se enfocarán
-            en validar la correcta configuración de estos mecanismos y la gestión de permisos.
-          </p>
-        </div>
-      </div>
-
-      <!-- ============================================================ -->
-      <!-- SECCIÓN 17: ARTEFACTOS DEL HITO 2 -->
+      <!-- SECCIÓN 16: ARTEFACTOS DEL HITO 2 -->
       <!-- ============================================================ -->
       <div class="doc-section" id="artefactos">
         <div class="section-header">
-          <span class="section-num">17</span>
+          <span class="section-num">16</span>
           <h2>Artefactos del Hito 2</h2>
         </div>
         <p class="desc-intro">
@@ -1646,18 +1603,17 @@
             <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas unitarias y funcionales</span>
             <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de integración</span>
             <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Diseño de casos de pruebas funcionales</span>
-            <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de seguridad</span>
             <span style="font-size:12px; background:white; padding:3px 12px; border-radius:4px; border:1px solid var(--line);">Plan de pruebas de aceptación</span>
           </div>
         </div>
       </div>
 
       <!-- ============================================================ -->
-      <!-- SECCIÓN 18: HITOS Y AUTOMATIZACIÓN CI/CD -->
+      <!-- SECCIÓN 17: HITOS Y AUTOMATIZACIÓN CI/CD -->
       <!-- ============================================================ -->
       <div class="doc-section" id="hitos">
         <div class="section-header">
-          <span class="section-num">18</span>
+          <span class="section-num">17</span>
           <h2>Hitos y automatización CI/CD</h2>
         </div>
 
@@ -1692,7 +1648,7 @@
           </div>
         </div>
 
-        <!-- PIPELINE CI/CD (EXTENSO) -->
+        <!-- PIPELINE CI/CD -->
         <div style="margin-top:1.25rem;">
           <h3>Pipeline CI/CD con GitHub Actions</h3>
           <p style="font-size:13px; color:var(--ink-3); margin-bottom:0.75rem;">
@@ -1744,6 +1700,528 @@
               <span style="display:inline-block; margin-left:0.5rem;">• Reducción de errores en producción</span>
             </p>
           </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 18: PLAN DE PRUEBAS DE SISTEMA -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="plan-sistema">
+        <div class="section-header">
+          <span class="section-num">18</span>
+          <h2>Plan de pruebas de sistema</h2>
+        </div>
+        <p class="desc-intro">
+          Como parte del Hito 3, se definió un plan de pruebas de sistema orientado a validar el
+          comportamiento observable de djangoSIGE como una aplicación completa desplegada, cubriendo
+          los módulos de Compras, Ventas y Estoque y los flujos de negocio que atraviesan más de un módulo.
+          El plan fue aprobado y ejecutado en su totalidad durante el ciclo de pruebas de sistema,
+          abarcando tanto <strong>pruebas funcionales</strong> como <strong>pruebas no funcionales</strong>
+          (rendimiento, volumen, usabilidad y compatibilidad de navegadores), consideradas de igual
+          importancia para la calidad del producto final.
+        </p>
+
+        <div class="plan-grid">
+          <div class="plan-card">
+            <h4>Alcance</h4>
+            <p><strong>Funcional:</strong> Validación de los 8 requisitos funcionales priorizados (RF-COM-01, RF-COM-02, RF-COM-03, RF-VEN-01, RF-VEN-02, RF-VEN-03, RF-EST-01, RF-EST-02).</p>
+            <p style="margin-top:4px;"><strong>No funcional:</strong> Rendimiento (RNF-REN), Volumen (RNF-VOL), Usabilidad (RNF-USA), Compatibilidad de navegadores (RNF-CFG).</p>
+            <span class="plan-status">Definido</span>
+          </div>
+          <div class="plan-card">
+            <h4>Casos de sistema</h4>
+            <p>El plan estructuró <strong>38 casos</strong>: 19 funcionales (Compras 5, Ventas 6, Estoque 4, Integración 4) y <strong>19 no funcionales</strong> (Rendimiento 4, Volumen 4, Usabilidad 7, Compatibilidad 4).</p>
+            <span class="plan-status">38 casos documentados</span>
+          </div>
+          <div class="plan-card">
+            <h4>Flujos entre módulos</h4>
+            <p>Se contemplan escenarios completos que conectan Compras, Estoque y Ventas para verificar consistencia de datos y comportamiento extremo a extremo.</p>
+            <span class="plan-status">End-to-End</span>
+          </div>
+          <div class="plan-card">
+            <h4>Entorno de pruebas</h4>
+            <p>El sistema se validó sobre WSL Ubuntu con Gunicorn y SQLite. El entorno originalmente planificado con Docker Compose y PostgreSQL no se utilizó en este ciclo.</p>
+            <span class="plan-status">Ejecutado en WSL</span>
+          </div>
+          <div class="plan-card">
+            <h4>Pruebas no funcionales</h4>
+            <p>El plan incorpora <strong>4 categorías</strong>: Rendimiento (PS-REN-01 a 04), Volumen (PS-VOL-01 a 04), Usabilidad (PS-USA-01 a 07) y Compatibilidad de navegadores (PS-CFG-01 a 04).</p>
+            <p style="margin-top:4px; font-size:12px; color:var(--ink-3);"><strong>Herramientas:</strong> k6 para rendimiento y volumen · Lighthouse para accesibilidad (PS-USA-05 a 07).</p>
+            <span class="plan-status">19 casos ejecutados</span>
+          </div>
+          <div class="plan-card">
+            <h4>Criterios y riesgos</h4>
+            <p>Se establecieron criterios de entrada y salida, condiciones de cobertura y 8 riesgos asociados a la ejecución integral del sistema.</p>
+            <span class="plan-status">Documentado</span>
+          </div>
+        </div>
+
+        <div class="hito-block" style="margin-top:1rem;">
+          <h4>Cobertura del plan de sistema</h4>
+          <div class="hito-meta">
+            <span>Compras: PS-COM (5)</span>
+            <span>Ventas: PS-VEN (6)</span>
+            <span>Estoque: PS-EST (4)</span>
+            <span>Integración: PS-INT (4)</span>
+            <span>Rendimiento: PS-REN (4)</span>
+            <span>Volumen: PS-VOL (4)</span>
+            <span>Usabilidad: PS-USA (7)</span>
+            <span>Compatibilidad: PS-CFG (4)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 19: INFORME DE EJECUCIÓN DE PRUEBAS DE SISTEMA -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="resultados-sistema">
+        <div class="section-header">
+          <span class="section-num">19</span>
+          <h2>Informe de ejecución de pruebas de sistema</h2>
+        </div>
+        <p class="desc-intro">
+          El informe de pruebas de sistema documenta la ejecución completa del plan sobre el ERP djangoSIGE.
+          Se ejecutaron <strong>38 casos</strong> distribuidos en 8 categorías, con una cobertura del <strong>100%</strong>.
+          El resultado global fue de <strong>30 casos exitosos (79%)</strong> y <strong>8 casos fallidos (21%)</strong>,
+          con 5 defectos documentados (más 1 cerrado por no reproducción), de los cuales 3 son de prioridad alta.
+          Las <strong>pruebas no funcionales</strong> (rendimiento, volumen, usabilidad y compatibilidad)
+          se ejecutaron con herramientas automatizadas (k6, Lighthouse) y verificación manual, obteniendo resultados
+          críticos para la calidad del producto.
+        </p>
+
+        <!-- Resumen ejecutivo -->
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="label">Casos diseñados</div>
+            <div class="value">38</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos ejecutados</div>
+            <div class="value high">38</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos exitosos</div>
+            <div class="value high">30</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos fallidos</div>
+            <div class="value mid">8</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Tasa de éxito</div>
+            <div class="value">79%</div>
+          </div>
+          <div class="coverage-item" style="background:var(--sage-pale);">
+            <div class="label">Cobertura de ejecución</div>
+            <div class="value high">100%</div>
+          </div>
+        </div>
+
+        <!-- Resumen por categoría -->
+        <div style="overflow-x:auto; margin-top:1rem;">
+          <table style="width:100%; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+            <thead>
+              <tr>
+                <th style="padding:8px 12px;">Categoría</th>
+                <th style="padding:8px 12px;">Casos</th>
+                <th style="padding:8px 12px;">Exitosos</th>
+                <th style="padding:8px 12px;">Fallidos</th>
+                <th style="padding:8px 12px;">Cobertura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;">Compras (PS-COM)</td><td style="padding:8px 12px;">5</td><td style="padding:8px 12px;">3</td><td style="padding:8px 12px;">2</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Ventas (PS-VEN)</td><td style="padding:8px 12px;">6</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">2</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Estoque (PS-EST)</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">2</td><td style="padding:8px 12px;">2</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Integración (PS-INT)</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">0</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Rendimiento (PS-REN)</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">0</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Volumen (PS-VOL)</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">3</td><td style="padding:8px 12px;">1</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Usabilidad (PS-USA)</td><td style="padding:8px 12px;">7</td><td style="padding:8px 12px;">6</td><td style="padding:8px 12px;">1</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Compatibilidad (PS-CFG)</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;">0</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr style="background:var(--paper-2); font-weight:500;"><td style="padding:8px 12px;">TOTAL</td><td style="padding:8px 12px;">38</td><td style="padding:8px 12px;">30</td><td style="padding:8px 12px;">8</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detalle de pruebas no funcionales -->
+        <div style="margin-top:1.25rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <h4 style="font-size:13px; font-weight:500; color:var(--ink); margin-bottom:4px;">Pruebas no funcionales ejecutadas</h4>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:4px;">
+            <div style="background:white; padding:0.7rem 1rem;">
+              <div style="font-size:11px; font-weight:600; color:var(--ink-4);">Rendimiento (PS-REN)</div>
+              <div style="font-size:13px; font-weight:500; color:var(--sage-dark);">4/4 exitosos</div>
+              <div style="font-size:11px; color:var(--ink-4);">k6 · todos los umbrales cumplidos</div>
+            </div>
+            <div style="background:white; padding:0.7rem 1rem;">
+              <div style="font-size:11px; font-weight:600; color:var(--ink-4);">Volumen (PS-VOL)</div>
+              <div style="font-size:13px; font-weight:500; color:#92400E;">3/4 exitosos</div>
+              <div style="font-size:11px; color:var(--ink-4);">k6 · DEF-004 (condición de carrera)</div>
+            </div>
+            <div style="background:white; padding:0.7rem 1rem;">
+              <div style="font-size:11px; font-weight:600; color:var(--ink-4);">Usabilidad (PS-USA)</div>
+              <div style="font-size:13px; font-weight:500; color:#92400E;">6/7 exitosos</div>
+              <div style="font-size:11px; color:var(--ink-4);">Manual · Lighthouse · DEF-006</div>
+            </div>
+            <div style="background:white; padding:0.7rem 1rem;">
+              <div style="font-size:11px; font-weight:600; color:var(--ink-4);">Compatibilidad (PS-CFG)</div>
+              <div style="font-size:13px; font-weight:500; color:var(--sage-dark);">4/4 exitosos</div>
+              <div style="font-size:11px; color:var(--ink-4);">Chrome, Firefox, Edge</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Defectos encontrados -->
+        <div style="margin-top:1.25rem;">
+          <h3>Defectos encontrados</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+              <thead>
+                <tr>
+                  <th style="padding:8px 12px;">ID</th>
+                  <th style="padding:8px 12px;">Módulo</th>
+                  <th style="padding:8px 12px;">Descripción</th>
+                  <th style="padding:8px 12px;">Prioridad</th>
+                  <th style="padding:8px 12px;">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-001</td>
+                  <td style="padding:8px 12px;">Estoque</td>
+                  <td style="padding:8px 12px;">El sistema permite transferencia entre el mismo local origen y destino sin validación. Riesgo #4 confirmado.</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-limit">Media</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-002</td>
+                  <td style="padding:8px 12px;">Estoque</td>
+                  <td style="padding:8px 12px;">Error HTTP 500 al eliminar movimiento con producto sin control de inventario (<code>controlar_estoque=False</code>). Riesgo #2 confirmado.</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-limit">Alta</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-003</td>
+                  <td style="padding:8px 12px;">Compras/Estoque</td>
+                  <td style="padding:8px 12px;">No reproducido — el comportamiento anómalo de UAT (COM03-CPA-008) no se observó en sistema. Riesgo #7 no confirmado.</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-eq">Cerrado</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-res">Cerrado</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-004</td>
+                  <td style="padding:8px 12px;">Estoque</td>
+                  <td style="padding:8px 12px;">Condición de carrera en <code>Produto.estoque_atual</code> bajo escrituras concurrentes (lost update). Hallazgo no anticipado en PS-VOL-03.</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-limit">Alta</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-005</td>
+                  <td style="padding:8px 12px;">Compras/Ventas</td>
+                  <td style="padding:8px 12px;">Copiar presupuestos/pedidos no clona ítems ni parcelas de pago (4 casos afectados: PS-COM-02, PS-COM-05, PS-VEN-02, PS-VEN-06).</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-limit">Alta</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 12px;">DEF-006</td>
+                  <td style="padding:8px 12px;">Compras (UI)</td>
+                  <td style="padding:8px 12px;">Cancelar presupuesto no muestra mensaje de confirmación (redirección silenciosa). Detectado en PS-USA-02.</td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Media</span></td>
+                  <td style="padding:8px 12px;"><span class="tag tag-other">Pendiente</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cumplimiento de criterios de salida -->
+        <div style="margin-top:1.25rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <h4 style="font-size:13px; font-weight:500; color:var(--ink); margin-bottom:4px;">Cumplimiento de criterios de salida del Plan de Pruebas de Sistema</h4>
+          <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:2px;">
+            <span style="font-size:12px; background:white; padding:4px 10px; border-radius:4px; border:1px solid var(--line);">Casos de prioridad Alta ejecutados: 100%</span>
+            <span style="font-size:12px; background:white; padding:4px 10px; border-radius:4px; border:1px solid var(--line);">Total de casos ejecutados: 100% (supera el 90% exigido)</span>
+            <span style="font-size:12px; background:white; padding:4px 10px; border-radius:4px; border:1px solid var(--line);">Umbrales de rendimiento (RNF-REN): cumplidos</span>
+            <span style="font-size:12px; background:#FEF2F2; padding:4px 10px; border-radius:4px; border:1px solid #FECACA;">Defectos críticos o bloqueantes abiertos: 3 (DEF-002, DEF-004, DEF-005)</span>
+          </div>
+        </div>
+
+        <!-- Veredicto -->
+        <div style="margin-top:1rem; background:#FEF2F2; border-radius:10px; padding:0.75rem 1rem; border:1px solid #FECACA;">
+          <p style="font-size:13px; color:var(--red);">
+            <strong>Veredicto:</strong> <span style="font-weight:600;">Go condicionado</span> —
+            El sistema puede avanzar al siguiente ciclo siempre que se resuelvan los defectos de prioridad alta
+            <strong>DEF-002</strong> (error HTTP 500 en productos sin control),
+            <strong>DEF-004</strong> (condición de carrera en inventario) y
+            <strong>DEF-005</strong> (pérdida de datos al copiar documentos).
+            Los defectos DEF-001 y DEF-006, de prioridad media, pueden gestionarse como mejoras posteriores sin bloquear el avance.
+          </p>
+        </div>
+
+        <div style="margin-top:0.75rem; background:var(--paper-2); border-radius:10px; padding:0.75rem 1rem; border:1px solid var(--line);">
+          <p style="font-size:12px; color:var(--ink-3);">
+            <strong>Nota de seguimiento:</strong> El informe conserva el estado individual de cada caso y sus evidencias,
+            incluyendo capturas de pantalla para casos manuales, resultados de pruebas automatizadas con k6 para rendimiento y volumen,
+            y auditorías Lighthouse para accesibilidad (PS-USA-05 a 07). Las pruebas no funcionales revelaron la condición de carrera
+            en el inventario (DEF-004) y el defecto de usabilidad en la cancelación de presupuestos (DEF-006),
+            defectos que no habrían sido detectados por pruebas funcionales o unitarias.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 20: CASOS DE PRUEBA DE ACEPTACIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="casos-aceptacion">
+        <div class="section-header">
+          <span class="section-num">20</span>
+          <h2>Casos de prueba de aceptación</h2>
+        </div>
+        <p class="desc-intro">
+          La especificación de pruebas de aceptación traduce los 8 requisitos funcionales seleccionados
+          en casos UAT detallados, con precondiciones, procedimiento, datos de entrada y resultado esperado.
+          En total se diseñaron <strong>72 casos de aceptación</strong> para los tres módulos evaluados.
+        </p>
+
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="label">Compras</div>
+            <div class="value">28</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Ventas</div>
+            <div class="value">26</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Estoque / Inventario</div>
+            <div class="value">18</div>
+          </div>
+          <div class="coverage-item" style="background:var(--sage-pale);">
+            <div class="label">Total de casos UAT diseñados</div>
+            <div class="value high">72</div>
+          </div>
+        </div>
+
+        <div class="hito-block" style="margin-top:1rem;">
+          <h4>Requisitos cubiertos por aceptación</h4>
+          <div class="hito-meta">
+            <span>RF-COM-01</span>
+            <span>RF-COM-02</span>
+            <span>RF-COM-03</span>
+            <span>RF-VEN-01</span>
+            <span>RF-VEN-02</span>
+            <span>RF-VEN-03</span>
+            <span>RF-EST-01</span>
+            <span>RF-EST-02</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 21: INFORME DE EJECUCIÓN DE PRUEBAS DE ACEPTACIÓN -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="resultados-aceptacion">
+        <div class="section-header">
+          <span class="section-num">21</span>
+          <h2>Informe de ejecución de pruebas de aceptación</h2>
+        </div>
+        <p class="desc-intro">
+          El ciclo formal de Pruebas de Aceptación de Usuario (UAT) ejecutó la totalidad de los 72 casos diseñados.
+          Se obtuvo una cobertura de ejecución del <strong>100%</strong>, con <strong>67 casos exitosos</strong> y
+          <strong>5 casos fallidos</strong>. No se registraron defectos críticos o bloqueantes abiertos.
+        </p>
+
+        <div class="coverage-grid">
+          <div class="coverage-item">
+            <div class="label">Casos diseñados</div>
+            <div class="value">72</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos ejecutados</div>
+            <div class="value high">72</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos exitosos</div>
+            <div class="value high">67</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Casos fallidos</div>
+            <div class="value mid">5</div>
+          </div>
+          <div class="coverage-item">
+            <div class="label">Tasa de aprobación</div>
+            <div class="value high">93.1%</div>
+          </div>
+          <div class="coverage-item" style="background:var(--sage-pale);">
+            <div class="label">Cobertura de ejecución</div>
+            <div class="value high">100%</div>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto; margin-top:1rem;">
+          <table style="width:100%; font-size:13px; border:1px solid var(--line); border-radius:10px; overflow:hidden;">
+            <thead>
+              <tr>
+                <th style="padding:8px 12px;">Módulo</th>
+                <th style="padding:8px 12px;">Diseñados</th>
+                <th style="padding:8px 12px;">Ejecutados</th>
+                <th style="padding:8px 12px;">Exitosos</th>
+                <th style="padding:8px 12px;">Fallidos</th>
+                <th style="padding:8px 12px;">Cobertura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px 12px;">Compras</td><td style="padding:8px 12px;">28</td><td style="padding:8px 12px;">28</td><td style="padding:8px 12px;">24</td><td style="padding:8px 12px;">4</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Ventas</td><td style="padding:8px 12px;">26</td><td style="padding:8px 12px;">26</td><td style="padding:8px 12px;">25</td><td style="padding:8px 12px;">1</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr><td style="padding:8px 12px;">Estoque</td><td style="padding:8px 12px;">18</td><td style="padding:8px 12px;">18</td><td style="padding:8px 12px;">18</td><td style="padding:8px 12px;">0</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+              <tr style="background:var(--paper-2); font-weight:500;"><td style="padding:8px 12px;">TOTAL</td><td style="padding:8px 12px;">72</td><td style="padding:8px 12px;">72</td><td style="padding:8px 12px;">67</td><td style="padding:8px 12px;">5</td><td style="padding:8px 12px;"><span class="tag tag-res">100%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:0.75rem; background:#F0FDF4; border-radius:10px; padding:0.75rem 1rem; border:1px solid #BBF7D0;">
+          <p style="font-size:12px; color:#065F46;">
+            <strong>Conclusión UAT:</strong> La ejecución no identificó defectos críticos ni bloqueantes activos.
+            El informe concluye que el sistema satisface los criterios de salida acordados y es apto para su despliegue comercial.
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 22: CI/CD Y DESPLIEGUE DEL HITO 3 -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="cicd-hito3">
+        <div class="section-header">
+          <span class="section-num">22</span>
+          <h2>CI/CD y despliegue en el Hito 3</h2>
+        </div>
+        <p class="desc-intro">
+          El tercer hito consolida el proceso de automatización iniciado en el Hito 2 y lo integra con el entorno
+          de despliegue utilizado para las pruebas finales. GitHub Actions mantiene la validación automática del código,
+          mientras que Docker y Docker Compose proporcionan un entorno reproducible para QA, pre-despliegue y ejecución del sistema.
+        </p>
+
+        <div class="pipeline-steps">
+          <div class="pipeline-step">
+            <span class="step-num">Etapa 1</span>
+            <span class="step-name">Validación continua</span>
+            <span style="font-size:12px; color:var(--ink-4);">GitHub Actions</span>
+            <span style="font-size:11px; color:var(--ink-4);">Los cambios enviados al repositorio activan la validación automática definida en el pipeline.</span>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">Etapa 2</span>
+            <span class="step-name">Construcción del entorno</span>
+            <span style="font-size:12px; color:var(--ink-4);">Docker / Docker Compose</span>
+            <span style="font-size:11px; color:var(--ink-4);">La aplicación y sus servicios se ejecutan en un entorno aislado y reproducible para las pruebas de sistema y aceptación.</span>
+          </div>
+          <div class="pipeline-step">
+            <span class="step-num">Etapa 3</span>
+            <span class="step-name">Preparación para despliegue</span>
+            <span style="font-size:12px; color:var(--ink-4);">QA → Pre-despliegue</span>
+            <span style="font-size:11px; color:var(--ink-4);">Los resultados de sistema y aceptación actúan como evidencia de calidad previa a la liberación del producto.</span>
+          </div>
+        </div>
+
+        <div class="hito-block" style="margin-top:1rem;">
+          <h4>Objetivo del Hito 3</h4>
+          <p>Integrar la verificación final del sistema y la aceptación del producto con un proceso técnico reproducible de automatización y despliegue, manteniendo trazabilidad de los resultados obtenidos.</p>
+          <div class="hito-meta">
+            <span>GitHub Actions</span>
+            <span>Docker</span>
+            <span>Docker Compose</span>
+            <span>Pruebas de sistema</span>
+            <span>UAT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 23: DOCUMENTACIÓN TÉCNICA DEL HITO 3 -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="documentacion-hito3">
+        <div class="section-header">
+          <span class="section-num">23</span>
+          <h2>Documentación técnica del Hito 3</h2>
+        </div>
+        <p class="desc-intro">
+          El Hito 3 completa la documentación técnica de los niveles de prueba de sistema y aceptación.
+          Los nuevos documentos se encuentran centralizados en el GitHub Wiki del proyecto y complementan
+          los planes e informes desarrollados durante los hitos anteriores.
+        </p>
+
+        <div class="artefactos-grid">
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-plan">Plan</span></div>
+            <h4>Plan de Pruebas de Sistema</h4>
+            <p>Define objetivos, alcance, estrategia, casos de sistema, flujos entre módulos, ambiente, criterios de entrada y salida y riesgos.</p>
+            <a href="https://github.com/ScorpionsDev/djangoSIGE-PS/wiki/Plan-de-Pruebas-de-Sistema" class="artf-link" target="_blank">Ver documento →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-res">Informe</span></div>
+            <h4>Informe de Pruebas de Sistema</h4>
+            <p>Documenta la ejecución y evidencias de los casos de sistema sobre Compras, Ventas, Estoque y los flujos completos entre módulos.</p>
+            <a href="https://github.com/ScorpionsDev/djangoSIGE-PS/wiki/Informe-de-Ejecuci%C3%B3n-de-Pruebas-de-Sistema" class="artf-link" target="_blank">Ver documento →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-plan">Plan</span></div>
+            <h4>Plan de Pruebas de Aceptación</h4>
+            <p>Establece objetivos UAT, ambiente, metodología, criterios de entrada y salida, requisitos a validar y matriz de trazabilidad.</p>
+            <a href="https://github.com/ScorpionsDev/djangoSIGE-PS/wiki/Plan-de-pruebas-de-Aceptacion" class="artf-link" target="_blank">Ver documento →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-artf">Especificación</span></div>
+            <h4>Casos de Prueba de Aceptación</h4>
+            <p>Especificación detallada de 72 casos UAT vinculados a los 8 requisitos funcionales de los tres módulos evaluados.</p>
+            <a href="https://github.com/ScorpionsDev/djangoSIGE-PS/wiki/Especificaci%C3%B3n-de-Casos-de-Prueba-de-Aceptaci%C3%B3n-%E2%80%90-djangoSIGE" class="artf-link" target="_blank">Ver documento →</a>
+          </div>
+
+          <div class="artefacto-card">
+            <div class="artf-tag"><span class="tag tag-res">Informe</span></div>
+            <h4>Informe de Pruebas de Aceptación</h4>
+            <p>Consolida la ejecución de los 72 casos UAT, con 100% de cobertura, 67 casos exitosos, 5 fallidos y evidencias por escenario.</p>
+            <a href="https://github.com/ScorpionsDev/djangoSIGE-PS/wiki/Informe-de-Ejecuci%C3%B3n-de-Pruebas-de-Aceptaci%C3%B3n-%E2%80%90-djangoSIGE" class="artf-link" target="_blank">Ver documento →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SECCIÓN 24: HITO 3 -->
+      <!-- ============================================================ -->
+      <div class="doc-section" id="hito3">
+        <div class="section-header">
+          <span class="section-num">24</span>
+          <h2>Hito 3 · Sprint 3–4</h2>
+        </div>
+        <p class="desc-intro">
+          El tercer hito representa el cierre del trabajo del curso. De acuerdo con el alcance del entregable,
+          esta etapa consolida el plan e informe de pruebas de sistema, el plan y la ejecución de pruebas de aceptación,
+          el proceso de CI/CD y despliegue, y la documentación técnica completa del proceso de pruebas.
+        </p>
+
+        <div class="hito-block">
+          <h4>Hito 3 · 08.JUL.2026 (100%)</h4>
+          <p>
+            Entregable de los Sprint 3–4: plan e informe de pruebas de sistema y aceptación,
+            integración del proceso de CI/CD con el entorno de despliegue y consolidación de la documentación
+            técnica generada durante todo el ciclo de verificación del proyecto djangoSIGE.
+          </p>
+          <div class="hito-meta">
+            <span>Plan de pruebas de sistema</span>
+            <span>Informe de pruebas de sistema</span>
+            <span>Plan de aceptación</span>
+            <span>72 casos UAT ejecutados</span>
+            <span>100% de cobertura UAT</span>
+            <span>Documentación técnica consolidada</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem; background:var(--paper-2); border-radius:10px; padding:1rem 1.25rem; border:1px solid var(--line);">
+          <h4 style="font-size:13px; font-weight:500; color:var(--ink); margin-bottom:4px;">Cierre del proceso de pruebas</h4>
+          <p style="font-size:13px; color:var(--ink-3);">
+            Con el Hito 3, la documentación del proyecto cubre el ciclo completo de pruebas trabajado en el curso:
+            pruebas unitarias, funcionales, de integración, de sistema y de aceptación, junto con la automatización
+            del proceso de validación mediante CI/CD y el uso de un entorno de despliegue reproducible.
+          </p>
         </div>
       </div>
 
