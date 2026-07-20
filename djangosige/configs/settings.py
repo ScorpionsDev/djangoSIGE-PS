@@ -136,6 +136,8 @@ STATICFILES_DIRS = [
     os.path.join(APP_ROOT, 'static'),
 ]
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
 FIXTURE_DIRS = [
     os.path.join(APP_ROOT, 'fixtures'),
 ]
