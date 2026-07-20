@@ -32,7 +32,7 @@ WORKDIR /opt/djangoSIGE/
 COPY pyproject.toml uv.lock .python-version ./
 RUN uv sync --frozen --no-install-project
 
-RUN uv pip install --python /opt/venv gunicorn psycopg2-binary
+RUN uv pip install --python /opt/venv gunicorn psycopg2-binary whitenoise
 
 COPY . .
 
